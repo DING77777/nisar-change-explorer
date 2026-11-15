@@ -211,9 +211,9 @@
     {
       "type": "geojson",
       "id": "cells",
-      "name": "50 m radar cells inside the EMS-mapped impact",
+      "name": "50 m radar cells across the EMS mapping area",
       "kind": "cells",
-      "source": "web_inputs_20261115/gyirong/ems_cells_wide.geojson",
+      "source": "web_inputs_20261115/gyirong/ems_cells_area.geojson",
       "file": "ems_cells.geojson",
       "default_on": true,
       "styles": [
@@ -251,6 +251,10 @@
         }
       ],
       "popup": [
+        {
+          "key": "in_impact",
+          "label": "Inside the mapped landslide impact"
+        },
         {
           "key": "hh_cross_db",
           "label": "HH, 19 to 31 Aug (across the event)",
@@ -315,8 +319,8 @@
   "downloads": [
     {
       "file": "ems_cells.geojson",
-      "label": "All 509 cells inside the mapped impact, with radar change (GeoJSON, WGS84)",
-      "note": "Includes 12 cells without full radar support on all three dates."
+      "label": "All 1186 cells across the EMS mapping area, 509 of them inside the mapped impact (GeoJSON, WGS84)",
+      "note": "Each cell says whether it lies inside the mapped impact. Cells without full radar support on all three dates have null values."
     }
   ],
   "checks": {

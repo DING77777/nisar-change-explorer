@@ -54,6 +54,7 @@
  "headline": "Across the whole region HH brightened by a median 1.8 dB between 13 and 25 October, against -0.1 dB over the 12 quiet days before.",
  "map_note": "No optical reference for this event: Sentinel-2 scenes on 25 October were about 96 to 99.8% cloud-covered (whole-tile metadata). This is the situation radar is for; here the independent evidence is river gauges and rainfall.",
  "fit_contain": true,
+ "zoom_out": -0.35,
  "layers": [],
  "object_series": null,
  "dates": {
@@ -2908,5 +2909,5 @@
    }
   }
  },
- "generated_utc": "2026-11-15T13:13:33Z"
+ "generated_utc": "2026-11-15T14:10:30Z"
 }

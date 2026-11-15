@@ -349,9 +349,9 @@ function drawPins() {
   const marker = (lat, lon, fill) => L.circleMarker([lat, lon], {
     pane: 'pins', radius: 7, color: '#fff', weight: 2, fillColor: fill, fillOpacity: 1, bubblingMouseEvents: false,
   });
+  const gaugeIcon = L.divIcon({ className: 'gaugeicon', html: '▼', iconSize: [14, 14], iconAnchor: [7, 7] });
   for (const e of s.evidence.filter((x) => x.type === 'gauge')) {
-    marker(e.lat, e.lon, '#12306b')
-      .bindPopup(`<b>River gauge</b><br>${esc(e.label)}<br><span class="small">See the chart in the panel.</span>`).addTo(pinLayer);
+    L.marker([e.lat, e.lon], { icon: gaugeIcon, pane: 'pins', keyboard: false, title: e.label }).addTo(pinLayer);
   }
   for (const z of s.zones || []) {
     const style = ZONE_STYLE[z.kind] || ZONE_STYLE.target;
@@ -655,7 +655,10 @@ async function drawObjects() {
       style: (f) => (isCand ? candStyle(f.properties) : featureStyle(lay, f.properties)),
       pointToLayer: (f, ll) => L.circleMarker(ll, { pane: 'pins', radius: 7, color: '#fff', weight: 2, fillColor: st.color || '#5b6676', fillOpacity: 1, bubblingMouseEvents: false }),
       onEachFeature: (f, layer) => {
-        if (lay.label_property) layer.bindTooltip(String(f.properties[lay.label_property]), { permanent: true, direction: 'top', offset: [0, -4], className: 'zonetip' });
+        if (lay.label_property && layer.getBounds) {
+          L.marker(layer.getBounds().getSouthEast(), { pane: 'pins', interactive: false, keyboard: false,
+            icon: L.divIcon({ className: 'fieldlabel', html: esc(String(f.properties[lay.label_property])), iconSize: [16, 16], iconAnchor: [-2, -2] }) }).addTo(objectLayer);
+        }
         if (lay.series && s.object_series) {
           const p = f.properties;
           layer.bindPopup(`<b>Field ${esc(p.id)}</b>: optical greenness ${esc(p.optical_label)}.<br><span class="small">Curves are shown in the panel on the right.</span>`);
@@ -701,6 +704,9 @@ function layerLegend() {
         + `<div class="ticks"><span>${lo}${st.unit ? ` ${st.unit}` : ''}</span><span>${hi}${st.unit ? ` ${st.unit}` : ''}</span></div>`
         + `<div><span class="sw" style="background:${st.mode === 'steps' ? '#fff;border:1px solid #c9ccd1' : NO_DATA}"></span>${esc(st.null_label || 'No data')}</div>`);
     }
+  }
+  if ((s.evidence || []).some((e) => e.type === 'gauge')) {
+    parts.push('<div><span class="gaugeicon inkey">▼</span>River gauge (water-level station); its record is charted in the panel</div>');
   }
   return parts.length ? `<div class="laylegend"><b>Map key</b>${parts.join('')}</div>` : '';
 }
@@ -947,7 +953,7 @@ async function selectScene(id) {
   map.setMaxBounds(null);
   map.setMinZoom(0);
   const b = L.latLngBounds(state.scene.bounds);
-  map.setView(b.getCenter(), state.scene.fit_contain ? map.getBoundsZoom(b, false) : map.getBoundsZoom(b, true) - 0.25 - (state.scene.zoom_out || 0), { animate: false });
+  map.setView(b.getCenter(), state.scene.fit_contain ? map.getBoundsZoom(b, false) - (state.scene.zoom_out || 0) : map.getBoundsZoom(b, true) - 0.25 - (state.scene.zoom_out || 0), { animate: false });
   map.setMinZoom(Math.max(0, map.getZoom() - 2));
   map.setMaxBounds(L.latLngBounds(state.scene.bounds).pad(1.5));
   refreshLayers();
@@ -1061,7 +1067,7 @@ for (const b of document.querySelectorAll('nav button')) {
     for (const t of document.querySelectorAll('.tab')) t.hidden = t.id !== b.dataset.tab;
     if (b.dataset.tab === 'explore') {
       map.invalidateSize();
-      if (state.scene) { const b = L.latLngBounds(state.scene.bounds); map.setView(b.getCenter(), state.scene.fit_contain ? map.getBoundsZoom(b, false) : map.getBoundsZoom(b, true) - 0.25 - (state.scene.zoom_out || 0), { animate: false }); }
+      if (state.scene) { const b = L.latLngBounds(state.scene.bounds); map.setView(b.getCenter(), state.scene.fit_contain ? map.getBoundsZoom(b, false) - (state.scene.zoom_out || 0) : map.getBoundsZoom(b, true) - 0.25 - (state.scene.zoom_out || 0), { animate: false }); }
       clipPanes();
     }
     if (b.dataset.tab === 'compare') renderCompare();

@@ -99,8 +99,8 @@
  "downloads": [
   {
    "file": "ems_cells.geojson",
-   "label": "All 509 cells inside the mapped impact, with radar change (GeoJSON, WGS84)",
-   "note": "Includes 12 cells without full radar support on all three dates."
+   "label": "All 1186 cells across the EMS mapping area, 509 of them inside the mapped impact (GeoJSON, WGS84)",
+   "note": "Each cell says whether it lies inside the mapped impact. Cells without full radar support on all three dates have null values."
   }
  ],
  "headline": "Inside the Copernicus-mapped impact, 15.7% of 50 m cells changed by more than 3 dB in HV across the event, against 1.2% over the next 12 days.",
@@ -125,7 +125,7 @@
   {
    "type": "geojson",
    "id": "cells",
-   "name": "50 m radar cells inside the EMS-mapped impact",
+   "name": "50 m radar cells across the EMS mapping area",
    "kind": "cells",
    "file": "ems_cells.geojson",
    "default_on": true,
@@ -164,6 +164,10 @@
     }
    ],
    "popup": [
+    {
+     "key": "in_impact",
+     "label": "Inside the mapped landslide impact"
+    },
     {
      "key": "hh_cross_db",
      "label": "HH, 19 to 31 Aug (across the event)",
@@ -483,5 +487,5 @@
   "mode": "sliding",
   "valid_fraction": 0.951
  },
- "generated_utc": "2026-11-15T13:50:02Z"
+ "generated_utc": "2026-11-15T14:10:08Z"
 }
