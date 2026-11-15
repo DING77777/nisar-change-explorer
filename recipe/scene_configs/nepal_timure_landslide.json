@@ -215,7 +215,7 @@
       "kind": "cells",
       "source": "web_inputs_20261115/gyirong/ems_cells_area.geojson",
       "file": "ems_cells.geojson",
-      "default_on": true,
+      "default_on": false,
       "styles": [
         {
           "name": "HV change across event",

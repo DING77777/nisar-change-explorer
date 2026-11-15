@@ -92,7 +92,7 @@
       <div style="display:flex;flex-direction:column">
         <ol class="steps">
           <li><b>Choose dates and a rule.</b> HH or HV, the period, darker or brighter, and a threshold, to see which polarisation shows the change best.</li>
-          <li><b>See the cells that pass.</b> Highlighted on the map; click a point, field or cell and the app draws its HH/HV curve automatically.</li>
+          <li><b>See the cells that pass.</b> Highlighted on the map. Click a point with valid radar data, or a farm field, and the app draws its HH/HV curve automatically; click a cell for its values.</li>
           <li><b>Check the evidence.</b> Compare the radar result with optical images, river gauges or official records in the same panel.</li>
           <li><b>Export (optional).</b> Download the passing cells as GeoJSON for further analysis or decisions.</li></ol><p class="small" style="margin:0 0 2%"><b>Reusable and open:</b> each case is one config file; new NISAR data go through the same steps.</p>
         <div class="shot" style="flex:1"><img src="slides/img/app_rule.jpg" alt="The rule panel with reference shares and the download button" style="object-position:top left"><span class="tag" style="left:3%;top:72%">4</span></div>
@@ -161,11 +161,11 @@
       <div><h3>1. NISAR data</h3><p class="small">L2 GCOV, HH and HV, small windows from ASF; up to 10 passes per case (Timure, shown).</p><img src="slides/img/timure_before_after.jpg" alt="Timure radar before and after the landslide, with the mapped impact" style="object-fit:contain;background:#fff"></div>
       <div><h3>2. Quality and change</h3><p class="small">Pixels valid on every date; linear power averaged, converted to dB once; 3 to 10 dates per case.</p><img src="slides/img/timure_change.jpg" alt="Timure change map across the landslide"></div>
       <div><h3>3. Independent evidence</h3><p class="small">Sentinel-2 labels, river gauges, official burn boundary, Copernicus emergency map.</p><img src="slides/img/fire_radar_vs_optical.jpg" alt="Radar and optical responses on the same cells" style="object-fit:contain;background:#fff"></div>
-      <div><h3>4. Interactive results</h3><p class="small">Click a cell or point: its HH/HV curve and readings appear. Rule-based highlight and GeoJSON export.</p><img src="slides/img/click_chart.png" alt="Chart drawn automatically for a clicked location" style="object-fit:contain;background:#fff"></div>
+      <div><h3>4. Interactive results</h3><p class="small">Click a point or field for its HH/HV curve, or a cell for its values. Rule-based highlight and GeoJSON export.</p><img src="slides/img/click_chart.png" alt="Chart drawn automatically for a clicked location" style="object-fit:contain;background:#fff"></div>
     </div>
     <div class="row r55" style="margin-top:2.5%;flex:0 0 auto">
       <ul style="margin:0;padding-left:1.1em">
-        <li>Click any location with valid data, or any cell or field, and the app draws its HH/HV curve and readings automatically (point readings are approximate).</li>
+        <li>Click a point with valid radar data, or a farm field, and the app draws its HH/HV curve automatically (point readings are approximate); click a cell for its values.</li>
         <li>The rule, the counts on the page and the exported file always match; the app reproduces the team's offline Sale evaluation exactly.</li><li>A static web app: no server, no login, opens in any browser; each case is one config file built by an open Python workflow.</li>
       </ul>
       <p class="small" style="margin:0"><b>Mountain hazard · Timure, Nepal:</b> 10 radar dates show strong change across the 26 Aug landslide inside the Copernicus-mapped impact (15.7% of cells vs 1.2% after). Where data quality did not support it, we did not report ground movement.</p>

@@ -527,7 +527,7 @@ function renderCandPanel() {
   box.innerHTML = `<div class="candhead"><label class="chk"><input type="checkbox" id="candon"${cand.on ? ' checked' : ''}> <b>Highlight cells that pass a rule</b></label></div>
     <div class="candbody" id="candbody"${cand.on ? '' : ' hidden'}>
       <div class="group"><span>Measure</span>${spec.measures.map((x, i) => `<button data-m="${i}">${esc(x.short || x.label)}</button>`).join('')}</div>
-      <div class="group"><span>Radar return</span>${['darker', 'brighter', 'either'].map((d) => `<button data-d="${d}">${d === 'darker' ? '<span class="sw" style="background:#5e3c99"></span> Darker' : d === 'brighter' ? '<span class="sw" style="background:#e66101"></span> Brighter' : 'Either'}<span class="dirmeaning" data-dm="${d}"></span></button>`).join('')}</div>
+      <div class="group"><span id="candsubj">Radar return</span>${['darker', 'brighter', 'either'].map((d) => `<button data-d="${d}">${d === 'darker' ? '<span class="sw" style="background:#5e3c99"></span> <span class="dirword">Darker</span>' : d === 'brighter' ? '<span class="sw" style="background:#e66101"></span> <span class="dirword">Brighter</span>' : 'Either'}<span class="dirmeaning" data-dm="${d}"></span></button>`).join('')}</div>
       <p class="small">The image controls above choose the background picture; this rule chooses which cells are highlighted. They can differ.</p>
       <div class="group"><span>Threshold</span><input type="range" id="candthr" aria-label="Threshold"> <b id="candthrlabel"></b></div>
       <p class="candsum" id="candsum"></p>
@@ -584,7 +584,11 @@ function updateCandPanel(resetSlider = false) {
   $('candthrlabel').textContent = `${cand.thr}${u}`;
   const st = candStats();
   const area = (st.pass * (spec.cell_ha || 1)).toFixed(spec.cell_ha < 1 ? 1 : 0);
-  const rule = `${m.label}: radar return ${cand.dir === 'darker' ? 'gets darker by' : cand.dir === 'brighter' ? 'gets brighter by' : 'changes by'} at least ${cand.thr}${u}`;
+  // Optical measures (no unit) are described as values going down or up, not as radar darker or brighter.
+  const optical = m.unit === '';
+  $('candsubj').textContent = optical ? 'Value' : 'Radar return';
+  for (const w of $('candpanel').querySelectorAll('[data-d]')) { const s = w.querySelector('.dirword'); if (s) s.textContent = w.dataset.d === 'darker' ? (optical ? 'Lower' : 'Darker') : (optical ? 'Higher' : 'Brighter'); }
+  const rule = `${m.label}: ${optical ? 'value' : 'radar return'} ${cand.dir === 'darker' ? (optical ? 'falls by' : 'gets darker by') : cand.dir === 'brighter' ? (optical ? 'rises by' : 'gets brighter by') : 'changes by'} at least ${cand.thr}${u}`;
   $('candsum').innerHTML = `<b>${st.pass}</b> of ${st.valid} cells with data pass (${area} ha). Rule: ${esc(rule)}.`;
   const ref = m.reference;
   const pctOf = (g) => (g[0] ? `${Math.round(g[1] / g[0] * 100)}% of ${g[0]}` : 'none');
@@ -606,6 +610,7 @@ function updateCandPanel(resetSlider = false) {
     fiveBtn.textContent = `Set threshold so about 5% of the ${ref.background_label.replace(/\s*\(.*\)$/, '').toLowerCase()} passes (${five.toFixed(2)}${u})`;
   }
   $('canddl').textContent = `Download the ${st.pass} cells (GeoJSON)`;
+  $('layerlegend').innerHTML = layerLegend();   // the key follows the measure (radar or optical)
 }
 function downloadCand() {
   const m = candMeasure(), s = state.scene;
@@ -688,7 +693,8 @@ function layerLegend() {
     if (!state.layerOn[lay.id]) continue;
     if (lay.type === 'image') { parts.push(`<div><span class="sw" style="background:linear-gradient(90deg,#6b8e4e,#c9b98f)"></span>${esc(lay.name)}</div>`); continue; }
     if (cand.on && s.candidates && s.candidates.layer === lay.id) {
-      parts.push('<div><span class="sw" style="background:#5e3c99"></span>Passes the rule: radar darker</div><div><span class="sw" style="background:#e66101"></span>Passes the rule: radar brighter</div>'
+      const opt = candMeasure().unit === '';
+      parts.push(`<div><span class="sw" style="background:#5e3c99"></span>Passes the rule: ${opt ? 'value lower' : 'radar darker'}</div><div><span class="sw" style="background:#e66101"></span>Passes the rule: ${opt ? 'value higher' : 'radar brighter'}</div>`
         + `<div><span class="sw" style="background:${NO_DATA}"></span>No data</div><div class="small">Clear cells do not pass the rule; they may still have changed.</div>`);
       continue;
     }
@@ -717,10 +723,10 @@ function renderLayerControls() {
   $('layergroup').innerHTML = lays.length ? '<span>Map layers</span>' + lays.map((l) => (l.id === tied
     ? `<label class="chk" title="Shown while the highlight below is on"><input type="checkbox" checked disabled> ${esc(l.name)} (with the highlight)</label>`
     : `<label class="chk"><input type="checkbox" data-layer="${esc(l.id)}"${state.layerOn[l.id] ? ' checked' : ''}> ${esc(l.name)}</label>`)).join('') : '';
-  const multi = lays.find((l) => (l.styles || []).length > 1);
+  const multi = lays.find((l) => (l.styles || []).length > 1 && state.layerOn[l.id]);   // only while that layer is shown
   $('colourgroup').innerHTML = multi ? '<span>Colour cells by</span>' + multi.styles.map((st, i) => `<button data-colour="${i}" class="${i === state.colour ? 'on' : ''}">${esc(st.name)}</button>`).join('') : '';
   for (const c of $('layergroup').querySelectorAll('input')) {
-    c.addEventListener('change', () => { state.layerOn[c.dataset.layer] = c.checked; refreshLayers(); drawObjects(); });
+    c.addEventListener('change', () => { state.layerOn[c.dataset.layer] = c.checked; renderLayerControls(); refreshLayers(); drawObjects(); });
   }
   for (const b of $('colourgroup').querySelectorAll('button')) {
     b.addEventListener('click', () => { state.colour = Number(b.dataset.colour); renderLayerControls(); drawObjects(); });

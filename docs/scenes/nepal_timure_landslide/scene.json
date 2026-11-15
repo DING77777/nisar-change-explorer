@@ -128,7 +128,7 @@
    "name": "50 m radar cells across the EMS mapping area",
    "kind": "cells",
    "file": "ems_cells.geojson",
-   "default_on": true,
+   "default_on": false,
    "styles": [
     {
      "name": "HV change across event",
@@ -487,5 +487,5 @@
   "mode": "sliding",
   "valid_fraction": 0.951
  },
- "generated_utc": "2026-11-15T14:10:08Z"
+ "generated_utc": "2026-11-15T15:06:47Z"
 }
