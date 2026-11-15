@@ -991,11 +991,11 @@ async function renderCompare() {
 // ---------------------------------------------------------------- guided tour
 // optical: whether the optical picture (when the case has one) is shown at this step. Radar steps hide it.
 const TOUR_STEPS = [
-  { view: 'none', pol: 'hv', pair: 'default', optical: true },   // first step: optical base and highlighted cells only
-  { view: 'change', pol: 'hh', optical: false },
-  { view: 'change', pol: 'hv', optical: false },
-  { view: 'backscatter', pol: 'hh', pair: 'default', scroll: true, optical: true },
-  { optical: true },
+  { view: 'none', pol: 'hv', pair: 'default', optical: true, hl: true },   // first step: optical base and highlighted cells only
+  { view: 'change', pol: 'hh', optical: false, hl: false },
+  { view: 'change', pol: 'hv', optical: false, hl: false },
+  { view: 'backscatter', pol: 'hh', pair: 'default', scroll: true, optical: true, hl: true },
+  { optical: true, hl: true },
 ];
 function tourText(s, i) {
   if (s.tour && s.tour[i]) return s.tour[i];
@@ -1010,7 +1010,8 @@ function tourText(s, i) {
 let tourStep = 0;
 
 function showTourStep() {
-  const { scroll, optical, ...set } = TOUR_STEPS[tourStep];
+  const { scroll, optical, hl, ...set } = TOUR_STEPS[tourStep];
+  if (state.scene.candidates && hl !== undefined) { cand.on = hl; state.layerOn[state.scene.candidates.layer] = hl; }   // highlight only where the tour talks about it
   stopPlay();
   if (set.pair === 'default') set.pair = state.scene.default_pair || 'event';
   Object.assign(state, set);
