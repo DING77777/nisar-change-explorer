@@ -28,10 +28,7 @@ for f in load(d / "official_final_boundary.geojson")["features"]:
 for f in load(d / "windows.geojson")["features"]:
     for r in rings(f["geometry"]):
         p = [fr.px(*c) for c in r]; dr.line(p + [p[0]], fill=(18, 48, 107, 255), width=6)
-        x, y = min(q[0] for q in p), min(q[1] for q in p)
-        lab = "Inside window" if f["properties"]["window"] == "inside" else "Outside window (control)"
-        dr.rectangle([x, y - 40, x + dr.textlength(lab, font=font(28)) + 12, y - 4], fill=(18, 48, 107, 255))
-        dr.text((x + 6, y - 38), lab, fill="white", font=font(28))
+        pass
 im.convert("RGB").save(OUT / "rockadooie_windows.jpg", quality=88)
 
 # Timure: radar before and after the landslide, with the Copernicus mapped impact
