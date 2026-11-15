@@ -991,7 +991,7 @@ async function renderCompare() {
 // ---------------------------------------------------------------- guided tour
 // optical: whether the optical picture (when the case has one) is shown at this step. Radar steps hide it.
 const TOUR_STEPS = [
-  { view: 'backscatter', pol: 'hh', pair: 'default', optical: true },
+  { view: 'none', pol: 'hv', pair: 'default', optical: true },   // first step: optical base and highlighted cells only
   { view: 'change', pol: 'hh', optical: false },
   { view: 'change', pol: 'hv', optical: false },
   { view: 'backscatter', pol: 'hh', pair: 'default', scroll: true, optical: true },
