@@ -65,13 +65,13 @@
     <div class="bar"></div>
     <div class="cover">
       <div style="display:flex;flex-direction:column;justify-content:center">
-        <img src="assets/logo.png" alt="Space NUTS team logo (AI-generated)" style="width:34%;margin-bottom:4%">
+        <img src="assets/logo.png" alt="Space NUTS team logo (AI-generated)" style="width:19%;margin-bottom:1%">
         <p class="kicker">NASA Space Apps Challenge 2026 · Dancing with the SARs</p>
         <p class="big">NISAR Change Explorer</p>
-        <p class="chain">Find radar changes → check the evidence → export to GIS</p>
-        <p style="margin-top:4%">An interactive map for people who know GIS but not radar: no more spotting differences between two grey radar images by eye.</p>
-        <p style="margin-top:5%"><b>Team Space NUTS, Perth</b><br>Qing Ding (team owner) and Will Shu</p>
-        <p class="small">Live app: <a href="https://ding77777.github.io/nisar-change-explorer/">https://ding77777.github.io/nisar-change-explorer/</a> · Logo is AI-generated.</p>
+        <p class="chain">Find radar changes → check them against optical images and records → export the results when needed</p>
+        <ul style="margin:2% 0 0;padding-left:1.1em;font-size:clamp(9px,1.2vw,14px)"><li>Interactive map: click any cell for its radar history</li><li>Radar compared with optical images and official records</li><li>Time series of up to 10 NISAR passes</li><li>Water, farmland, fire and a mountain landslide</li><li>Open, reusable workflow</li></ul>
+        <p style="margin-top:2%"><b>Team Space NUTS, Perth</b><br>Qing Ding (team owner) and Will Shu</p>
+        <p class="small">Live app: <a href="https://ding77777.github.io/nisar-change-explorer/">https://ding77777.github.io/nisar-change-explorer/</a></p>
       </div>
       <img class="map" src="slides/img/sale_candidates.jpg" alt="Sale Common wetland with purple candidate cells on the 8 October optical image">
     </div>
@@ -81,7 +81,7 @@
   <section class="slide" id="s2">
     <div class="bar"></div>
     <p class="kicker">The product</p>
-    <h2>From a radar change to a GIS file in four steps</h2>
+    <h2>From a radar change to an exportable result in four steps</h2>
     <div class="row r64">
       <div class="shot">
         <img src="slides/img/app_map.jpg" alt="The app showing Sale Common with highlighted cells, controls and the evidence panel">
@@ -91,11 +91,10 @@
       </div>
       <div style="display:flex;flex-direction:column">
         <ol class="steps">
-          <li><b>Choose dates and a rule.</b> HH or HV, the period, darker or brighter, and a threshold.</li>
+          <li><b>Choose dates and a rule.</b> HH or HV, the period, darker or brighter, and a threshold, to see which polarisation shows the change best.</li>
           <li><b>See the cells that pass.</b> Highlighted on the map; click a point, field or cell and the app draws its HH/HV curve automatically.</li>
-          <li><b>Check the evidence.</b> A six-step panel puts the radar result next to optical images, river gauges or official records.</li>
-          <li><b>Export.</b> Download the passing cells as GeoJSON, with the rule written into every feature.</li>
-        </ol>
+          <li><b>Check the evidence.</b> Compare the radar result with optical images, river gauges or official records in the same panel.</li>
+          <li><b>Export (optional).</b> Download the passing cells as GeoJSON for further analysis or decisions.</li></ol><p class="small" style="margin:0 0 2%"><b>Reusable and open:</b> each case is one config file; new NISAR data go through the same steps.</p>
         <div class="shot" style="flex:1"><img src="slides/img/app_rule.jpg" alt="The rule panel with reference shares and the download button" style="object-position:top left"><span class="tag" style="left:3%;top:72%">4</span></div>
       </div>
     </div>
@@ -108,7 +107,7 @@
     <h2>Radar-selected cells match independent optical water labels</h2>
     <div class="timeline"><b>Radar passes:</b> 26 Sep → <b>8 Oct</b> → 20 Oct 2026 · Optical labels from Sentinel-2 on 28 Sep, 8 Oct, 18 Oct, fixed before reading the radar</div>
     <div class="row r64">
-      <div class="shot"><img src="slides/img/sale_candidates.jpg" alt="Sale Common: purple cells where HV dropped by at least 3 dB, on the 8 October optical image" style="object-position:center"></div>
+      <div class="shot"><img src="slides/img/sale_candidates.jpg" alt="Sale Common: purple cells where HV dropped by at least 3 dB, on the 8 October optical image" style="object-fit:contain;background:#f5f7fa"></div>
       <div>
         <p><b>Rule:</b> 26 Sep → 8 Oct, HV darker by at least 3 dB</p>
         <div class="card"><b class="big">178 / 276</b><span>new-water reference cells selected (64.5%)</span></div>
@@ -135,7 +134,7 @@
           <span>Field B HV</span><div class="b" style="width:14%;background:var(--hv);color:#1b2330">+0.47</div>
         </div>
         <p style="margin-top:4%"><b>Field C:</b> HV fell more than HH, and optical greenness fell too (NDVI −0.56). The radar stayed low on all five later passes.</p>
-        <p><b>Field B:</b> greenness fell (NDVI −0.23) while both radar channels rose slightly. Radar and optical do not always move together, so fields like B are where a visit is most informative.</p>
+        <p><b>Field B:</b> greenness fell (NDVI −0.23) while both radar channels rose slightly. Radar and optical do not always move together; such differences are worth checking with dates, quality and field records.</p>
         <p class="small">Response size, not a test of which polarisation detects crops best. NDVI has no unit; radar in dB.</p>
       </div>
     </div>
@@ -145,15 +144,16 @@
   <section class="slide" id="s5">
     <div class="bar"></div>
     <p class="kicker">Fire · Rockadooie prescribed burn, New South Wales</p>
-    <h2>Radar brightening inside the official burn boundary stands out from its surroundings</h2>
-    <div class="row r64">
-      <div class="shot"><img src="slides/img/rockadooie_change.jpg" alt="HH change across the burn relative to the whole window, with the official boundary" style="object-position:center"></div>
+    <h2>Radar brightening inside the official burn boundary stands out, and optical images agree</h2>
+    <div class="row" style="grid-template-columns:1.15fr 1fr 0.85fr">
+      <div class="shot"><img src="slides/img/rockadooie_change.jpg" alt="HH change across the burn relative to the whole window, with the official boundary" style="object-fit:contain;background:#f5f7fa"></div>
+      <div class="shot"><img src="slides/img/fire_radar_vs_optical.jpg" alt="The same 1 ha cells seen by radar (HH change) and optical images (dNBR), inside and outside the burn" style="object-fit:contain;background:#fff"></div>
       <div>
-        <p><b>HH median change, 24 Jul → 17 Aug 2026</b></p>
-        <div class="card"><b class="big">+2.63 dB</b><span>inside the official boundary</span></div>
+        <div class="card"><b class="big">+2.63 dB</b><span>HH median change inside the boundary</span></div>
         <div class="card"><b class="big">+1.2 dB</b><span>0–1 km and 1–5 km outside</span></div>
-        <p><b>Use:</b> compare the official record with the satellite response and pick places worth a post-burn check.</p>
-        <p class="small">Map: change relative to the median of the whole window. Cards: raw median change. A spatial comparison, not an isolated fire effect or a burn-plan completion rate.</p>
+        <p class="small"><b>dNBR</b> is the drop in the Normalised Burn Ratio, (NIR − SWIR) / (NIR + SWIR), from before to after the burn, computed from Sentinel-2.</p>
+        <p class="small"><b>Use:</b> compare the official record with radar and optical responses to pick places for a post-burn check.</p>
+        <p class="small">Left map: relative to the window median. Cards: raw median change. Not an isolated fire effect or a completion rate.</p>
       </div>
     </div>
     <span class="num">5 / 7</span>
@@ -164,14 +164,14 @@
     <p class="kicker">How it is built</p>
     <h2>From real NISAR data to results anyone can check</h2>
     <div class="flow">
-      <div><h3>1. NISAR data</h3><p class="small">L2 GCOV, HH and HV, small windows from ASF; one track and frame per case.</p><img src="slides/img/timure_change.jpg" alt="Radar change map"></div>
+      <div><h3>1. NISAR data</h3><p class="small">L2 GCOV, HH and HV, small windows from ASF; up to 10 passes per case (Timure, shown).</p><img src="slides/img/timure_change.jpg" alt="Timure radar change across the landslide, with the mapped impact"></div>
       <div><h3>2. Quality and change</h3><p class="small">Pixels valid on every date; linear power averaged, converted to dB once; 3 to 10 dates per case.</p><img src="slides/img/sale_candidates.jpg" alt="Quality-checked cells"></div>
       <div><h3>3. Independent evidence</h3><p class="small">Sentinel-2 labels, river gauges, official burn boundary, Copernicus emergency map.</p><img src="slides/img/rockadooie_change.jpg" alt="Official boundary comparison"></div>
-      <div><h3>4. Map objects and export</h3><p class="small">Cells and fields with values, rule-based highlight, GeoJSON download.</p><img src="slides/img/app_rule.jpg" alt="Rule panel and download"></div>
+      <div><h3>4. Interactive results</h3><p class="small">Click a cell or point: its HH/HV curve and readings appear. Rule-based highlight and GeoJSON export.</p><img src="slides/img/click_chart.png" alt="Chart drawn automatically for a clicked location" style="object-fit:contain;background:#fff"></div>
     </div>
     <div class="row r55" style="margin-top:2.5%;flex:0 0 auto">
       <ul style="margin:0;padding-left:1.1em">
-        <li>Curves for any clicked point, field or cell are drawn automatically from the stored observations.</li>
+        <li>Click any location with valid data, or any cell or field, and the app draws its HH/HV curve and readings automatically (point readings are approximate).</li>
         <li>The rule, the counts on the page and the exported file always match; the app reproduces the team's offline Sale evaluation exactly.</li>
       </ul>
       <p class="small" style="margin:0"><b>Mountain hazard · Timure, Nepal:</b> 10 radar dates show strong change across the 26 Aug landslide inside the Copernicus-mapped impact (15.7% of cells vs 1.2% after). Where data quality did not support it, we did not report ground movement.</p>
@@ -184,9 +184,9 @@
     <p class="kicker">NISAR Change Explorer</p>
     <p class="big" style="margin-top:2%">Look at the change. Check the evidence. Export the result.</p>
     <div class="row" style="grid-template-columns:repeat(3,1fr);flex:0 0 auto;margin-top:2%">
-      <div class="card"><b>Available now</b><br><span>Change screening, evidence comparison and GIS export for eight cases: water, farmland, fire and a mountain hazard.</span></div>
+      <div class="card"><b>Available now</b><br><span>Change screening and evidence comparison for eight cases (water, farmland, fire, mountain hazard), with GIS export where cell or field layers exist.</span></div>
       <div class="card"><b>Scope</b><br><span>Candidates for checking, not validated hazard boundaries and not a warning system. NISAR revisits every 12 days.</span></div>
-      <div class="card"><b>Next</b><br><span>Field and farm records to test the candidates, and testing with GIS users. A longer record may show slower changes before events like Timure.</span></div>
+      <div class="card"><b>Next</b><br><span>Test the candidates against field and farm records; test with decision makers, GIS users and data scientists; apply NISAR to more places; and use longer records to study whether slower changes appear before events like Timure.</span></div>
     </div>
     <p class="chain" style="margin-top:3%">Live app: <a href="https://ding77777.github.io/nisar-change-explorer/">https://ding77777.github.io/nisar-change-explorer/</a> · Code and methods: <a href="https://github.com/DING77777/nisar-change-explorer">https://github.com/DING77777/nisar-change-explorer</a></p>
     <p class="small" style="margin-top:auto">Data: NISAR L2 GCOV (NASA-ISRO, ASF DAAC). Sentinel-2 via Digital Earth Australia (Geoscience Australia, CC BY 4.0; contains modified Copernicus Sentinel data 2026). Copernicus EMS EMSR927 (© European Union). NSW NPWS fire history. Queensland Water Monitoring. OpenStreetMap contributors.</p>

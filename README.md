@@ -68,6 +68,10 @@ Requires Python 3.12 with rasterio, numpy and pillow.
 - Darwin tide records (case library): Bureau of Meteorology.
 - Base map: © OpenStreetMap contributors, ODbL. Map library: Leaflet (BSD 2-Clause).
 
+## Why we included Timure
+
+On 26 August 2026 an ice-rock avalanche high in the Himalaya sent a debris flow down the valley at Timure, Nepal. We followed the stories of the people affected, and they stayed with us. Events like this are very hard to foresee: stress builds up in unstable, ice-covered slopes until they suddenly fail. We wanted to see what NISAR recorded, from the first available pass in June to October. The radar clearly shows the change across the event inside the area mapped by Copernicus; the data we could obtain do not show movement before it. Whether a long radar record can reveal slow changes before such failures is a question we would like to help answer, so that fewer of these tragedies happen.
+
 ## Scope
 
 Cells are candidates for field checking, compared with optical labels and official records rather than ground surveys. NISAR revisits every 12 days, so the app records change between passes; it is not a warning system. One Queensland date uses a newer NISAR processing version, which the page flags.

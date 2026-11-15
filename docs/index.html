@@ -7,7 +7,7 @@
   <title>NISAR Change Explorer | Space NUTS</title>
   <meta name="description" content="See where the land surface changed after extreme weather, how much, and how sure we are, using NASA-ISRO NISAR L-band radar.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-  <link rel="stylesheet" href="style.css?v=20261115-2215">
+  <link rel="stylesheet" href="style.css?v=20261115-2242">
 </head>
 <body>
   <header>
@@ -119,7 +119,7 @@
       <p>Users can highlight and export cells that pass a stated rule; these are candidates for checking, not a validated hazard classification, and we do not draw a flood boundary. The page shows where the surface changed, how that compares with a normal 12 days, and what else supports or limits the reading.</p>
 
       <h2>Why radar, and why NISAR</h2>
-      <p>Radar works at night and through cloud, which is when optical satellites fail during storms. NISAR is the NASA-ISRO radar mission. Its L-band radar has a longer wavelength than earlier open radar missions, it images land every 12 days, and its data are free and open.</p>
+      <p>Radar works at night and through cloud, which is when optical satellites fail during storms. NISAR is the NASA-ISRO radar mission. Its L-band radar has a longer wavelength than the C-band radar of Sentinel-1, it images land every 12 days, and its data are free and open.</p>
 
       <h2>Which polarisation shows the change?</h2>
       <p>It depends on what changed. After heavy rain in Queensland, HH brightened more than HV across the whole landscape. At Sale Common, where land turned into open water, both dropped and HV dropped a little more (4.2 dB against 3.7 dB). In Burdekin field C, HV fell by about 11 dB and HH by about 8 dB. A handful of cases is not enough to say one polarisation is better in general, so the page always shows both.</p>
@@ -137,7 +137,7 @@
 
       <h2>What we checked for the Queensland case</h2>
       <ul>
-        <li>The before and after images were made with different processing versions. We measured the difference using one acquisition that exists in both versions, and compared four ways of correcting for it. The code and reports are in the repository under <code>audit_qld_flood</code>.</li>
+        <li>The before and after images were made with different processing versions. We measured the difference using one acquisition that exists in both versions, and compared four ways of correcting for it.</li>
         <li>We compared the change with river gauge records, two rainfall datasets, land cover and government event records.</li>
         <li>We looked for an official flood extent to test against and did not find one.</li>
       </ul>
@@ -167,6 +167,6 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-  <script src="app.js?v=20261115-2215"></script>
+  <script src="app.js?v=20261115-2242"></script>
 </body>
 </html>
