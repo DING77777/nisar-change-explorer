@@ -234,10 +234,22 @@ function drawLegend() {
 // One date at a time (date slider and playback)
 let seriesLayers = [], playTimer = null;
 
+function changeSeriesOn() {   // change between consecutive passes, one period at a time (cases with series_change only)
+  const s = state.scene;
+  return Boolean(s && s.series_change) && state.view === 'change' && state.pair === 'series';
+}
 function showDate() {
-  const s = state.scene, d = s.series.dates[state.dateIndex];
+  const s = state.scene;
   seriesLayers.forEach((l, i) => l.setOpacity(i === state.dateIndex ? Number($('opacity').value) : 0));
   $('dateslider').value = state.dateIndex;
+  if (changeSeriesOn()) {
+    const p = s.series_change[state.dateIndex];
+    const across = s.dates && p.from === s.dates.baseline_2.date && p.to === s.dates.after.date ? ' (across the event)' : '';
+    $('datelabel').textContent = `${shortDate(p.from)} → ${shortDate(p.to)}${across}`;
+    $('leftlabel').textContent = `Change ${state.pol.toUpperCase()}: ${niceDate(p.from)} → ${niceDate(p.to)}${across}`;
+    return;
+  }
+  const d = s.series.dates[state.dateIndex];
   $('datelabel').textContent = `${niceDate(d.date)} ${phaseText(d)}`;
   $('leftlabel').textContent = `${state.pol.toUpperCase()} ${niceDate(d.date)} ${phaseText(d)}`;
 }
@@ -249,18 +261,19 @@ function clearSeries() {
 function stopPlay() {
   if (playTimer) clearInterval(playTimer);
   playTimer = null;
-  $('play').textContent = 'Play all dates';
+  $('play').textContent = state.view === 'change' && state.scene && state.scene.series_change ? 'Play all periods' : 'Play all dates';
 }
 function startPlay() {
-  if (state.view !== 'backscatter' || state.pair !== 'series') {
-    state.view = 'backscatter';
+  const keepChange = state.view === 'change' && Boolean(state.scene.series_change);
+  if (!(state.pair === 'series' && (state.view === 'backscatter' || keepChange))) {
+    if (!keepChange) state.view = 'backscatter';
     state.pair = 'series';
     syncButtons();
     refreshLayers();
   }
   stopPlay();
   playTimer = setInterval(() => {
-    state.dateIndex = (state.dateIndex + 1) % state.scene.series.dates.length;
+    state.dateIndex = (state.dateIndex + 1) % Math.max(1, seriesLayers.length);
     showDate();
   }, 1300);
   $('play').textContent = 'Stop';
@@ -275,7 +288,7 @@ $('dateslider').addEventListener('input', () => {
 function refreshLayers() {
   const s = state.scene;
   const base = `scenes/${s.id}/`;
-  $('relgroup').hidden = !(state.view === 'change' && s.images && s.images.change_rel);
+  $('relgroup').hidden = !(state.view === 'change' && s.images && s.images.change_rel) || changeSeriesOn();
   for (const b of $('relgroup').querySelectorAll('button')) b.classList.toggle('on', (b.dataset.rel === 'true') === state.rel);
   for (const id of ['viewgroup', 'polgroup', 'pairgroup', 'play', 'dategroup', 'opacitygroup']) $(id).style.display = s.objects_only ? 'none' : '';
   if (s.objects_only) {
@@ -306,25 +319,34 @@ function refreshLayers() {
     $('legend').hidden = true;
     return;
   }
-  const seriesMode = state.view === 'backscatter' && state.pair === 'series';
+  const changeSeries = changeSeriesOn();
+  const seriesMode = (state.view === 'backscatter' && state.pair === 'series') || changeSeries;
   const opacity = Number($('opacity').value);
   const w = wording(s);
+  const changeWithSeries = state.view === 'change' && Boolean(s.series_change);
   $('pairgroup').querySelector('[data-pair=normal]').textContent = w.pairs.normal;
-  $('pairgroup').querySelector('[data-pair=event]').textContent = w.pairs.event;
-  $('pairgroup').style.display = state.view === 'change' ? 'none' : '';
-  $('play').style.display = state.view === 'change' ? 'none' : '';
+  $('pairgroup').querySelector('[data-pair=event]').textContent = changeWithSeries ? 'Two periods side by side' : w.pairs.event;
+  $('pairgroup').querySelector('[data-pair=series]').textContent = changeWithSeries ? 'One period at a time' : 'One date at a time';
+  $('pairgroup').querySelector('[data-pair=normal]').style.display = changeWithSeries ? 'none' : '';
+  if (changeWithSeries && !changeSeries) $('pairgroup').querySelector('[data-pair=event]').classList.add('on');
+  $('pairgroup').style.display = state.view === 'change' && !changeWithSeries ? 'none' : '';
+  $('play').style.display = state.view === 'change' && !changeWithSeries ? 'none' : '';
+  if (!playTimer) $('play').textContent = changeWithSeries ? 'Play all periods' : 'Play all dates';
   $('dategroup').style.display = seriesMode ? '' : 'none';
+  $('dategroup').firstChild.nodeValue = changeSeries ? 'Period ' : 'Date ';
   for (const side of ['left', 'right']) {
     if (overlays[side]) map.removeLayer(overlays[side]);
     overlays[side] = null;
   }
   clearSeries();
   if (seriesMode) {
-    seriesLayers = s.series.dates.map((d) => L.imageOverlay(base + d.images[state.pol] + ver(s), s.bounds, { pane: 'single', opacity: 0, interactive: false }).addTo(map));
+    seriesLayers = (changeSeries ? s.series_change : s.series.dates).map((d) => L.imageOverlay(base + d.images[state.pol] + ver(s), s.bounds, { pane: 'single', opacity: 0, interactive: false }).addTo(map));
     $('mapwrap').classList.add('single');
     $('dateslider').max = seriesLayers.length - 1;
     state.dateIndex = Math.min(state.dateIndex, seriesLayers.length - 1);
-    $('hint').textContent = `One date at a time, ${seriesLayers.length} dates. Move the date slider or press Play.`;
+    $('hint').textContent = changeSeries
+      ? `One period at a time: change between consecutive passes, ${seriesLayers.length} periods. Blue means the radar return dropped, red means it rose. Move the period slider or press Play.`
+      : `One date at a time, ${seriesLayers.length} dates. Move the date slider or press Play.`;
     showDate();
     drawLegend();
     return;
