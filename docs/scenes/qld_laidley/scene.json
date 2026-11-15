@@ -1,0 +1,1246 @@
+{
+ "id": "qld_laidley",
+ "title": "Laidley, Queensland: after the October 2026 floods",
+ "short_title": "Laidley",
+ "kind": "Flood-related surface change",
+ "theme": "Water \u00b7 Queensland: cloudy during the event, radar with river gauges",
+ "place": "Lockyer Valley, South East Queensland, Australia",
+ "mechanism": "Wetter ground and plants can alter L-band scattering. A shared offset may also include processing-version effects. The relative view subtracts one median per period and polarisation; spatially varying effects and real widespread change can remain or be suppressed. Blue or red is not a physical classification.",
+ "what_happened": "Severe weather and flooding affected southern Queensland from 21 to 28 October 2026. Lockyer Valley, which includes Laidley, was among the local government areas activated for disaster assistance.",
+ "sources": [
+  {
+   "label": "Queensland Reconstruction Authority activation summary, 21-28 October 2026",
+   "url": "https://www.qra.qld.gov.au/sites/default/files/2026-11/V1_Activation_Summary_Southern_Queensland_Severe_Weather_and_Flooding_21_28_October_2026.PDF"
+  },
+  {
+   "label": "Queensland Water Monitoring Information Portal",
+   "url": "https://water-monitoring.information.qld.gov.au/"
+  }
+ ],
+ "use_for": [
+  "Deciding where to send assessment crews or request aerial imagery first when cloud blocks optical satellites.",
+  "Keeping a dated, reproducible record of where the surface changed more than it normally does."
+ ],
+ "not_for": [
+  "It is not a inundation boundary map.",
+  "It is not a alert or road-closure product. NISAR revisits every 12 days.",
+  "It has not been validated against a surveyed flood boundary."
+ ],
+ "limits": [
+  "The before and after images come from different processing versions (P05023 and P05036). A same-acquisition test on another track found the newer version about 0.34 dB darker in HH and 0.25 dB darker in HV. The maps here are not adjusted for this.",
+  "The after image was taken at 17:57 AEST on 25 October. The gauge chart shows what the creek was doing at that moment.",
+  "Across the wider study area, larger 13-day rainfall totals went with smaller brightening (Spearman -0.43 for HH), so rainfall totals alone do not explain the pattern.",
+  "Copernicus Sentinel-2 tiles acquired on 25 October were 96 to 100 percent cloud covered (whole-tile metadata)."
+ ],
+ "track": 16,
+ "frame": 102,
+ "direction": "descending",
+ "local_time": {
+  "label": "AEST",
+  "utc_offset_hours": 10
+ },
+ "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV",
+ "radar_summary": "After heavy rain, the whole analysis window brightened by +3.27 dB in HH. Farmland and grassland brightened by +3.40 dB, versus +1.95 dB on the hard-surface reference. The whole-window change over the preceding 12 days was -0.16 dB. This is consistent with wetter ground and plants. The after image is the only key date made with P05036 rather than P05023, so environmental change and processing-version effects cannot be fully separated. Switch the change map to Relative to the whole window to find places that changed more or less than their surroundings.",
+ "tour": [
+  "Compare the dated radar observations and consult the river and rainfall context.",
+  "The raw change image is broadly red because much of the landscape brightened after heavy rain; a processing-version difference is also present.",
+  "Choose Relative to the whole window: it shows where change is above or below the whole-window median, not a corrected physical measurement.",
+  "Read the dated gauge and rainfall evidence, alongside the processing-version limitation.",
+  "Explore either polarisation and switch back to Raw change. Click readings remain raw changes."
+ ],
+ "series_note": "Ten dates from 27 June to 25 October 2026. No product was returned for 2 August, so one step is 24 days. Only the last date uses the newer processing version (P05036).",
+ "optical_text": "On 25 October 2026, catalogued Sentinel-2 tiles had 95.98\u201399.83% cloud cover (whole-tile metadata, not local pixel QA). No optical comparison labels were produced for these Queensland views; other dates are not established as unusable. Radar can observe through cloud, but that alone does not validate a change interpretation. River gauges and rainfall records provide independent context instead.",
+ "agreement": "River gauges and rainfall establish wet-weather context, not the cause of every radar change. Window-median subtraction changes the display reference only; it neither separates the two causes nor validates an inundation boundary.",
+ "headline": "After heavy rain the whole window brightened by a median 3.3 dB in HH, against -0.7 to +0.4 dB in every earlier 12-day interval.",
+ "map_note": "No optical reference for this event: Sentinel-2 scenes on 25 October were about 96 to 99.8% cloud-covered (whole-tile metadata). This is the situation radar is for; here the independent evidence is river gauges and rainfall.",
+ "zoom_out": 0.75,
+ "layers": [],
+ "object_series": null,
+ "dates": {
+  "baseline_1": {
+   "date": "2026-10-01",
+   "time_utc": "07:57:32",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_032_016_D_102_4005_DHDH_A_20261001T075732_20261001T075806_P05023_N_F_J_001"
+  },
+  "baseline_2": {
+   "date": "2026-10-13",
+   "time_utc": "07:57:32",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_033_016_D_102_4005_DHDH_A_20261013T075732_20261013T075806_P05023_N_F_J_001"
+  },
+  "after": {
+   "date": "2026-10-25",
+   "time_utc": "07:57:32",
+   "crid": "P05036",
+   "granule": "NISAR_L2_PR_GCOV_034_016_D_102_4005_DHDH_A_20261025T075732_20261025T075807_P05036_N_F_J_001"
+  }
+ },
+ "bounds": [
+  [
+   -27.675434,
+   152.339061
+  ],
+  [
+   -27.584675,
+   152.440893
+  ]
+ ],
+ "images": {
+  "backscatter": {
+   "hh": {
+    "baseline_1": "hh_baseline_1.png",
+    "baseline_2": "hh_baseline_2.png",
+    "after": "hh_after.png"
+   },
+   "hv": {
+    "baseline_1": "hv_baseline_1.png",
+    "baseline_2": "hv_baseline_2.png",
+    "after": "hv_after.png"
+   }
+  },
+  "change": {
+   "hh": {
+    "normal": "change_normal_hh.png",
+    "event": "change_event_hh.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv.png",
+    "event": "change_event_hv.png"
+   }
+  },
+  "change_rel": {
+   "hh": {
+    "normal": "change_normal_hh_rel.png",
+    "event": "change_event_hh_rel.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv_rel.png",
+    "event": "change_event_hv_rel.png"
+   }
+  }
+ },
+ "stats": {
+  "hh": {
+   "normal": {
+    "median_db": -0.16,
+    "q25_db": -0.67,
+    "q75_db": 0.35,
+    "share_above_3db": 0.007,
+    "share_below_minus_3db": 0.0073
+   },
+   "event": {
+    "median_db": 3.27,
+    "q25_db": 2.28,
+    "q75_db": 4.25,
+    "share_above_3db": 0.5727,
+    "share_below_minus_3db": 0.0015
+   }
+  },
+  "hv": {
+   "normal": {
+    "median_db": 0.16,
+    "q25_db": -0.33,
+    "q75_db": 0.67,
+    "share_above_3db": 0.0039,
+    "share_below_minus_3db": 0.0013
+   },
+   "event": {
+    "median_db": 2.57,
+    "q25_db": 1.77,
+    "q75_db": 3.41,
+    "share_above_3db": 0.3619,
+    "share_below_minus_3db": 0.0005
+   }
+  }
+ },
+ "series": {
+  "valid_fraction": 1.0,
+  "dates": [
+   {
+    "date": "2026-06-27",
+    "time_utc": "07:57:35",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260627.png",
+     "hv": "series/hv_20260627.png"
+    }
+   },
+   {
+    "date": "2026-07-09",
+    "time_utc": "07:57:34",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260709.png",
+     "hv": "series/hv_20260709.png"
+    }
+   },
+   {
+    "date": "2026-07-21",
+    "time_utc": "07:57:33",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260721.png",
+     "hv": "series/hv_20260721.png"
+    }
+   },
+   {
+    "date": "2026-08-14",
+    "time_utc": "07:57:32",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260814.png",
+     "hv": "series/hv_20260814.png"
+    }
+   },
+   {
+    "date": "2026-08-26",
+    "time_utc": "07:57:32",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260826.png",
+     "hv": "series/hv_20260826.png"
+    }
+   },
+   {
+    "date": "2026-09-07",
+    "time_utc": "07:57:32",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260907.png",
+     "hv": "series/hv_20260907.png"
+    }
+   },
+   {
+    "date": "2026-09-19",
+    "time_utc": "07:57:32",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20260919.png",
+     "hv": "series/hv_20260919.png"
+    }
+   },
+   {
+    "date": "2026-10-01",
+    "time_utc": "07:57:32",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20261001.png",
+     "hv": "series/hv_20261001.png"
+    }
+   },
+   {
+    "date": "2026-10-13",
+    "time_utc": "07:57:32",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "series/hh_20261013.png",
+     "hv": "series/hv_20261013.png"
+    }
+   },
+   {
+    "date": "2026-10-25",
+    "time_utc": "07:57:32",
+    "crid": "P05036",
+    "phase": "after",
+    "images": {
+     "hh": "series/hh_20261025.png",
+     "hv": "series/hv_20261025.png"
+    }
+   }
+  ],
+  "areas": [
+   {
+    "name": "Whole area shown",
+    "kind": "all",
+    "hh_db": [
+     -8.95,
+     -9.41,
+     -9.66,
+     -9.48,
+     -9.14,
+     -9.75,
+     -9.88,
+     -9.69,
+     -9.84,
+     -6.76
+    ],
+    "hv_db": [
+     -16.34,
+     -16.74,
+     -16.75,
+     -16.61,
+     -16.35,
+     -16.76,
+     -16.65,
+     -16.67,
+     -16.45,
+     -13.88
+    ]
+   }
+  ]
+ },
+ "zones": [],
+ "checks": {
+  "same_processing_version": {
+   "question": "Same processing version on all dates?",
+   "value": false,
+   "text": "Mixed processing versions: 2026-10-01 P05023, 2026-10-13 P05023, 2026-10-25 P05036."
+  },
+  "baseline_quiet": {
+   "question": "Was the normal period quiet?",
+   "value": true,
+   "text": "Median HH change between the two baseline dates is -0.16 dB."
+  },
+  "independent_evidence": {
+   "question": "Is there independent evidence of the event?",
+   "value": true,
+   "text": "A river gauge and a government disaster activation confirm the event. They do not confirm water at any pixel."
+  },
+  "reference_extent": {
+   "question": "Is there an official extent to test against?",
+   "value": false,
+   "text": "No official inundation boundary for this event was found to compare against."
+  }
+ },
+ "evidence": [
+  {
+   "type": "gauge",
+   "station_id": "143229A",
+   "label": "Laidley Creek at Warrego Highway (143229A)",
+   "lon": 152.38899722,
+   "lat": -27.55316389,
+   "note": "Hourly mean gauge height. Quality code 130 (not coded), so not validated by the data owner. Gauge height is not a flood depth on the land.",
+   "credit": "Queensland Government, Water Monitoring Information Portal, CC BY 4.0",
+   "series": [
+    [
+     "2026-10-19T14:00:00+00:00",
+     0.657
+    ],
+    [
+     "2026-10-19T15:00:00+00:00",
+     0.658
+    ],
+    [
+     "2026-10-19T16:00:00+00:00",
+     0.658
+    ],
+    [
+     "2026-10-19T17:00:00+00:00",
+     0.658
+    ],
+    [
+     "2026-10-19T18:00:00+00:00",
+     0.658
+    ],
+    [
+     "2026-10-19T19:00:00+00:00",
+     0.658
+    ],
+    [
+     "2026-10-19T20:00:00+00:00",
+     0.659
+    ],
+    [
+     "2026-10-19T21:00:00+00:00",
+     0.659
+    ],
+    [
+     "2026-10-19T22:00:00+00:00",
+     0.66
+    ],
+    [
+     "2026-10-19T23:00:00+00:00",
+     0.66
+    ],
+    [
+     "2026-10-20T00:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T01:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T02:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T03:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T04:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T05:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T06:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T07:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-20T08:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-20T09:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T10:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T11:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T12:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T13:00:00+00:00",
+     0.661
+    ],
+    [
+     "2026-10-20T14:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T15:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T16:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T17:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T18:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-20T19:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-20T20:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-20T21:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-20T22:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-20T23:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-21T00:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-21T01:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-21T02:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-21T03:00:00+00:00",
+     0.662
+    ],
+    [
+     "2026-10-21T04:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-21T05:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-21T06:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-21T07:00:00+00:00",
+     0.664
+    ],
+    [
+     "2026-10-21T08:00:00+00:00",
+     0.665
+    ],
+    [
+     "2026-10-21T09:00:00+00:00",
+     0.665
+    ],
+    [
+     "2026-10-21T10:00:00+00:00",
+     0.665
+    ],
+    [
+     "2026-10-21T11:00:00+00:00",
+     0.666
+    ],
+    [
+     "2026-10-21T12:00:00+00:00",
+     0.666
+    ],
+    [
+     "2026-10-21T13:00:00+00:00",
+     0.666
+    ],
+    [
+     "2026-10-21T14:00:00+00:00",
+     0.665
+    ],
+    [
+     "2026-10-21T15:00:00+00:00",
+     0.665
+    ],
+    [
+     "2026-10-21T16:00:00+00:00",
+     0.665
+    ],
+    [
+     "2026-10-21T17:00:00+00:00",
+     0.664
+    ],
+    [
+     "2026-10-21T18:00:00+00:00",
+     0.664
+    ],
+    [
+     "2026-10-21T19:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-21T20:00:00+00:00",
+     0.664
+    ],
+    [
+     "2026-10-21T21:00:00+00:00",
+     0.664
+    ],
+    [
+     "2026-10-21T22:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-21T23:00:00+00:00",
+     0.663
+    ],
+    [
+     "2026-10-22T00:00:00+00:00",
+     0.664
+    ],
+    [
+     "2026-10-22T01:00:00+00:00",
+     0.667
+    ],
+    [
+     "2026-10-22T02:00:00+00:00",
+     0.671
+    ],
+    [
+     "2026-10-22T03:00:00+00:00",
+     0.673
+    ],
+    [
+     "2026-10-22T04:00:00+00:00",
+     0.672
+    ],
+    [
+     "2026-10-22T05:00:00+00:00",
+     0.669
+    ],
+    [
+     "2026-10-22T06:00:00+00:00",
+     0.668
+    ],
+    [
+     "2026-10-22T07:00:00+00:00",
+     0.669
+    ],
+    [
+     "2026-10-22T08:00:00+00:00",
+     0.671
+    ],
+    [
+     "2026-10-22T09:00:00+00:00",
+     0.674
+    ],
+    [
+     "2026-10-22T10:00:00+00:00",
+     0.678
+    ],
+    [
+     "2026-10-22T11:00:00+00:00",
+     0.681
+    ],
+    [
+     "2026-10-22T12:00:00+00:00",
+     0.685
+    ],
+    [
+     "2026-10-22T13:00:00+00:00",
+     0.692
+    ],
+    [
+     "2026-10-22T14:00:00+00:00",
+     1.01
+    ],
+    [
+     "2026-10-22T15:00:00+00:00",
+     2.007
+    ],
+    [
+     "2026-10-22T16:00:00+00:00",
+     2.651
+    ],
+    [
+     "2026-10-22T17:00:00+00:00",
+     3.039
+    ],
+    [
+     "2026-10-22T18:00:00+00:00",
+     3.288
+    ],
+    [
+     "2026-10-22T19:00:00+00:00",
+     3.519
+    ],
+    [
+     "2026-10-22T20:00:00+00:00",
+     3.734
+    ],
+    [
+     "2026-10-22T21:00:00+00:00",
+     4.005
+    ],
+    [
+     "2026-10-22T22:00:00+00:00",
+     4.382
+    ],
+    [
+     "2026-10-22T23:00:00+00:00",
+     4.577
+    ],
+    [
+     "2026-10-23T00:00:00+00:00",
+     4.67
+    ],
+    [
+     "2026-10-23T01:00:00+00:00",
+     4.693
+    ],
+    [
+     "2026-10-23T02:00:00+00:00",
+     4.676
+    ],
+    [
+     "2026-10-23T03:00:00+00:00",
+     4.641
+    ],
+    [
+     "2026-10-23T04:00:00+00:00",
+     4.589
+    ],
+    [
+     "2026-10-23T05:00:00+00:00",
+     4.535
+    ],
+    [
+     "2026-10-23T06:00:00+00:00",
+     4.479
+    ],
+    [
+     "2026-10-23T07:00:00+00:00",
+     4.422
+    ],
+    [
+     "2026-10-23T08:00:00+00:00",
+     4.362
+    ],
+    [
+     "2026-10-23T09:00:00+00:00",
+     4.296
+    ],
+    [
+     "2026-10-23T10:00:00+00:00",
+     4.215
+    ],
+    [
+     "2026-10-23T11:00:00+00:00",
+     4.114
+    ],
+    [
+     "2026-10-23T12:00:00+00:00",
+     3.98
+    ],
+    [
+     "2026-10-23T13:00:00+00:00",
+     3.82
+    ],
+    [
+     "2026-10-23T14:00:00+00:00",
+     3.647
+    ],
+    [
+     "2026-10-23T15:00:00+00:00",
+     3.47
+    ],
+    [
+     "2026-10-23T16:00:00+00:00",
+     3.284
+    ],
+    [
+     "2026-10-23T17:00:00+00:00",
+     3.079
+    ],
+    [
+     "2026-10-23T18:00:00+00:00",
+     2.855
+    ],
+    [
+     "2026-10-23T19:00:00+00:00",
+     2.62
+    ],
+    [
+     "2026-10-23T20:00:00+00:00",
+     2.389
+    ],
+    [
+     "2026-10-23T21:00:00+00:00",
+     2.174
+    ],
+    [
+     "2026-10-23T22:00:00+00:00",
+     1.981
+    ],
+    [
+     "2026-10-23T23:00:00+00:00",
+     1.816
+    ],
+    [
+     "2026-10-24T00:00:00+00:00",
+     1.688
+    ],
+    [
+     "2026-10-24T01:00:00+00:00",
+     1.614
+    ],
+    [
+     "2026-10-24T02:00:00+00:00",
+     1.557
+    ],
+    [
+     "2026-10-24T03:00:00+00:00",
+     1.496
+    ],
+    [
+     "2026-10-24T04:00:00+00:00",
+     1.441
+    ],
+    [
+     "2026-10-24T05:00:00+00:00",
+     1.392
+    ],
+    [
+     "2026-10-24T06:00:00+00:00",
+     1.352
+    ],
+    [
+     "2026-10-24T07:00:00+00:00",
+     1.328
+    ],
+    [
+     "2026-10-24T08:00:00+00:00",
+     1.308
+    ],
+    [
+     "2026-10-24T09:00:00+00:00",
+     1.288
+    ],
+    [
+     "2026-10-24T10:00:00+00:00",
+     1.27
+    ],
+    [
+     "2026-10-24T11:00:00+00:00",
+     1.252
+    ],
+    [
+     "2026-10-24T12:00:00+00:00",
+     1.236
+    ],
+    [
+     "2026-10-24T13:00:00+00:00",
+     1.22
+    ],
+    [
+     "2026-10-24T14:00:00+00:00",
+     1.205
+    ],
+    [
+     "2026-10-24T15:00:00+00:00",
+     1.192
+    ],
+    [
+     "2026-10-24T16:00:00+00:00",
+     1.182
+    ],
+    [
+     "2026-10-24T17:00:00+00:00",
+     1.176
+    ],
+    [
+     "2026-10-24T18:00:00+00:00",
+     1.174
+    ],
+    [
+     "2026-10-24T19:00:00+00:00",
+     1.18
+    ],
+    [
+     "2026-10-24T20:00:00+00:00",
+     1.211
+    ],
+    [
+     "2026-10-24T21:00:00+00:00",
+     1.308
+    ],
+    [
+     "2026-10-24T22:00:00+00:00",
+     1.455
+    ],
+    [
+     "2026-10-24T23:00:00+00:00",
+     1.606
+    ],
+    [
+     "2026-10-25T00:00:00+00:00",
+     1.725
+    ],
+    [
+     "2026-10-25T01:00:00+00:00",
+     1.837
+    ],
+    [
+     "2026-10-25T02:00:00+00:00",
+     1.978
+    ],
+    [
+     "2026-10-25T03:00:00+00:00",
+     2.17
+    ],
+    [
+     "2026-10-25T04:00:00+00:00",
+     2.422
+    ],
+    [
+     "2026-10-25T05:00:00+00:00",
+     2.858
+    ],
+    [
+     "2026-10-25T06:00:00+00:00",
+     3.389
+    ],
+    [
+     "2026-10-25T07:00:00+00:00",
+     3.698
+    ],
+    [
+     "2026-10-25T08:00:00+00:00",
+     3.976
+    ],
+    [
+     "2026-10-25T09:00:00+00:00",
+     4.205
+    ],
+    [
+     "2026-10-25T10:00:00+00:00",
+     4.355
+    ],
+    [
+     "2026-10-25T11:00:00+00:00",
+     4.441
+    ],
+    [
+     "2026-10-25T12:00:00+00:00",
+     4.488
+    ],
+    [
+     "2026-10-25T13:00:00+00:00",
+     4.5
+    ],
+    [
+     "2026-10-25T14:00:00+00:00",
+     4.487
+    ],
+    [
+     "2026-10-25T15:00:00+00:00",
+     4.453
+    ],
+    [
+     "2026-10-25T16:00:00+00:00",
+     4.407
+    ],
+    [
+     "2026-10-25T17:00:00+00:00",
+     4.354
+    ],
+    [
+     "2026-10-25T18:00:00+00:00",
+     4.295
+    ],
+    [
+     "2026-10-25T19:00:00+00:00",
+     4.229
+    ],
+    [
+     "2026-10-25T20:00:00+00:00",
+     4.155
+    ],
+    [
+     "2026-10-25T21:00:00+00:00",
+     4.066
+    ],
+    [
+     "2026-10-25T22:00:00+00:00",
+     3.967
+    ],
+    [
+     "2026-10-25T23:00:00+00:00",
+     3.878
+    ],
+    [
+     "2026-10-26T00:00:00+00:00",
+     3.833
+    ],
+    [
+     "2026-10-26T01:00:00+00:00",
+     3.855
+    ],
+    [
+     "2026-10-26T02:00:00+00:00",
+     3.983
+    ],
+    [
+     "2026-10-26T03:00:00+00:00",
+     4.31
+    ],
+    [
+     "2026-10-26T04:00:00+00:00",
+     4.736
+    ],
+    [
+     "2026-10-26T05:00:00+00:00",
+     5.099
+    ],
+    [
+     "2026-10-26T06:00:00+00:00",
+     5.29
+    ],
+    [
+     "2026-10-26T07:00:00+00:00",
+     5.393
+    ],
+    [
+     "2026-10-26T08:00:00+00:00",
+     5.419
+    ],
+    [
+     "2026-10-26T09:00:00+00:00",
+     5.379
+    ],
+    [
+     "2026-10-26T10:00:00+00:00",
+     5.279
+    ],
+    [
+     "2026-10-26T11:00:00+00:00",
+     5.159
+    ],
+    [
+     "2026-10-26T12:00:00+00:00",
+     5.032
+    ],
+    [
+     "2026-10-26T13:00:00+00:00",
+     4.917
+    ],
+    [
+     "2026-10-26T14:00:00+00:00",
+     4.812
+    ],
+    [
+     "2026-10-26T15:00:00+00:00",
+     4.72
+    ],
+    [
+     "2026-10-26T16:00:00+00:00",
+     4.636
+    ],
+    [
+     "2026-10-26T17:00:00+00:00",
+     4.562
+    ],
+    [
+     "2026-10-26T18:00:00+00:00",
+     4.49
+    ],
+    [
+     "2026-10-26T19:00:00+00:00",
+     4.423
+    ],
+    [
+     "2026-10-26T20:00:00+00:00",
+     4.358
+    ],
+    [
+     "2026-10-26T21:00:00+00:00",
+     4.282
+    ],
+    [
+     "2026-10-26T22:00:00+00:00",
+     4.192
+    ],
+    [
+     "2026-10-26T23:00:00+00:00",
+     4.077
+    ],
+    [
+     "2026-10-27T00:00:00+00:00",
+     3.936
+    ],
+    [
+     "2026-10-27T01:00:00+00:00",
+     3.778
+    ],
+    [
+     "2026-10-27T02:00:00+00:00",
+     3.625
+    ],
+    [
+     "2026-10-27T03:00:00+00:00",
+     3.488
+    ],
+    [
+     "2026-10-27T04:00:00+00:00",
+     3.36
+    ],
+    [
+     "2026-10-27T05:00:00+00:00",
+     3.234
+    ],
+    [
+     "2026-10-27T06:00:00+00:00",
+     3.093
+    ],
+    [
+     "2026-10-27T07:00:00+00:00",
+     2.94
+    ],
+    [
+     "2026-10-27T08:00:00+00:00",
+     2.78
+    ],
+    [
+     "2026-10-27T09:00:00+00:00",
+     2.627
+    ],
+    [
+     "2026-10-27T10:00:00+00:00",
+     2.489
+    ],
+    [
+     "2026-10-27T11:00:00+00:00",
+     2.366
+    ],
+    [
+     "2026-10-27T12:00:00+00:00",
+     2.257
+    ],
+    [
+     "2026-10-27T13:00:00+00:00",
+     2.155
+    ],
+    [
+     "2026-10-27T14:00:00+00:00",
+     2.06
+    ],
+    [
+     "2026-10-27T15:00:00+00:00",
+     1.973
+    ],
+    [
+     "2026-10-27T16:00:00+00:00",
+     1.892
+    ],
+    [
+     "2026-10-27T17:00:00+00:00",
+     1.814
+    ],
+    [
+     "2026-10-27T18:00:00+00:00",
+     1.744
+    ],
+    [
+     "2026-10-27T19:00:00+00:00",
+     1.679
+    ],
+    [
+     "2026-10-27T20:00:00+00:00",
+     1.622
+    ],
+    [
+     "2026-10-27T21:00:00+00:00",
+     1.579
+    ],
+    [
+     "2026-10-27T22:00:00+00:00",
+     1.536
+    ],
+    [
+     "2026-10-27T23:00:00+00:00",
+     1.488
+    ],
+    [
+     "2026-10-28T00:00:00+00:00",
+     1.445
+    ],
+    [
+     "2026-10-28T01:00:00+00:00",
+     1.409
+    ],
+    [
+     "2026-10-28T02:00:00+00:00",
+     1.377
+    ],
+    [
+     "2026-10-28T03:00:00+00:00",
+     1.349
+    ],
+    [
+     "2026-10-28T04:00:00+00:00",
+     1.327
+    ],
+    [
+     "2026-10-28T05:00:00+00:00",
+     1.311
+    ],
+    [
+     "2026-10-28T06:00:00+00:00",
+     1.297
+    ],
+    [
+     "2026-10-28T07:00:00+00:00",
+     1.284
+    ],
+    [
+     "2026-10-28T08:00:00+00:00",
+     1.272
+    ],
+    [
+     "2026-10-28T09:00:00+00:00",
+     1.261
+    ],
+    [
+     "2026-10-28T10:00:00+00:00",
+     1.249
+    ],
+    [
+     "2026-10-28T11:00:00+00:00",
+     1.239
+    ],
+    [
+     "2026-10-28T12:00:00+00:00",
+     1.228
+    ],
+    [
+     "2026-10-28T13:00:00+00:00",
+     1.218
+    ]
+   ]
+  }
+ ],
+ "display": {
+  "stretch_db": {
+   "hh": [
+    -25.0,
+    5.0
+   ],
+   "hv": [
+    -32.0,
+    -5.0
+   ]
+  },
+  "change_limit_db": 6.0,
+  "posting_m": 10.0,
+  "footprint_m": 50.0,
+  "mode": "sliding",
+  "valid_fraction": 1.0,
+  "relative": {
+   "label": "Relative to the whole window",
+   "offsets": {
+    "hh": {
+     "normal": -0.15920782089233398,
+     "event": 3.266916275024414
+    },
+    "hv": {
+     "normal": 0.16213512420654297,
+     "event": 2.5678672790527344
+    }
+   },
+   "note": "Each change minus the median change of the whole window. This takes out the typical change of the whole area, which may include widespread wetting and part of any processing-version offset. What remains is where a place changed more or less than its surroundings. This is display centering, not proof that spatial processing-version differences or environmental effects have been corrected.",
+   "validation": {
+    "hh": {
+     "normal": {
+      "valid_pixels": 1000000,
+      "relative_median_db": 0.0
+     },
+     "event": {
+      "valid_pixels": 1000000,
+      "relative_median_db": 0.0
+     }
+    },
+    "hv": {
+     "normal": {
+      "valid_pixels": 1000000,
+      "relative_median_db": 0.0
+     },
+     "event": {
+      "valid_pixels": 1000000,
+      "relative_median_db": 0.0
+     }
+    }
+   }
+  }
+ },
+ "generated_utc": "2026-11-15T13:48:04Z"
+}

@@ -1,0 +1,288 @@
+{
+  "id": "qld_burdekin_fields",
+  "order": 10,
+  "theme": "Farmland",
+  "title": "Burdekin farmland, Queensland: fields changing in the cane season",
+  "short_title": "Burdekin farm fields",
+  "kind": "Farm field surface change",
+  "place": "6 km window of irrigated farmland near Ayr, Burdekin, north Queensland, Australia",
+  "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV. 20 m linear power averaged to 100 m cells, then converted to dB",
+  "track": 95,
+  "frame": 168,
+  "direction": "ascending",
+  "local_time": {
+    "label": "AEST",
+    "utc_offset_hours": 10
+  },
+  "story": "three_dates",
+  "default_pair": "event",
+  "interval_short": [
+    "12 days before the turn",
+    "24 days across the turn"
+  ],
+  "interval_labels": [
+    "14 Jul to 26 Jul, before field C turned",
+    "26 Jul to 19 Aug, field C turned"
+  ],
+  "date_notes": {
+    "baseline_1": "",
+    "baseline_2": "before the turn",
+    "after": "after the turn"
+  },
+  "bbox": "full",
+  "stack": {
+    "hh": "CANDIDATE_AGRI_TIMESERIES_20261115/combined_9date_series/Burdekin/HH_9date_100m_db.tif",
+    "hv": "CANDIDATE_AGRI_TIMESERIES_20261115/combined_9date_series/Burdekin/HV_9date_100m_db.tif"
+  },
+  "dates": [
+    {
+      "role": "baseline_1",
+      "date": "2026-07-14",
+      "time_utc": "20:06:10",
+      "crid": "P05023",
+      "band": 3,
+      "granule": "NISAR_L2_PR_GCOV_025_095_A_168_2005_DHDH_A_20260714T200610_20260714T200644_P05023_F_F_J_001"
+    },
+    {
+      "role": "baseline_2",
+      "date": "2026-07-26",
+      "time_utc": "20:06:09",
+      "crid": "P05023",
+      "band": 4,
+      "granule": "NISAR_L2_PR_GCOV_026_095_A_168_2005_DHDH_A_20260726T200609_20260726T200644_P05023_N_F_J_001"
+    },
+    {
+      "role": "after",
+      "date": "2026-08-19",
+      "time_utc": "20:06:08",
+      "crid": "P05023",
+      "band": 5,
+      "granule": "NISAR_L2_PR_GCOV_028_095_A_168_2005_DHDH_A_20260819T200608_20260819T200642_P05023_N_F_J_001"
+    }
+  ],
+  "series": [
+    {
+      "date": "2026-06-20",
+      "time_utc": "20:06:11",
+      "crid": "P05023",
+      "band": 1
+    },
+    {
+      "date": "2026-07-02",
+      "time_utc": "20:06:10",
+      "crid": "P05023",
+      "band": 2
+    },
+    {
+      "date": "2026-07-14",
+      "time_utc": "20:06:10",
+      "crid": "P05023",
+      "band": 3
+    },
+    {
+      "date": "2026-07-26",
+      "time_utc": "20:06:09",
+      "crid": "P05023",
+      "band": 4
+    },
+    {
+      "date": "2026-08-19",
+      "time_utc": "20:06:08",
+      "crid": "P05023",
+      "band": 5
+    },
+    {
+      "date": "2026-08-31",
+      "time_utc": "20:06:08",
+      "crid": "P05023",
+      "band": 6
+    },
+    {
+      "date": "2026-09-24",
+      "time_utc": "20:06:08",
+      "crid": "P05023",
+      "band": 7
+    },
+    {
+      "date": "2026-10-06",
+      "time_utc": "20:06:08",
+      "crid": "P05023",
+      "band": 8
+    },
+    {
+      "date": "2026-10-18",
+      "time_utc": "20:06:08",
+      "crid": "P05023",
+      "band": 9
+    }
+  ],
+  "series_note": "Nine radar dates. Two gaps are 24 days instead of 12 (26 Jul to 19 Aug, 31 Aug to 24 Sep) because no image was available in between. Lines join observations only; nothing is known about the days in between.",
+  "task": "A farm or catchment officer wants to know which fields changed during the cane season and whether radar and optical images tell the same story.",
+  "what_happened": "The Burdekin is an irrigated farming district. The 2026 cane crush started at the local mills on 2 and 3 June (Wilmar season report). We hand-drew six rectangles (A to F) inside fields that are visible in Sentinel-2 images. Official 2016 land-use mapping lists these fields as irrigated sugar. We do not know which crop was grown in 2026 or when any field was harvested.",
+  "sources": [
+    {
+      "label": "Wilmar Sugar: first season update for 2026",
+      "url": "https://www.wilmarsugar-anz.com/media-centre/latest-news/first-season-update-for-2026"
+    },
+    {
+      "label": "Queensland land use mapping (2016 polygons used as background)",
+      "url": "https://www.data.qld.gov.au/dataset/land-use-mapping-current-web-service-json"
+    },
+    {
+      "label": "Geoscience Australia, DEA Sentinel-2B surface reflectance",
+      "url": "https://knowledge.dea.ga.gov.au/data/product/dea-surface-reflectance-sentinel-2b-msi/"
+    },
+    {
+      "label": "Rossberg and Schmitt (2025), NDVI and SAR backscatter across frequency bands, Remote Sensing of Environment 319",
+      "url": "https://doi.org/10.1016/j.rse.2025.114612"
+    }
+  ],
+  "optical_text": "Sentinel-2 greenness (NDVI) inside each field on five clear dates between 21 June and 20 August. Three more dates (25 July, 14 August, 22 August) failed the cloud and shadow screen for every field and are left out, not counted as zero. Field C lost most of its greenness between 26 and 31 July. Field D became greener. Optical images stop at 20 August; radar continues to 18 October.",
+  "radar_summary": "Field C darkened strongly after 26 July and stayed dark on all five later radar dates (HV more than 3 dB below 20 June in 9 of 9 cells, HH in 8 of 9). Field D brightened, but not steadily. Click a field on the map to see its radar and greenness curves.",
+  "agreement": "In C and D, greenness and radar moved the same way, which makes those changes easy to trust. In B and E they did not: B lost greenness while its radar return rose slightly, and E gained greenness while HV stayed flat. The two sensors measure different things (greenness, and the structure and wetness of plants and soil), so fields where they disagree are the ones most worth a visit. Optical images place C's change between 26 and 31 July; the radar, between 26 July and 19 August.",
+  "tables": [
+    {
+      "step": 4,
+      "title": "Same fields, matched dates: 20/21 June to 19/20 August",
+      "columns": [
+        "Field",
+        "100 m cells",
+        "Greenness change (NDVI)",
+        "HH change",
+        "HV change"
+      ],
+      "rows": [
+        [
+          "A",
+          12,
+          "-0.08",
+          "-0.47 dB",
+          "-0.52 dB"
+        ],
+        [
+          "B",
+          4,
+          "-0.23",
+          "+0.57 dB",
+          "+0.47 dB"
+        ],
+        [
+          "C",
+          9,
+          "-0.56",
+          "-7.63 dB",
+          "-11.22 dB"
+        ],
+        [
+          "D",
+          10,
+          "+0.36",
+          "+3.22 dB",
+          "+5.75 dB"
+        ],
+        [
+          "E",
+          9,
+          "+0.19",
+          "+2.34 dB",
+          "-0.09 dB"
+        ]
+      ],
+      "note": "Radar change is the median of the change in each 100 m cell; greenness change uses the optical pixels inside the same cells. Field F has only one complete 100 m cell, so it was excluded before any radar comparison and has no radar values. The optical and radar end dates are about 4.4 hours apart. Spread across cells is not a confidence interval."
+    }
+  ],
+  "mechanism": "Candidate explanation: a tall, leafy crop scatters a lot of L-band energy back to the satellite, especially in HV. When a crop is cut or the canopy opens, the return drops, and it can rise again as plants regrow or the soil is wetted by irrigation. These are possible causes, not confirmed for these fields.",
+  "layers": [
+    {
+      "type": "image",
+      "id": "optical",
+      "name": "Optical image, 31 Jul 2026 (Sentinel-2B)",
+      "kind": "optical_context",
+      "source": "RGB_OVERLAY_HANDOFF_20261115_1245/clear_burdekin_replacement/burdekin_20260731/rgb_webmercator.png",
+      "file": "optical_20260731.png",
+      "bounds": [
+        [
+          -19.62708679813374,
+          147.37126361321526
+        ],
+        [
+          -19.572756824876574,
+          147.42864827801745
+        ]
+      ],
+      "credit": "Geoscience Australia, DEA Sentinel-2B Surface Reflectance, 31 Jul 2026, CC BY 4.0. Contains modified Copernicus Sentinel data 2026. Cropped, cloud-masked, colour-stretched and reprojected by Space NUTS. Not taken on a radar date.",
+      "default_on": true
+    },
+    {
+      "type": "geojson",
+      "id": "fields",
+      "name": "Fields A to F (hand-drawn inside visible fields)",
+      "kind": "roi",
+      "source": "web_inputs_20261115/burdekin/fields.geojson",
+      "file": "fields.geojson",
+      "default_on": true,
+      "styles": [
+        {
+          "name": "Fields",
+          "mode": "outline",
+          "color": "#f5a623"
+        }
+      ],
+      "label_property": "id",
+      "series": true
+    }
+  ],
+  "object_series": "web_inputs_20261115/burdekin/fields_series.json",
+  "downloads": [
+    {
+      "file": "fields.geojson",
+      "label": "Fields A to F (GeoJSON, WGS84)",
+      "note": "Hand-drawn rectangles inside fields seen in optical images. Not property boundaries."
+    },
+    {
+      "source": "web_inputs_20261115/burdekin/fields_endpoint_changes.csv",
+      "file": "fields_endpoint_changes.csv",
+      "label": "Greenness and radar change per field (CSV)",
+      "note": "The table in step 4."
+    }
+  ],
+  "checks": {
+    "independent_evidence": {
+      "question": "Is there independent evidence of the change?",
+      "value": true,
+      "text": "Sentinel-2 greenness from the same fields, labelled before reading the radar values. The site itself was first found by a radar screen, so this is not a blind test."
+    },
+    "reference_extent": {
+      "question": "Is there a farm record to test against?",
+      "value": false,
+      "text": "No public field-level harvest or management record was found for field C between 26 and 31 July."
+    }
+  },
+  "limits": [
+    "2016 land use does not tell us the 2026 crop. Harvest is a possible explanation, not a confirmed one.",
+    "The site was found by a regional radar screen and the fields were then chosen from optical images, so this is a follow-up, not a held-out accuracy test.",
+    "Field A was close to stable from June to August only; it darkened after September.",
+    "Neighbouring cells are not independent samples. Four or nine cells are one small field, not many farms.",
+    "Two radar gaps are 24 days long.",
+    "Why radar and greenness sometimes disagree: they respond to different properties of the surface. Published work finds their relationship changes with crop type, growth stage, moisture and radar band (Rossberg and Schmitt, 2025). The cause in these fields cannot be settled with the current data; farm records and field visits would be the next step."
+  ],
+  "use_for": [
+    "Finding fields whose surface changed between passes, including on cloudy days, so an officer can decide which to look at first.",
+    "Seeing where greenness and radar agree and where they do not, which is a reason to look closer."
+  ],
+  "not_for": [
+    "Not a harvest map, yield, biomass or crop health product.",
+    "Not proof that radar sees change earlier than optical images.",
+    "Not a statement about any landholder or how a farm is run."
+  ],
+  "tour": [
+    "Irrigated farmland near Ayr, north Queensland. Left: radar on 26 July. Right: 19 August. Drag the orange line: field C, outlined in orange, turns dark.",
+    "Two periods on one colour scale. Left: change over the 12 days before 26 July. Right: change over the 24 days after. Blue is darker, red is brighter.",
+    "This is HV. In field C, HV fell by about 11 dB between June and August and HH by about 8 dB. Field D brightened.",
+    "Did the optical images see it too? The panel shows greenness for the same fields, including fields B and E, where greenness and radar disagree.",
+    "Now click a field on the map to see its radar and greenness curves, or press Play to step through all nine dates."
+  ],
+  "headline": "In field C, greenness and radar fell together (NDVI -0.56, HV -11.2 dB) and the radar stayed low for two months. Fields B and E show that the two sensors can disagree.",
+  "fit_contain": true,
+  "default_opacity": 0.7
+}

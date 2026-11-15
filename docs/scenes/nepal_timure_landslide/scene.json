@@ -1,0 +1,487 @@
+{
+ "id": "nepal_timure_landslide",
+ "title": "Timure, Nepal: looking back at the 26 August landslide",
+ "short_title": "Timure landslide (look back)",
+ "kind": "Mountain hazard, looking back",
+ "theme": "Mountain hazard",
+ "place": "About 7.5 x 8.6 km window of the Bhote Koshi / Trishuli valley at Timure, Rasuwa District, Nepal, near the Gyirong border crossing",
+ "mechanism": "Candidate explanation: debris, mud and changed river channels alter surface roughness and moisture, which changes radar brightness. Steep slopes also cause radar shadow and layover, which were not screened here.",
+ "what_happened": "On 26 August 2026 at 02:52 UTC a high-mountain ice-rock avalanche in Nepal sent a debris flow down the valley; seismometers recorded it (USGS). Copernicus Emergency Management Service (EMSR927) mapped the affected area at Timure from imagery of 27 August. The source is far upstream of this window; this view covers the downstream valley where impacts were mapped.",
+ "sources": [
+  {
+   "label": "Copernicus EMS activation EMSR927",
+   "url": "https://mapping.emergency.copernicus.eu/activations/EMSR927/"
+  },
+  {
+   "label": "UNESCO IHP-WINS: damage grading, Syapru Besi and Timure, 27 August 2026",
+   "url": "https://ihp-wins.unesco.org/en/dataset/damage-grading-syapru-besi-and-timure-rasuwa-district-nepal-27-august-2026"
+  }
+ ],
+ "use_for": [
+  "Looking back at what a 12-day radar record captured in an affected valley, beside an independent damage map.",
+  "Showing where the record has gaps and what questions it cannot answer.",
+  "A starting point for future work on whether slower changes before such events can be seen in a long radar record. This page does not show that."
+ ],
+ "not_for": [
+  "Not a warning, a forecast, or evidence that losses could have been prevented.",
+  "Not a damage map or a measurement of ground movement, speed or stress."
+ ],
+ "limits": [
+  "There is no quiet 12-day reference just before the event: 7 August is missing.",
+  "The 12 days after the event are not a stable control; clean-up, water and deposits keep changing.",
+  "The EMS map and the radar passes are days apart. Mountain shadow and layover were not screened.",
+  "Edge cells mix inside and outside. Neighbouring cells are not independent. No accuracy score."
+ ],
+ "track": 98,
+ "frame": 16,
+ "direction": "ascending",
+ "local_time": {
+  "label": "Nepal time",
+  "utc_offset_hours": 5.75
+ },
+ "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV. 10 m linear power averaged over 5 x 5 pixels (50 m), then converted to dB",
+ "story": "three_dates",
+ "interval_short": [
+  "12 days across the event",
+  "The next 12 days"
+ ],
+ "interval_labels": [
+  "19 Aug to 31 Aug, across the event",
+  "31 Aug to 12 Sep, after"
+ ],
+ "date_notes": {
+  "baseline_1": "before",
+  "baseline_2": "first pass after",
+  "after": "later"
+ },
+ "default_pair": "normal",
+ "radar_summary": "Inside the EMS-mapped impact area, 497 of 509 cells (50 m) have radar data on all three dates. In HV, 15.7% of them changed by more than 3 dB across the event (19 to 31 Aug), mostly darker, against 1.2% over the next 12 days. 43% changed by less than 1 dB across the event. Click a cell for its values.",
+ "tour": [
+  "The Timure valley in Nepal. Left: radar on 19 August, before the 26 August avalanche. Right: 31 August, after. The red outline is the impact Copernicus EMS mapped.",
+  "Left of the line: change across the event. Right: the next 12 days. Same colour scale. Blue is darker, red is brighter.",
+  "This is HV. Inside the mapped impact, 15.7% of cells changed by more than 3 dB in HV across the event and 1.2% over the next 12 days, but many hardly changed.",
+  "The panel compares the radar with the Copernicus damage map, and lists the ground-movement checks we ran under More detail.",
+  "Click a cell to see its values, or press Play to step through all ten dates."
+ ],
+ "series_note": "Ten radar dates, every NISAR pass available here since the data began: 20 Jun, 2 Jul, 14 Jul, 26 Jul, 19 Aug, 31 Aug, 12 Sep, 24 Sep, 6 Oct and 18 Oct 2026 (UTC). 7 August is missing, so 26 Jul to 19 Aug is a 24-day gap. Press Play to step through them. Lines join observations only.",
+ "task": "After a disaster, an analyst wants to see what the radar recorded in the affected valley, next to the official damage map.",
+ "optical_text": "The independent evidence here is the Copernicus EMS map, drawn by photo-interpretation of 27 August imagery: the outline of the mapped landslide impact and deposits (red) and the area that was mapped (dashed). It is not a source failure outline. The radar window covers the whole mapped impact.",
+ "agreement": "Yes, in part. Inside the mapped impact, strong change affected 15.7% of cells across the event against 1.2% over the next 12 days, consistent with a sudden change of the surface. Other cells changed little, so the radar points to where to look rather than drawing the damage outline.",
+ "tables": [
+  {
+   "step": 5,
+   "title": "Ground-movement checks before the event",
+   "columns": [
+    "Check",
+    "Result"
+   ],
+   "rows": [
+    [
+     "Interferometric products at the source, ascending track",
+     "No reliable connected solution across all tested pairs; cross-event offsets fail quality screening"
+    ],
+    [
+     "Pre-event quality check, ascending, 14 to 26 Jul",
+     "At the source box only 7, 16 and 3 of 121 cells passed the three quality layers"
+    ],
+    [
+     "Descending track 048, 11 to 23 Jul",
+     "0 of 121 valid cells at the source; stopped by the quality mask"
+    ],
+    [
+     "Descending track 149",
+     "The four paired footprints do not contain the source centre"
+    ]
+   ],
+   "note": "The data available to us do not give a reliable pre-event movement result. That is not evidence of no movement; better coverage of the source area could change it."
+  }
+ ],
+ "downloads": [
+  {
+   "file": "ems_cells.geojson",
+   "label": "All 509 cells inside the mapped impact, with radar change (GeoJSON, WGS84)",
+   "note": "Includes 12 cells without full radar support on all three dates."
+  }
+ ],
+ "headline": "Inside the Copernicus-mapped impact, 15.7% of 50 m cells changed by more than 3 dB in HV across the event, against 1.2% over the next 12 days.",
+ "zoom_out": 0.75,
+ "layers": [
+  {
+   "type": "geojson",
+   "id": "aoi",
+   "name": "Copernicus EMS mapping area",
+   "kind": "official",
+   "file": "ems_mapping_aoi.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "Mapping area",
+     "mode": "outline",
+     "color": "#12306b",
+     "dash": "6 4"
+    }
+   ]
+  },
+  {
+   "type": "geojson",
+   "id": "cells",
+   "name": "50 m radar cells inside the EMS-mapped impact",
+   "kind": "cells",
+   "file": "ems_cells.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "HV change across event",
+     "mode": "diverging",
+     "property": "hv_cross_db",
+     "limit": 6,
+     "unit": "dB",
+     "null_label": "No common radar data"
+    },
+    {
+     "name": "HH change across event",
+     "mode": "diverging",
+     "property": "hh_cross_db",
+     "limit": 6,
+     "unit": "dB",
+     "null_label": "No common radar data"
+    },
+    {
+     "name": "HV change, next 12 days",
+     "mode": "diverging",
+     "property": "hv_post_db",
+     "limit": 6,
+     "unit": "dB",
+     "null_label": "No common radar data"
+    },
+    {
+     "name": "HH change, next 12 days",
+     "mode": "diverging",
+     "property": "hh_post_db",
+     "limit": 6,
+     "unit": "dB",
+     "null_label": "No common radar data"
+    }
+   ],
+   "popup": [
+    {
+     "key": "hh_cross_db",
+     "label": "HH, 19 to 31 Aug (across the event)",
+     "unit": "dB"
+    },
+    {
+     "key": "hv_cross_db",
+     "label": "HV, 19 to 31 Aug (across the event)",
+     "unit": "dB"
+    },
+    {
+     "key": "hh_post_db",
+     "label": "HH, 31 Aug to 12 Sep",
+     "unit": "dB"
+    },
+    {
+     "key": "hv_post_db",
+     "label": "HV, 31 Aug to 12 Sep",
+     "unit": "dB"
+    }
+   ]
+  },
+  {
+   "type": "geojson",
+   "id": "event",
+   "name": "Copernicus EMS mapped landslide impact (27 Aug imagery)",
+   "kind": "official",
+   "file": "ems_observed_event.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "Mapped impact",
+     "mode": "outline",
+     "color": "#b3541e"
+    }
+   ]
+  },
+  {
+   "type": "geojson",
+   "id": "locators",
+   "name": "Locators (not a flow path)",
+   "kind": "locator",
+   "file": "locators.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "Locators",
+     "mode": "point",
+     "color": "#5b6676"
+    }
+   ],
+   "popup": [
+    {
+     "key": "name",
+     "label": ""
+    }
+   ]
+  }
+ ],
+ "object_series": null,
+ "dates": {
+  "baseline_1": {
+   "date": "2026-08-19",
+   "time_utc": "23:39:18",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_028_098_A_016_4005_DHDH_A_20260819T233918_20260819T233953_P05023_N_F_J_001"
+  },
+  "baseline_2": {
+   "date": "2026-08-31",
+   "time_utc": "23:39:18",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_029_098_A_016_4005_DHDH_A_20260831T233918_20260831T233952_P05023_N_F_J_001"
+  },
+  "after": {
+   "date": "2026-09-12",
+   "time_utc": "23:39:18",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_030_098_A_016_4005_DHDH_A_20260912T233918_20260912T233952_P05023_N_F_J_001"
+  }
+ },
+ "bounds": [
+  [
+   28.229238,
+   85.333916
+  ],
+  [
+   28.307747,
+   85.410994
+  ]
+ ],
+ "images": {
+  "backscatter": {
+   "hh": {
+    "baseline_1": "hh_baseline_1.png",
+    "baseline_2": "hh_baseline_2.png",
+    "after": "hh_after.png"
+   },
+   "hv": {
+    "baseline_1": "hv_baseline_1.png",
+    "baseline_2": "hv_baseline_2.png",
+    "after": "hv_after.png"
+   }
+  },
+  "change": {
+   "hh": {
+    "normal": "change_normal_hh.png",
+    "event": "change_event_hh.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv.png",
+    "event": "change_event_hv.png"
+   }
+  }
+ },
+ "stats": {
+  "hh": {
+   "normal": {
+    "median_db": -0.08,
+    "q25_db": -0.58,
+    "q75_db": 0.43,
+    "share_above_3db": 0.0076,
+    "share_below_minus_3db": 0.0104
+   },
+   "event": {
+    "median_db": 0.22,
+    "q25_db": -0.31,
+    "q75_db": 0.75,
+    "share_above_3db": 0.0066,
+    "share_below_minus_3db": 0.0033
+   }
+  },
+  "hv": {
+   "normal": {
+    "median_db": -0.1,
+    "q25_db": -0.62,
+    "q75_db": 0.41,
+    "share_above_3db": 0.0047,
+    "share_below_minus_3db": 0.0124
+   },
+   "event": {
+    "median_db": 0.15,
+    "q25_db": -0.39,
+    "q75_db": 0.71,
+    "share_above_3db": 0.0068,
+    "share_below_minus_3db": 0.0033
+   }
+  }
+ },
+ "series": {
+  "valid_fraction": 0.9505,
+  "dates": [
+   {
+    "date": "2026-06-20",
+    "time_utc": "23:39:21",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260620.png",
+     "hv": "series/hv_20260620.png"
+    }
+   },
+   {
+    "date": "2026-07-02",
+    "time_utc": "23:39:20",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260702.png",
+     "hv": "series/hv_20260702.png"
+    }
+   },
+   {
+    "date": "2026-07-14",
+    "time_utc": "23:39:20",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260714.png",
+     "hv": "series/hv_20260714.png"
+    }
+   },
+   {
+    "date": "2026-07-26",
+    "time_utc": "23:39:19",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260726.png",
+     "hv": "series/hv_20260726.png"
+    }
+   },
+   {
+    "date": "2026-08-19",
+    "time_utc": "23:39:18",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260819.png",
+     "hv": "series/hv_20260819.png"
+    }
+   },
+   {
+    "date": "2026-08-31",
+    "time_utc": "23:39:18",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260831.png",
+     "hv": "series/hv_20260831.png"
+    }
+   },
+   {
+    "date": "2026-09-12",
+    "time_utc": "23:39:18",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260912.png",
+     "hv": "series/hv_20260912.png"
+    }
+   },
+   {
+    "date": "2026-09-24",
+    "time_utc": "23:39:18",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260924.png",
+     "hv": "series/hv_20260924.png"
+    }
+   },
+   {
+    "date": "2026-10-06",
+    "time_utc": "23:39:18",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20261006.png",
+     "hv": "series/hv_20261006.png"
+    }
+   },
+   {
+    "date": "2026-10-18",
+    "time_utc": "23:39:18",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20261018.png",
+     "hv": "series/hv_20261018.png"
+    }
+   }
+  ],
+  "areas": [
+   {
+    "name": "Whole area shown",
+    "kind": "all",
+    "hh_db": [
+     -4.79,
+     -4.38,
+     -4.11,
+     -4.27,
+     -3.97,
+     -4.07,
+     -3.84,
+     -3.91,
+     -4.7,
+     -4.71
+    ],
+    "hv_db": [
+     -10.36,
+     -9.71,
+     -9.59,
+     -9.75,
+     -9.45,
+     -9.57,
+     -9.41,
+     -9.41,
+     -10.13,
+     -10.23
+    ]
+   }
+  ]
+ },
+ "zones": [],
+ "checks": {
+  "same_processing_version": {
+   "question": "Same processing version on all dates?",
+   "value": true,
+   "text": "All dates use P05023."
+  },
+  "independent_evidence": {
+   "question": "Is there independent evidence of the event?",
+   "value": true,
+   "text": "Copernicus EMS mapped the impact from 27 August imagery; USGS recorded the seismic signal."
+  },
+  "reference_extent": {
+   "question": "Can the radar show ground movement before the event?",
+   "value": false,
+   "text": "No. The available interferometric data at the source failed quality checks or did not cover it."
+  }
+ },
+ "evidence": [],
+ "display": {
+  "stretch_db": {
+   "hh": [
+    -25.0,
+    5.0
+   ],
+   "hv": [
+    -32.0,
+    -5.0
+   ]
+  },
+  "change_limit_db": 6.0,
+  "posting_m": 10.0,
+  "footprint_m": 50.0,
+  "mode": "sliding",
+  "valid_fraction": 0.951
+ },
+ "generated_utc": "2026-11-15T13:50:02Z"
+}

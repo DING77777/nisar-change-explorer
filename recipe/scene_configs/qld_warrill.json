@@ -1,0 +1,203 @@
+{
+  "id": "qld_warrill",
+  "order": 4,
+  "theme": "Water · Queensland: cloudy during the event, radar with river gauges",
+  "title": "Warrill Creek and Amberley, Queensland: after the October 2026 floods",
+  "short_title": "Warrill Creek",
+  "kind": "Flood-related surface change",
+  "place": "West of Ipswich, South East Queensland, Australia",
+  "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV",
+  "track": 16,
+  "frame": 102,
+  "direction": "descending",
+  "local_time": {
+    "label": "AEST",
+    "utc_offset_hours": 10
+  },
+  "bbox": {
+    "crs": "EPSG:32756",
+    "bounds": [
+      465410,
+      6936530,
+      475410,
+      6946530
+    ]
+  },
+  "looks": 5,
+  "mode": "sliding",
+  "dates": [
+    {
+      "role": "baseline_1",
+      "date": "2026-10-01",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_032_016_D_102_4005_DHDH_A_20261001T075732_20261001T075806_P05023_N_F_J_001",
+      "hh": "cropped/20261001_FrequA_HHHH_AOI_COG.tif",
+      "hv": "cropped/20261001_FrequA_HVHV_AOI_COG.tif"
+    },
+    {
+      "role": "baseline_2",
+      "date": "2026-10-13",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_033_016_D_102_4005_DHDH_A_20261013T075732_20261013T075806_P05023_N_F_J_001",
+      "hh": "cropped/20261013_FrequA_HHHH_AOI_COG.tif",
+      "hv": "cropped/20261013_FrequA_HVHV_AOI_COG.tif"
+    },
+    {
+      "role": "after",
+      "date": "2026-10-25",
+      "time_utc": "07:57:32",
+      "crid": "P05036",
+      "granule": "NISAR_L2_PR_GCOV_034_016_D_102_4005_DHDH_A_20261025T075732_20261025T075807_P05036_N_F_J_001",
+      "hh": "cropped/20261025_FrequA_HHHH_AOI_COG.tif",
+      "hv": "cropped/20261025_FrequA_HVHV_AOI_COG.tif"
+    }
+  ],
+  "what_happened": "Severe weather and flooding affected southern Queensland from 21 to 28 October 2026. Scenic Rim, upstream on Warrill Creek, was among the local government areas activated for disaster assistance.",
+  "sources": [
+    {
+      "label": "Queensland Reconstruction Authority activation summary, 21-28 October 2026",
+      "url": "https://www.qra.qld.gov.au/sites/default/files/2026-11/V1_Activation_Summary_Southern_Queensland_Severe_Weather_and_Flooding_21_28_October_2026.PDF"
+    },
+    {
+      "label": "Queensland Water Monitoring Information Portal",
+      "url": "https://water-monitoring.information.qld.gov.au/"
+    }
+  ],
+  "mechanism": "Wetter ground and plants can alter L-band scattering. A shared offset may also include processing-version effects. The relative view subtracts one median per period and polarisation; spatially varying effects and real widespread change can remain or be suppressed. Blue or red is not a physical classification.",
+  "evidence": [
+    {
+      "type": "gauge",
+      "station_id": "143108A",
+      "label": "Warrill Creek at Amberley (143108A)",
+      "csv": "evidence/water_levels/all_stations_hourly_mean_20261020_20261028.csv",
+      "lon": 152.700012,
+      "lat": -27.663774,
+      "note": "Hourly mean gauge height. Quality code 130 (not coded), so not validated by the data owner. Gauge height is not a flood depth on the land.",
+      "credit": "Queensland Government, Water Monitoring Information Portal, CC BY 4.0"
+    }
+  ],
+  "checks": {
+    "independent_evidence": {
+      "value": true,
+      "text": "A river gauge and a government disaster activation confirm the event. They do not confirm water at any pixel."
+    },
+    "reference_extent": {
+      "value": false,
+      "text": "No official inundation boundary for this event was found to compare against."
+    }
+  },
+  "limits": [
+    "The before and after images come from different processing versions (P05023 and P05036). A same-acquisition test on another track found the newer version about 0.34 dB darker in HH and 0.25 dB darker in HV. The maps here are not adjusted for this.",
+    "The after image was taken at 17:57 AEST on 25 October. The gauge chart shows what the creek was doing at that moment.",
+    "Across the wider study area, larger 13-day rainfall totals went with smaller brightening (Spearman -0.43 for HH), so rainfall totals alone do not explain the pattern.",
+    "Copernicus Sentinel-2 tiles acquired on 25 October were 96 to 100 percent cloud covered (whole-tile metadata)."
+  ],
+  "use_for": [
+    "Deciding where to send assessment crews or request aerial imagery first when cloud blocks optical satellites.",
+    "Keeping a dated, reproducible record of where the surface changed more than it normally does."
+  ],
+  "not_for": [
+    "It is not a inundation boundary map.",
+    "It is not a alert or road-closure product. NISAR revisits every 12 days.",
+    "It has not been validated against a surveyed flood boundary."
+  ],
+  "series_note": "Ten dates from 27 June to 25 October 2026. No product was returned for 2 August, so one step is 24 days. Only the last date uses the newer processing version (P05036).",
+  "series": [
+    {
+      "date": "2026-06-27",
+      "time_utc": "07:57:35",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_024_016_D_102_4005_DHDH_A_20260627T075735_20260627T075809_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260627_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260627_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-07-09",
+      "time_utc": "07:57:34",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_025_016_D_102_4005_DHDH_A_20260709T075734_20260709T075809_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260709_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260709_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-07-21",
+      "time_utc": "07:57:33",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_026_016_D_102_4005_DHDH_A_20260721T075733_20260721T075808_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260721_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260721_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-08-14",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_028_016_D_102_4005_DHDH_A_20260814T075732_20260814T075807_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260814_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260814_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-08-26",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_029_016_D_102_4005_DHDH_A_20260826T075732_20260826T075806_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260826_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260826_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-09-07",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_030_016_D_102_4005_DHDH_A_20260907T075732_20260907T075806_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260907_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260907_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-09-19",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_031_016_D_102_4005_DHDH_A_20260919T075732_20260919T075806_P05023_F_F_J_001",
+      "hh": "QLD_SERIES_20261115/20260919_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20260919_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-10-01",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_032_016_D_102_4005_DHDH_A_20261001T075732_20261001T075806_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20261001_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20261001_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-10-13",
+      "time_utc": "07:57:32",
+      "crid": "P05023",
+      "granule": "NISAR_L2_PR_GCOV_033_016_D_102_4005_DHDH_A_20261013T075732_20261013T075806_P05023_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20261013_P05023/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20261013_P05023/warrill/HVHV.tif"
+    },
+    {
+      "date": "2026-10-25",
+      "time_utc": "07:57:32",
+      "crid": "P05036",
+      "granule": "NISAR_L2_PR_GCOV_034_016_D_102_4005_DHDH_A_20261025T075732_20261025T075807_P05036_N_F_J_001",
+      "hh": "QLD_SERIES_20261115/20261025_P05036/warrill/HHHH.tif",
+      "hv": "QLD_SERIES_20261115/20261025_P05036/warrill/HVHV.tif"
+    }
+  ],
+  "relative_view": "window_median",
+  "radar_summary": "After heavy rain, the whole analysis window brightened by +2.89 dB in HH. Farmland and grassland brightened by +3.17 dB, versus +0.83 dB on the hard-surface reference. The whole-window change over the preceding 12 days was -0.45 dB. The Amberley runway/apron reference brightened by +0.50 dB. This is consistent with wetter ground and plants. The after image is the only key date made with P05036 rather than P05023, so environmental change and processing-version effects cannot be fully separated. Switch the change map to Relative to the whole window to find places that changed more or less than their surroundings.",
+  "agreement": "River gauges and rainfall establish wet-weather context, not the cause of every radar change. Window-median subtraction changes the display reference only; it neither separates the two causes nor validates an inundation boundary.",
+  "optical_text": "On 25 October 2026, catalogued Sentinel-2 tiles had 95.98–99.83% cloud cover (whole-tile metadata, not local pixel QA). No optical comparison labels were produced for these Queensland views; other dates are not established as unusable. Radar can observe through cloud, but that alone does not validate a change interpretation. River gauges and rainfall records provide independent context instead.",
+  "tour": [
+    "Compare the dated radar observations and consult the river and rainfall context.",
+    "The raw change image is broadly red because much of the landscape brightened after heavy rain; a processing-version difference is also present.",
+    "Choose Relative to the whole window: it shows where change is above or below the whole-window median, not a corrected physical measurement.",
+    "Read the dated gauge and rainfall evidence, alongside the processing-version limitation.",
+    "Explore either polarisation and switch back to Raw change. Click readings remain raw changes."
+  ],
+  "headline": "After heavy rain the whole window brightened by a median 2.9 dB in HH, against -0.8 to +0.4 dB in every earlier 12-day interval.",
+  "map_note": "No optical reference for this event: Sentinel-2 scenes on 25 October were about 96 to 99.8% cloud-covered (whole-tile metadata). This is the situation radar is for; here the independent evidence is river gauges and rainfall.",
+  "zoom_out": 0.75
+}

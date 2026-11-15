@@ -1,0 +1,5 @@
+interval,optical_group,cells_100m,hh_median_change_db,hv_median_change_db,note
+2026-09-26 to 2026-10-08 (water rising),new water,276,-3.646,-4.196,Space NUTS strict optical QA on 2709 common 100 m cells; optical labels are not ground truth
+2026-09-26 to 2026-10-08 (water rising),stable land,1550,-0.177,-0.386,
+2026-10-08 to 2026-10-20 (water receding),water lost,104,2.263,3.457,different cells from the new-water group
+2026-10-08 to 2026-10-20 (water receding),stable land,1552,-1.019,-0.039,

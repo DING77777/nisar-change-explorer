@@ -1,0 +1,146 @@
+[
+ {
+  "id": "vic_sale_common",
+  "title": "Sale Common wetland, Victoria: water rising, then receding",
+  "short_title": "Sale Common wetland",
+  "kind": "Wetland water change",
+  "theme": "Water \u00b7 Victoria: radar checked against clear optical images",
+  "order": 1,
+  "bounds": [
+   [
+    -38.152203,
+    147.036725
+   ],
+   [
+    -38.098779,
+    147.104409
+   ]
+  ]
+ },
+ {
+  "id": "qld_region",
+  "title": "South East Queensland: regional view, October 2026",
+  "short_title": "Overview: all three sites",
+  "kind": "Flood-related surface change",
+  "theme": "Water \u00b7 Queensland: cloudy during the event, radar with river gauges",
+  "order": 2,
+  "bounds": [
+   [
+    -28.001974,
+    152.191961
+   ],
+   [
+    -26.89774,
+    153.302342
+   ]
+  ]
+ },
+ {
+  "id": "qld_laidley",
+  "title": "Laidley, Queensland: after the October 2026 floods",
+  "short_title": "Laidley",
+  "kind": "Flood-related surface change",
+  "theme": "Water \u00b7 Queensland: cloudy during the event, radar with river gauges",
+  "order": 3,
+  "bounds": [
+   [
+    -27.675434,
+    152.339061
+   ],
+   [
+    -27.584675,
+    152.440893
+   ]
+  ]
+ },
+ {
+  "id": "qld_warrill",
+  "title": "Warrill Creek and Amberley, Queensland: after the October 2026 floods",
+  "short_title": "Warrill Creek",
+  "kind": "Flood-related surface change",
+  "theme": "Water \u00b7 Queensland: cloudy during the event, radar with river gauges",
+  "order": 4,
+  "bounds": [
+   [
+    -27.695252,
+    152.649183
+   ],
+   [
+    -27.604761,
+    152.750832
+   ]
+  ]
+ },
+ {
+  "id": "qld_caboolture",
+  "title": "Caboolture and Morayfield, Queensland: after the October 2026 floods",
+  "short_title": "Caboolture",
+  "kind": "Flood-related surface change",
+  "theme": "Water \u00b7 Queensland: cloudy during the event, radar with river gauges",
+  "order": 5,
+  "bounds": [
+   [
+    -27.145126,
+    152.899483
+   ],
+   [
+    -27.05481,
+    153.000431
+   ]
+  ]
+ },
+ {
+  "id": "qld_burdekin_fields",
+  "title": "Burdekin farmland, Queensland: fields changing in the cane season",
+  "short_title": "Burdekin farm fields",
+  "kind": "Farm field surface change",
+  "theme": "Farmland",
+  "order": 10,
+  "bounds": [
+   [
+    -19.626817,
+    147.371264
+   ],
+   [
+    -19.572757,
+    147.428648
+   ]
+  ]
+ },
+ {
+  "id": "nsw_rockadooie_burn",
+  "title": "Rockadooie prescribed burn, New South Wales: checking a burn record with radar and optical images",
+  "short_title": "Rockadooie planned burn",
+  "kind": "Prescribed burn review",
+  "theme": "Fire",
+  "order": 20,
+  "bounds": [
+   [
+    -29.490974,
+    152.059001
+   ],
+   [
+    -29.339078,
+    152.260855
+   ]
+  ]
+ },
+ {
+  "id": "nepal_timure_landslide",
+  "title": "Timure, Nepal: looking back at the 26 August landslide",
+  "short_title": "Timure landslide (look back)",
+  "kind": "Mountain hazard, looking back",
+  "theme": "Mountain hazard",
+  "order": 30,
+  "bounds": [
+   [
+    28.229238,
+    85.333916
+   ],
+   [
+    28.307747,
+    85.410994
+   ]
+  ]
+ }
+]

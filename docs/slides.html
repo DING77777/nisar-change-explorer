@@ -1,0 +1,199 @@
+<!doctype html>
+<!-- AI-assisted code (Claude, Codex); see README, Use of AI. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NISAR Change Explorer | 7-slide demo</title>
+  <style>
+    :root { --navy: #12306b; --amber: #f5a623; --ink: #1b2330; --muted: #5b6676; --hh: #12306b; --hv: #f5a623; --line: #d9dee6; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #1b2330; font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: var(--ink); }
+    .deck { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px 12px 80px; }
+    .slide { width: min(1100px, 100%); aspect-ratio: 16 / 9; background: #fff; border-radius: 6px; padding: 2.6% 3.4% 3%; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background: var(--amber); }
+    .kicker { color: var(--muted); font-size: clamp(10px, 1.15vw, 13px); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .4%; }
+    h2 { margin: 0 0 1.4%; color: var(--navy); font-size: clamp(17px, 2.6vw, 29px); line-height: 1.15; }
+    p, li { font-size: clamp(10px, 1.4vw, 16px); margin: 0 0 .8%; }
+    .small { font-size: clamp(8px, 1vw, 12px) !important; color: var(--muted); }
+    .num { position: absolute; right: 2.4%; bottom: 2.2%; color: var(--muted); font-size: 11px; }
+    .row { display: grid; gap: 2.5%; flex: 1; min-height: 0; grid-template-rows: minmax(0, 1fr); }
+    .row > * { min-height: 0; }
+    .r64 { grid-template-columns: 1.7fr 1fr; }
+    .r55 { grid-template-columns: 1fr 1fr; }
+    .shot { position: relative; height: 100%; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; border: 1px solid var(--line); border-radius: 4px; display: block; }
+    .tag { position: absolute; background: var(--navy); color: #fff; border-radius: 50%; width: 1.9em; height: 1.9em; display: grid; place-items: center; font-weight: 700; font-size: clamp(10px, 1.3vw, 15px); box-shadow: 0 0 0 3px #fff; }
+    .steps { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+    .steps li { counter-increment: s; position: relative; padding-left: 2.2em; margin-bottom: 4%; }
+    .steps li::before { content: counter(s); position: absolute; left: 0; top: -.1em; background: var(--navy); color: #fff; border-radius: 50%; width: 1.6em; height: 1.6em; display: grid; place-items: center; font-weight: 700; font-size: .95em; }
+    .card { border: 1px solid var(--line); border-radius: 6px; padding: 4% 5%; margin-bottom: 4%; }
+    .card b.big { display: block; font-size: clamp(18px, 3vw, 34px); color: var(--navy); line-height: 1.1; }
+    .card span { font-size: clamp(9px, 1.2vw, 14px); }
+    .timeline { display: flex; gap: 2%; align-items: center; font-size: clamp(9px, 1.1vw, 13px); color: var(--muted); margin: 0 0 1%; }
+    .timeline b { color: var(--navy); }
+    .bars { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; font-size: clamp(9px, 1.15vw, 14px); }
+    .bars .b { height: 1.3em; border-radius: 3px; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; color: #fff; font-weight: 700; font-size: .9em; }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2%; margin-top: 1%; }
+    .flow > div { border-top: 5px solid var(--navy); padding-top: 4%; }
+    .flow img { width: 100%; height: clamp(60px, 12vw, 150px); object-fit: cover; border-radius: 4px; border: 1px solid var(--line); margin-top: 4%; }
+    .flow h3 { margin: 0; font-size: clamp(11px, 1.45vw, 17px); color: var(--navy); }
+    .cover { display: grid; grid-template-columns: 1fr 1.45fr; gap: 3%; flex: 1; min-height: 0; }
+    .cover img.map { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+    .big { font-size: clamp(24px, 4.2vw, 48px) !important; font-weight: 800; color: var(--navy); line-height: 1.05; margin: 0 0 3% !important; }
+    .chain { font-size: clamp(12px, 1.7vw, 20px) !important; font-weight: 700; color: var(--ink); }
+    a { color: var(--navy); }
+    .hint { position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); color: #cfd6e0; font-size: 13px; }
+    @media (max-width: 700px) {
+      .slide { aspect-ratio: auto; overflow: visible; padding: 18px 16px 32px; }
+      .row, .cover, .r64, .r55, .flow { grid-template-columns: 1fr; }
+      .shot { height: auto; } .shot img, .cover img.map { height: auto; }
+    }
+    @media print {
+      @page { size: 1100px 619px; margin: 0; }
+      html, body { background: #fff; }
+      .deck { padding: 0; gap: 0; }
+      .slide { width: 1100px; height: 619px; border-radius: 0; page-break-after: always; break-after: page; }
+      .hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main class="deck">
+
+  <section class="slide" id="s1">
+    <div class="bar"></div>
+    <div class="cover">
+      <div style="display:flex;flex-direction:column;justify-content:center">
+        <img src="assets/logo.png" alt="Space NUTS team logo (AI-generated)" style="width:34%;margin-bottom:4%">
+        <p class="kicker">NASA Space Apps Challenge 2026 · Dancing with the SARs</p>
+        <p class="big">NISAR Change Explorer</p>
+        <p class="chain">Find radar changes → check the evidence → export to GIS</p>
+        <p style="margin-top:4%">An interactive map for people who know GIS but not radar: no more spotting differences between two grey radar images by eye.</p>
+        <p style="margin-top:5%"><b>Team Space NUTS, Perth</b><br>Qing Ding (team owner) and Will Shu</p>
+        <p class="small">Live app: <a href="https://ding77777.github.io/nisar-change-explorer/">https://ding77777.github.io/nisar-change-explorer/</a> · Logo is AI-generated.</p>
+      </div>
+      <img class="map" src="slides/img/sale_candidates.jpg" alt="Sale Common wetland with purple candidate cells on the 8 October optical image">
+    </div>
+    <span class="num">1 / 7</span>
+  </section>
+
+  <section class="slide" id="s2">
+    <div class="bar"></div>
+    <p class="kicker">The product</p>
+    <h2>From a radar change to a GIS file in four steps</h2>
+    <div class="row r64">
+      <div class="shot">
+        <img src="slides/img/app_map.jpg" alt="The app showing Sale Common with highlighted cells, controls and the evidence panel">
+        <span class="tag" style="left:4%;top:86%">1</span>
+        <span class="tag" style="left:30%;top:44%">2</span>
+        <span class="tag" style="left:63%;top:66%">3</span>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <ol class="steps">
+          <li><b>Choose dates and a rule.</b> HH or HV, the period, darker or brighter, and a threshold.</li>
+          <li><b>See the cells that pass.</b> Highlighted on the map; click a point, field or cell and the app draws its HH/HV curve automatically.</li>
+          <li><b>Check the evidence.</b> A six-step panel puts the radar result next to optical images, river gauges or official records.</li>
+          <li><b>Export.</b> Download the passing cells as GeoJSON, with the rule written into every feature.</li>
+        </ol>
+        <div class="shot" style="flex:1"><img src="slides/img/app_rule.jpg" alt="The rule panel with reference shares and the download button" style="object-position:top left"><span class="tag" style="left:3%;top:72%">4</span></div>
+      </div>
+    </div>
+    <span class="num">2 / 7</span>
+  </section>
+
+  <section class="slide" id="s3">
+    <div class="bar"></div>
+    <p class="kicker">Water · Sale Common wetland, Victoria</p>
+    <h2>Radar-selected cells match independent optical water labels</h2>
+    <div class="timeline"><b>Radar passes:</b> 26 Sep → <b>8 Oct</b> → 20 Oct 2026 · Optical labels from Sentinel-2 on 28 Sep, 8 Oct, 18 Oct, fixed before reading the radar</div>
+    <div class="row r64">
+      <div class="shot"><img src="slides/img/sale_candidates.jpg" alt="Sale Common: purple cells where HV dropped by at least 3 dB, on the 8 October optical image" style="object-position:center"></div>
+      <div>
+        <p><b>Rule:</b> 26 Sep → 8 Oct, HV darker by at least 3 dB</p>
+        <div class="card"><b class="big">178 / 276</b><span>new-water reference cells selected (64.5%)</span></div>
+        <div class="card"><b class="big">56 / 1,550</b><span>stable-land reference cells also selected (3.6%)</span></div>
+        <p>Median change on the new-water cells: <b>HV −4.2 dB</b>, HH −3.6 dB. Where water receded (8 → 20 Oct), HV rose 3.5 dB.</p>
+        <p class="small">Shares within optical reference groups, not a flood-detection accuracy for the whole wetland. 2,709 cells passed a strict quality check.</p>
+      </div>
+    </div>
+    <span class="num">3 / 7</span>
+  </section>
+
+  <section class="slide" id="s4">
+    <div class="bar"></div>
+    <p class="kicker">Farmland · Burdekin, Queensland</p>
+    <h2>Same fields, different polarisations, different responses</h2>
+    <div class="row r55">
+      <div class="shot"><img src="slides/img/burdekin_fields.jpg" alt="Burdekin fields A to F on the 31 July optical image" style="object-position:center"></div>
+      <div>
+        <p><b>20 Jun → 19 Aug 2026, median change per field</b></p>
+        <div class="bars">
+          <span><b>Field C</b> HH</span><div class="b" style="width:68%;background:var(--hh)">−7.63 dB</div>
+          <span>Field C HV</span><div class="b" style="width:100%;background:var(--hv);color:#1b2330">−11.22 dB</div>
+          <span><b>Field B</b> HH</span><div class="b" style="width:16%;background:var(--hh)">+0.57</div>
+          <span>Field B HV</span><div class="b" style="width:14%;background:var(--hv);color:#1b2330">+0.47</div>
+        </div>
+        <p style="margin-top:4%"><b>Field C:</b> HV fell more than HH, and optical greenness fell too (NDVI −0.56). The radar stayed low on all five later passes.</p>
+        <p><b>Field B:</b> greenness fell (NDVI −0.23) while both radar channels rose slightly. Radar and optical do not always move together, so fields like B are where a visit is most informative.</p>
+        <p class="small">Response size, not a test of which polarisation detects crops best. NDVI has no unit; radar in dB.</p>
+      </div>
+    </div>
+    <span class="num">4 / 7</span>
+  </section>
+
+  <section class="slide" id="s5">
+    <div class="bar"></div>
+    <p class="kicker">Fire · Rockadooie prescribed burn, New South Wales</p>
+    <h2>Radar brightening inside the official burn boundary stands out from its surroundings</h2>
+    <div class="row r64">
+      <div class="shot"><img src="slides/img/rockadooie_change.jpg" alt="HH change across the burn relative to the whole window, with the official boundary" style="object-position:center"></div>
+      <div>
+        <p><b>HH median change, 24 Jul → 17 Aug 2026</b></p>
+        <div class="card"><b class="big">+2.63 dB</b><span>inside the official boundary</span></div>
+        <div class="card"><b class="big">+1.2 dB</b><span>0–1 km and 1–5 km outside</span></div>
+        <p><b>Use:</b> compare the official record with the satellite response and pick places worth a post-burn check.</p>
+        <p class="small">Map: change relative to the median of the whole window. Cards: raw median change. A spatial comparison, not an isolated fire effect or a burn-plan completion rate.</p>
+      </div>
+    </div>
+    <span class="num">5 / 7</span>
+  </section>
+
+  <section class="slide" id="s6">
+    <div class="bar"></div>
+    <p class="kicker">How it is built</p>
+    <h2>From real NISAR data to results anyone can check</h2>
+    <div class="flow">
+      <div><h3>1. NISAR data</h3><p class="small">L2 GCOV, HH and HV, small windows from ASF; one track and frame per case.</p><img src="slides/img/timure_change.jpg" alt="Radar change map"></div>
+      <div><h3>2. Quality and change</h3><p class="small">Pixels valid on every date; linear power averaged, converted to dB once; 3 to 10 dates per case.</p><img src="slides/img/sale_candidates.jpg" alt="Quality-checked cells"></div>
+      <div><h3>3. Independent evidence</h3><p class="small">Sentinel-2 labels, river gauges, official burn boundary, Copernicus emergency map.</p><img src="slides/img/rockadooie_change.jpg" alt="Official boundary comparison"></div>
+      <div><h3>4. Map objects and export</h3><p class="small">Cells and fields with values, rule-based highlight, GeoJSON download.</p><img src="slides/img/app_rule.jpg" alt="Rule panel and download"></div>
+    </div>
+    <div class="row r55" style="margin-top:2.5%;flex:0 0 auto">
+      <ul style="margin:0;padding-left:1.1em">
+        <li>Curves for any clicked point, field or cell are drawn automatically from the stored observations.</li>
+        <li>The rule, the counts on the page and the exported file always match; the app reproduces the team's offline Sale evaluation exactly.</li>
+      </ul>
+      <p class="small" style="margin:0"><b>Mountain hazard · Timure, Nepal:</b> 10 radar dates show strong change across the 26 Aug landslide inside the Copernicus-mapped impact (15.7% of cells vs 1.2% after). Where data quality did not support it, we did not report ground movement.</p>
+    </div>
+    <span class="num">6 / 7</span>
+  </section>
+
+  <section class="slide" id="s7">
+    <div class="bar"></div>
+    <p class="kicker">NISAR Change Explorer</p>
+    <p class="big" style="margin-top:2%">Look at the change. Check the evidence. Export the result.</p>
+    <div class="row" style="grid-template-columns:repeat(3,1fr);flex:0 0 auto;margin-top:2%">
+      <div class="card"><b>Available now</b><br><span>Change screening, evidence comparison and GIS export for eight cases: water, farmland, fire and a mountain hazard.</span></div>
+      <div class="card"><b>Scope</b><br><span>Candidates for checking, not validated hazard boundaries and not a warning system. NISAR revisits every 12 days.</span></div>
+      <div class="card"><b>Next</b><br><span>Field and farm records to test the candidates, and testing with GIS users. A longer record may show slower changes before events like Timure.</span></div>
+    </div>
+    <p class="chain" style="margin-top:3%">Live app: <a href="https://ding77777.github.io/nisar-change-explorer/">https://ding77777.github.io/nisar-change-explorer/</a> · Code and methods: <a href="https://github.com/DING77777/nisar-change-explorer">https://github.com/DING77777/nisar-change-explorer</a></p>
+    <p class="small" style="margin-top:auto">Data: NISAR L2 GCOV (NASA-ISRO, ASF DAAC). Sentinel-2 via Digital Earth Australia (Geoscience Australia, CC BY 4.0; contains modified Copernicus Sentinel data 2026). Copernicus EMS EMSR927 (© European Union). NSW NPWS fire history. Queensland Water Monitoring. OpenStreetMap contributors.</p>
+    <span class="num">7 / 7</span>
+  </section>
+
+</main>
+<p class="hint">Scroll, or print to PDF (one slide per page).</p>
+</body>
+</html>

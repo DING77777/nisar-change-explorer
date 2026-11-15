@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Optically interpreted source locator; NOT rupture boundary"},"geometry":{"type":"Point","coordinates":[85.52723,28.2877]}},{"type":"Feature","properties":{"name":"Approximate port/crop locator; NOT damage footprint"},"geometry":{"type":"Point","coordinates":[85.378,28.279]}}]}

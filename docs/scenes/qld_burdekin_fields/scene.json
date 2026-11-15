@@ -1,0 +1,900 @@
+{
+ "id": "qld_burdekin_fields",
+ "title": "Burdekin farmland, Queensland: fields changing in the cane season",
+ "short_title": "Burdekin farm fields",
+ "kind": "Farm field surface change",
+ "theme": "Farmland",
+ "place": "6 km window of irrigated farmland near Ayr, Burdekin, north Queensland, Australia",
+ "mechanism": "Candidate explanation: a tall, leafy crop scatters a lot of L-band energy back to the satellite, especially in HV. When a crop is cut or the canopy opens, the return drops, and it can rise again as plants regrow or the soil is wetted by irrigation. These are possible causes, not confirmed for these fields.",
+ "what_happened": "The Burdekin is an irrigated farming district. The 2026 cane crush started at the local mills on 2 and 3 June (Wilmar season report). We hand-drew six rectangles (A to F) inside fields that are visible in Sentinel-2 images. Official 2016 land-use mapping lists these fields as irrigated sugar. We do not know which crop was grown in 2026 or when any field was harvested.",
+ "sources": [
+  {
+   "label": "Wilmar Sugar: first season update for 2026",
+   "url": "https://www.wilmarsugar-anz.com/media-centre/latest-news/first-season-update-for-2026"
+  },
+  {
+   "label": "Queensland land use mapping (2016 polygons used as background)",
+   "url": "https://www.data.qld.gov.au/dataset/land-use-mapping-current-web-service-json"
+  },
+  {
+   "label": "Geoscience Australia, DEA Sentinel-2B surface reflectance",
+   "url": "https://knowledge.dea.ga.gov.au/data/product/dea-surface-reflectance-sentinel-2b-msi/"
+  },
+  {
+   "label": "Rossberg and Schmitt (2025), NDVI and SAR backscatter across frequency bands, Remote Sensing of Environment 319",
+   "url": "https://doi.org/10.1016/j.rse.2025.114612"
+  }
+ ],
+ "use_for": [
+  "Finding fields whose surface changed between passes, including on cloudy days, so an officer can decide which to look at first.",
+  "Seeing where greenness and radar agree and where they do not, which is a reason to look closer."
+ ],
+ "not_for": [
+  "Not a harvest map, yield, biomass or crop health product.",
+  "Not proof that radar sees change earlier than optical images.",
+  "Not a statement about any landholder or how a farm is run."
+ ],
+ "limits": [
+  "2016 land use does not tell us the 2026 crop. Harvest is a possible explanation, not a confirmed one.",
+  "The site was found by a regional radar screen and the fields were then chosen from optical images, so this is a follow-up, not a held-out accuracy test.",
+  "Field A was close to stable from June to August only; it darkened after September.",
+  "Neighbouring cells are not independent samples. Four or nine cells are one small field, not many farms.",
+  "Two radar gaps are 24 days long.",
+  "Why radar and greenness sometimes disagree: they respond to different properties of the surface. Published work finds their relationship changes with crop type, growth stage, moisture and radar band (Rossberg and Schmitt, 2025). The cause in these fields cannot be settled with the current data; farm records and field visits would be the next step."
+ ],
+ "track": 95,
+ "frame": 168,
+ "direction": "ascending",
+ "local_time": {
+  "label": "AEST",
+  "utc_offset_hours": 10
+ },
+ "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV. 20 m linear power averaged to 100 m cells, then converted to dB",
+ "story": "three_dates",
+ "interval_short": [
+  "12 days before the turn",
+  "24 days across the turn"
+ ],
+ "interval_labels": [
+  "14 Jul to 26 Jul, before field C turned",
+  "26 Jul to 19 Aug, field C turned"
+ ],
+ "date_notes": {
+  "baseline_1": "",
+  "baseline_2": "before the turn",
+  "after": "after the turn"
+ },
+ "default_pair": "event",
+ "radar_summary": "Field C darkened strongly after 26 July and stayed dark on all five later radar dates (HV more than 3 dB below 20 June in 9 of 9 cells, HH in 8 of 9). Field D brightened, but not steadily. Click a field on the map to see its radar and greenness curves.",
+ "tour": [
+  "Irrigated farmland near Ayr, north Queensland. Left: radar on 26 July. Right: 19 August. Drag the orange line: field C, outlined in orange, turns dark.",
+  "Two periods on one colour scale. Left: change over the 12 days before 26 July. Right: change over the 24 days after. Blue is darker, red is brighter.",
+  "This is HV. In field C, HV fell by about 11 dB between June and August and HH by about 8 dB. Field D brightened.",
+  "Did the optical images see it too? The panel shows greenness for the same fields, including fields B and E, where greenness and radar disagree.",
+  "Now click a field on the map to see its radar and greenness curves, or press Play to step through all nine dates."
+ ],
+ "series_note": "Nine radar dates. Two gaps are 24 days instead of 12 (26 Jul to 19 Aug, 31 Aug to 24 Sep) because no image was available in between. Lines join observations only; nothing is known about the days in between.",
+ "task": "A farm or catchment officer wants to know which fields changed during the cane season and whether radar and optical images tell the same story.",
+ "optical_text": "Sentinel-2 greenness (NDVI) inside each field on five clear dates between 21 June and 20 August. Three more dates (25 July, 14 August, 22 August) failed the cloud and shadow screen for every field and are left out, not counted as zero. Field C lost most of its greenness between 26 and 31 July. Field D became greener. Optical images stop at 20 August; radar continues to 18 October.",
+ "agreement": "In C and D, greenness and radar moved the same way, which makes those changes easy to trust. In B and E they did not: B lost greenness while its radar return rose slightly, and E gained greenness while HV stayed flat. The two sensors measure different things (greenness, and the structure and wetness of plants and soil), so fields where they disagree are the ones most worth a visit. Optical images place C's change between 26 and 31 July; the radar, between 26 July and 19 August.",
+ "tables": [
+  {
+   "step": 4,
+   "title": "Same fields, matched dates: 20/21 June to 19/20 August",
+   "columns": [
+    "Field",
+    "100 m cells",
+    "Greenness change (NDVI)",
+    "HH change",
+    "HV change"
+   ],
+   "rows": [
+    [
+     "A",
+     12,
+     "-0.08",
+     "-0.47 dB",
+     "-0.52 dB"
+    ],
+    [
+     "B",
+     4,
+     "-0.23",
+     "+0.57 dB",
+     "+0.47 dB"
+    ],
+    [
+     "C",
+     9,
+     "-0.56",
+     "-7.63 dB",
+     "-11.22 dB"
+    ],
+    [
+     "D",
+     10,
+     "+0.36",
+     "+3.22 dB",
+     "+5.75 dB"
+    ],
+    [
+     "E",
+     9,
+     "+0.19",
+     "+2.34 dB",
+     "-0.09 dB"
+    ]
+   ],
+   "note": "Radar change is the median of the change in each 100 m cell; greenness change uses the optical pixels inside the same cells. Field F has only one complete 100 m cell, so it was excluded before any radar comparison and has no radar values. The optical and radar end dates are about 4.4 hours apart. Spread across cells is not a confidence interval."
+  }
+ ],
+ "downloads": [
+  {
+   "file": "fields.geojson",
+   "label": "Fields A to F (GeoJSON, WGS84)",
+   "note": "Hand-drawn rectangles inside fields seen in optical images. Not property boundaries."
+  },
+  {
+   "file": "fields_endpoint_changes.csv",
+   "label": "Greenness and radar change per field (CSV)",
+   "note": "The table in step 4."
+  }
+ ],
+ "headline": "In field C, greenness and radar fell together (NDVI -0.56, HV -11.2 dB) and the radar stayed low for two months. Fields B and E show that the two sensors can disagree.",
+ "fit_contain": true,
+ "default_opacity": 0.7,
+ "layers": [
+  {
+   "type": "image",
+   "id": "optical",
+   "name": "Optical image, 31 Jul 2026 (Sentinel-2B)",
+   "kind": "optical_context",
+   "file": "optical_20260731.png",
+   "bounds": [
+    [
+     -19.62708679813374,
+     147.37126361321526
+    ],
+    [
+     -19.572756824876574,
+     147.42864827801745
+    ]
+   ],
+   "credit": "Geoscience Australia, DEA Sentinel-2B Surface Reflectance, 31 Jul 2026, CC BY 4.0. Contains modified Copernicus Sentinel data 2026. Cropped, cloud-masked, colour-stretched and reprojected by Space NUTS. Not taken on a radar date.",
+   "default_on": true
+  },
+  {
+   "type": "geojson",
+   "id": "fields",
+   "name": "Fields A to F (hand-drawn inside visible fields)",
+   "kind": "roi",
+   "file": "fields.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "Fields",
+     "mode": "outline",
+     "color": "#f5a623"
+    }
+   ],
+   "label_property": "id",
+   "series": true
+  }
+ ],
+ "object_series": {
+  "A": {
+   "accepted": true,
+   "radar": {
+    "dates": [
+     "2026-06-20T20:06:11.000Z",
+     "2026-07-02T20:06:10.000Z",
+     "2026-07-14T20:06:10.000Z",
+     "2026-07-26T20:06:09.000Z",
+     "2026-08-19T20:06:08.000Z",
+     "2026-08-31T20:06:08.000Z",
+     "2026-09-24T20:06:08.000Z",
+     "2026-10-06T20:06:08.000Z",
+     "2026-10-18T20:06:08.000Z"
+    ],
+    "hh": [
+     -5.93,
+     -5.97,
+     -5.49,
+     -6.32,
+     -6.53,
+     -6.56,
+     -16.61,
+     -15.16,
+     -15.53
+    ],
+    "hv": [
+     -11.56,
+     -11.44,
+     -10.64,
+     -11.66,
+     -11.53,
+     -11.69,
+     -22.84,
+     -22.45,
+     -22.89
+    ]
+   },
+   "optical": {
+    "dates": [
+     "2026-06-21T00:32:14.167079Z",
+     "2026-07-26T00:32:17.391975Z",
+     "2026-07-31T00:32:16.222443Z",
+     "2026-08-05T00:32:16.386973Z",
+     "2026-08-20T00:32:12.077179Z"
+    ],
+    "ndvi": [
+     0.786,
+     0.725,
+     0.702,
+     0.735,
+     0.694
+    ],
+    "p10": [
+     0.713,
+     0.195,
+     0.205,
+     0.511,
+     0.318
+    ],
+    "p90": [
+     0.81,
+     0.768,
+     0.746,
+     0.777,
+     0.746
+    ],
+    "pass": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "endpoint": {
+    "sar_from": "2026-06-20T20:06:11.000Z",
+    "sar_to": "2026-08-19T20:06:08.000Z",
+    "optical_from": "2026-06-21T00:32:14.167079Z",
+    "optical_to": "2026-08-20T00:32:12.077179Z",
+    "cells_100m": 12,
+    "ndvi_change": -0.077,
+    "hh_change_db": -0.471,
+    "hv_change_db": -0.524
+   }
+  },
+  "B": {
+   "accepted": true,
+   "radar": {
+    "dates": [
+     "2026-06-20T20:06:11.000Z",
+     "2026-07-02T20:06:10.000Z",
+     "2026-07-14T20:06:10.000Z",
+     "2026-07-26T20:06:09.000Z",
+     "2026-08-19T20:06:08.000Z",
+     "2026-08-31T20:06:08.000Z",
+     "2026-09-24T20:06:08.000Z",
+     "2026-10-06T20:06:08.000Z",
+     "2026-10-18T20:06:08.000Z"
+    ],
+    "hh": [
+     -8.44,
+     -8.2,
+     -8.45,
+     -8.46,
+     -7.47,
+     -15.04,
+     -16.71,
+     -13.61,
+     -15.48
+    ],
+    "hv": [
+     -11.78,
+     -11.67,
+     -11.69,
+     -11.57,
+     -11.62,
+     -21.93,
+     -23.14,
+     -20.27,
+     -21.87
+    ]
+   },
+   "optical": {
+    "dates": [
+     "2026-06-21T00:32:14.167079Z",
+     "2026-07-26T00:32:17.391975Z",
+     "2026-07-31T00:32:16.222443Z",
+     "2026-08-05T00:32:16.386973Z",
+     "2026-08-20T00:32:12.077179Z"
+    ],
+    "ndvi": [
+     0.727,
+     0.592,
+     0.565,
+     0.559,
+     0.499
+    ],
+    "p10": [
+     0.539,
+     0.359,
+     0.345,
+     0.327,
+     0.292
+    ],
+    "p90": [
+     0.788,
+     0.722,
+     0.698,
+     0.712,
+     0.662
+    ],
+    "pass": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "endpoint": {
+    "sar_from": "2026-06-20T20:06:11.000Z",
+    "sar_to": "2026-08-19T20:06:08.000Z",
+    "optical_from": "2026-06-21T00:32:14.167079Z",
+    "optical_to": "2026-08-20T00:32:12.077179Z",
+    "cells_100m": 4,
+    "ndvi_change": -0.229,
+    "hh_change_db": 0.574,
+    "hv_change_db": 0.47
+   }
+  },
+  "C": {
+   "accepted": true,
+   "radar": {
+    "dates": [
+     "2026-06-20T20:06:11.000Z",
+     "2026-07-02T20:06:10.000Z",
+     "2026-07-14T20:06:10.000Z",
+     "2026-07-26T20:06:09.000Z",
+     "2026-08-19T20:06:08.000Z",
+     "2026-08-31T20:06:08.000Z",
+     "2026-09-24T20:06:08.000Z",
+     "2026-10-06T20:06:08.000Z",
+     "2026-10-18T20:06:08.000Z"
+    ],
+    "hh": [
+     -7.03,
+     -7.0,
+     -7.43,
+     -7.2,
+     -14.63,
+     -13.83,
+     -12.37,
+     -13.34,
+     -11.25
+    ],
+    "hv": [
+     -11.4,
+     -11.15,
+     -11.22,
+     -10.96,
+     -22.71,
+     -21.24,
+     -18.44,
+     -20.42,
+     -17.93
+    ]
+   },
+   "optical": {
+    "dates": [
+     "2026-06-21T00:32:14.167079Z",
+     "2026-07-26T00:32:17.391975Z",
+     "2026-07-31T00:32:16.222443Z",
+     "2026-08-05T00:32:16.386973Z",
+     "2026-08-20T00:32:12.077179Z"
+    ],
+    "ndvi": [
+     0.774,
+     0.596,
+     0.214,
+     0.193,
+     0.213
+    ],
+    "p10": [
+     0.755,
+     0.547,
+     0.196,
+     0.181,
+     0.196
+    ],
+    "p90": [
+     0.787,
+     0.66,
+     0.589,
+     0.206,
+     0.227
+    ],
+    "pass": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "endpoint": {
+    "sar_from": "2026-06-20T20:06:11.000Z",
+    "sar_to": "2026-08-19T20:06:08.000Z",
+    "optical_from": "2026-06-21T00:32:14.167079Z",
+    "optical_to": "2026-08-20T00:32:12.077179Z",
+    "cells_100m": 9,
+    "ndvi_change": -0.56,
+    "hh_change_db": -7.626,
+    "hv_change_db": -11.224
+   }
+  },
+  "D": {
+   "accepted": true,
+   "radar": {
+    "dates": [
+     "2026-06-20T20:06:11.000Z",
+     "2026-07-02T20:06:10.000Z",
+     "2026-07-14T20:06:10.000Z",
+     "2026-07-26T20:06:09.000Z",
+     "2026-08-19T20:06:08.000Z",
+     "2026-08-31T20:06:08.000Z",
+     "2026-09-24T20:06:08.000Z",
+     "2026-10-06T20:06:08.000Z",
+     "2026-10-18T20:06:08.000Z"
+    ],
+    "hh": [
+     -13.33,
+     -13.9,
+     -13.98,
+     -14.75,
+     -9.49,
+     -11.95,
+     -12.96,
+     -11.03,
+     -8.47
+    ],
+    "hv": [
+     -22.84,
+     -22.62,
+     -22.52,
+     -21.94,
+     -16.67,
+     -19.14,
+     -21.07,
+     -21.08,
+     -19.12
+    ]
+   },
+   "optical": {
+    "dates": [
+     "2026-06-21T00:32:14.167079Z",
+     "2026-07-26T00:32:17.391975Z",
+     "2026-07-31T00:32:16.222443Z",
+     "2026-08-05T00:32:16.386973Z",
+     "2026-08-20T00:32:12.077179Z"
+    ],
+    "ndvi": [
+     0.215,
+     0.391,
+     0.427,
+     0.478,
+     0.576
+    ],
+    "p10": [
+     0.183,
+     0.19,
+     0.185,
+     0.203,
+     0.193
+    ],
+    "p90": [
+     0.243,
+     0.457,
+     0.491,
+     0.541,
+     0.642
+    ],
+    "pass": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "endpoint": {
+    "sar_from": "2026-06-20T20:06:11.000Z",
+    "sar_to": "2026-08-19T20:06:08.000Z",
+    "optical_from": "2026-06-21T00:32:14.167079Z",
+    "optical_to": "2026-08-20T00:32:12.077179Z",
+    "cells_100m": 10,
+    "ndvi_change": 0.357,
+    "hh_change_db": 3.218,
+    "hv_change_db": 5.745
+   }
+  },
+  "E": {
+   "accepted": true,
+   "radar": {
+    "dates": [
+     "2026-06-20T20:06:11.000Z",
+     "2026-07-02T20:06:10.000Z",
+     "2026-07-14T20:06:10.000Z",
+     "2026-07-26T20:06:09.000Z",
+     "2026-08-19T20:06:08.000Z",
+     "2026-08-31T20:06:08.000Z",
+     "2026-09-24T20:06:08.000Z",
+     "2026-10-06T20:06:08.000Z",
+     "2026-10-18T20:06:08.000Z"
+    ],
+    "hh": [
+     -12.4,
+     -9.25,
+     -12.27,
+     -12.53,
+     -10.02,
+     -7.75,
+     -6.27,
+     -5.44,
+     -6.92
+    ],
+    "hv": [
+     -19.56,
+     -16.74,
+     -19.45,
+     -21.07,
+     -19.66,
+     -17.58,
+     -16.11,
+     -15.2,
+     -16.07
+    ]
+   },
+   "optical": {
+    "dates": [
+     "2026-06-21T00:32:14.167079Z",
+     "2026-07-26T00:32:17.391975Z",
+     "2026-07-31T00:32:16.222443Z",
+     "2026-08-05T00:32:16.386973Z",
+     "2026-08-20T00:32:12.077179Z"
+    ],
+    "ndvi": [
+     0.588,
+     0.703,
+     0.707,
+     0.769,
+     0.781
+    ],
+    "p10": [
+     0.553,
+     0.662,
+     0.657,
+     0.73,
+     0.747
+    ],
+    "p90": [
+     0.63,
+     0.744,
+     0.743,
+     0.799,
+     0.809
+    ],
+    "pass": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "endpoint": {
+    "sar_from": "2026-06-20T20:06:11.000Z",
+    "sar_to": "2026-08-19T20:06:08.000Z",
+    "optical_from": "2026-06-21T00:32:14.167079Z",
+    "optical_to": "2026-08-20T00:32:12.077179Z",
+    "cells_100m": 9,
+    "ndvi_change": 0.191,
+    "hh_change_db": 2.338,
+    "hv_change_db": -0.087
+   }
+  },
+  "F": {
+   "accepted": false,
+   "radar": null,
+   "optical": {
+    "dates": [
+     "2026-06-21T00:32:14.167079Z",
+     "2026-07-26T00:32:17.391975Z",
+     "2026-07-31T00:32:16.222443Z",
+     "2026-08-05T00:32:16.386973Z",
+     "2026-08-20T00:32:12.077179Z"
+    ],
+    "ndvi": [
+     0.738,
+     0.656,
+     0.646,
+     0.668,
+     0.651
+    ],
+    "p10": [
+     0.719,
+     0.629,
+     0.623,
+     0.65,
+     0.637
+    ],
+    "p90": [
+     0.75,
+     0.687,
+     0.668,
+     0.697,
+     0.665
+    ],
+    "pass": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  }
+ },
+ "dates": {
+  "baseline_1": {
+   "date": "2026-07-14",
+   "time_utc": "20:06:10",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_025_095_A_168_2005_DHDH_A_20260714T200610_20260714T200644_P05023_F_F_J_001"
+  },
+  "baseline_2": {
+   "date": "2026-07-26",
+   "time_utc": "20:06:09",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_026_095_A_168_2005_DHDH_A_20260726T200609_20260726T200644_P05023_N_F_J_001"
+  },
+  "after": {
+   "date": "2026-08-19",
+   "time_utc": "20:06:08",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_028_095_A_168_2005_DHDH_A_20260819T200608_20260819T200642_P05023_N_F_J_001"
+  }
+ },
+ "bounds": [
+  [
+   -19.626817,
+   147.371264
+  ],
+  [
+   -19.572757,
+   147.428648
+  ]
+ ],
+ "images": {
+  "backscatter": {
+   "hh": {
+    "baseline_1": "hh_baseline_1.png",
+    "baseline_2": "hh_baseline_2.png",
+    "after": "hh_after.png"
+   },
+   "hv": {
+    "baseline_1": "hv_baseline_1.png",
+    "baseline_2": "hv_baseline_2.png",
+    "after": "hv_after.png"
+   }
+  },
+  "change": {
+   "hh": {
+    "normal": "change_normal_hh.png",
+    "event": "change_event_hh.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv.png",
+    "event": "change_event_hv.png"
+   }
+  }
+ },
+ "stats": {
+  "hh": {
+   "normal": {
+    "median_db": -0.22,
+    "q25_db": -0.76,
+    "q75_db": 0.21,
+    "share_above_3db": 0.0125,
+    "share_below_minus_3db": 0.0572
+   },
+   "event": {
+    "median_db": 0.23,
+    "q25_db": -0.57,
+    "q75_db": 0.85,
+    "share_above_3db": 0.0433,
+    "share_below_minus_3db": 0.0881
+   }
+  },
+  "hv": {
+   "normal": {
+    "median_db": -0.16,
+    "q25_db": -0.72,
+    "q75_db": 0.26,
+    "share_above_3db": 0.0044,
+    "share_below_minus_3db": 0.0647
+   },
+   "event": {
+    "median_db": -0.25,
+    "q25_db": -1.02,
+    "q75_db": 0.37,
+    "share_above_3db": 0.0139,
+    "share_below_minus_3db": 0.1222
+   }
+  }
+ },
+ "series": {
+  "valid_fraction": 1.0,
+  "dates": [
+   {
+    "date": "2026-06-20",
+    "time_utc": "20:06:11",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260620.png",
+     "hv": "series/hv_20260620.png"
+    }
+   },
+   {
+    "date": "2026-07-02",
+    "time_utc": "20:06:10",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260702.png",
+     "hv": "series/hv_20260702.png"
+    }
+   },
+   {
+    "date": "2026-07-14",
+    "time_utc": "20:06:10",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260714.png",
+     "hv": "series/hv_20260714.png"
+    }
+   },
+   {
+    "date": "2026-07-26",
+    "time_utc": "20:06:09",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260726.png",
+     "hv": "series/hv_20260726.png"
+    }
+   },
+   {
+    "date": "2026-08-19",
+    "time_utc": "20:06:08",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260819.png",
+     "hv": "series/hv_20260819.png"
+    }
+   },
+   {
+    "date": "2026-08-31",
+    "time_utc": "20:06:08",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260831.png",
+     "hv": "series/hv_20260831.png"
+    }
+   },
+   {
+    "date": "2026-09-24",
+    "time_utc": "20:06:08",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20260924.png",
+     "hv": "series/hv_20260924.png"
+    }
+   },
+   {
+    "date": "2026-10-06",
+    "time_utc": "20:06:08",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20261006.png",
+     "hv": "series/hv_20261006.png"
+    }
+   },
+   {
+    "date": "2026-10-18",
+    "time_utc": "20:06:08",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "series/hh_20261018.png",
+     "hv": "series/hv_20261018.png"
+    }
+   }
+  ],
+  "areas": [
+   {
+    "name": "Whole area shown",
+    "kind": "all",
+    "hh_db": [
+     -8.11,
+     -8.21,
+     -8.74,
+     -9.31,
+     -9.7,
+     -10.38,
+     -11.03,
+     -11.3,
+     -11.66
+    ],
+    "hv_db": [
+     -13.97,
+     -14.3,
+     -14.83,
+     -15.44,
+     -17.04,
+     -18.22,
+     -19.72,
+     -19.87,
+     -20.09
+    ]
+   }
+  ]
+ },
+ "zones": [],
+ "checks": {
+  "same_processing_version": {
+   "question": "Same processing version on all dates?",
+   "value": true,
+   "text": "All dates use P05023."
+  },
+  "independent_evidence": {
+   "question": "Is there independent evidence of the change?",
+   "value": true,
+   "text": "Sentinel-2 greenness from the same fields, labelled before reading the radar values. The site itself was first found by a radar screen, so this is not a blind test."
+  },
+  "reference_extent": {
+   "question": "Is there a farm record to test against?",
+   "value": false,
+   "text": "No public field-level harvest or management record was found for field C between 26 and 31 July."
+  }
+ },
+ "evidence": [],
+ "display": {
+  "stretch_db": {
+   "hh": [
+    -25.0,
+    5.0
+   ],
+   "hv": [
+    -32.0,
+    -5.0
+   ]
+  },
+  "change_limit_db": 6.0,
+  "posting_m": 100.0,
+  "footprint_m": 100.0,
+  "mode": "sliding",
+  "valid_fraction": 1.0
+ },
+ "generated_utc": "2026-11-15T13:13:51Z"
+}

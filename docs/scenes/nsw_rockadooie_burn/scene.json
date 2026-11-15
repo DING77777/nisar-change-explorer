@@ -1,0 +1,577 @@
+{
+ "id": "nsw_rockadooie_burn",
+ "title": "Rockadooie prescribed burn, New South Wales: checking a burn record with radar and optical images",
+ "short_title": "Rockadooie planned burn",
+ "kind": "Prescribed burn review",
+ "theme": "Fire",
+ "place": "The Rockadooie hazard-reduction burn and 5 km around it, Northern Tablelands, New South Wales, Australia. Radar covers the whole burn; optical comparison and 1 ha cells cover two 2 x 2 km windows, one inside the boundary and one 6 km to the west",
+ "mechanism": "Candidate explanation: burning removes leaves and fine fuel, which changes how the radar scatters, and ash and moisture change the soil surface. The radar can brighten or darken depending on what burnt and on rain. Optical burn indices respond to charring and loss of green leaves. Different physics is a reason they can disagree.",
+ "what_happened": "NSW National Parks recorded the Rockadooie hazard-reduction burn from 29 July to 11 August 2026. The official final boundary covers 3,007 ha, and the official record says the burn objectives were met; that is the agency's own report. NISAR radar covers the whole burn and 5 km around it. Optical burn index and 1 ha cells cover two 2 km windows, one inside the boundary and one 6 km to the west.",
+ "sources": [
+  {
+   "label": "NSW NPWS fire history record (OBJECTID 453406)",
+   "url": "https://mapprod3.environment.nsw.gov.au/arcgis/rest/services/Fire/NPWS_Fire_History/MapServer/0/query?where=OBJECTID%3D453406&outFields=*&returnGeometry=false&f=pjson"
+  },
+  {
+   "label": "Geoscience Australia, Digital Earth Australia Sentinel-2",
+   "url": "https://www.dea.ga.gov.au/"
+  }
+ ],
+ "use_for": [
+  "Ranking patches for a second look where the official record, optical images and radar disagree.",
+  "Showing how much a result depends on the threshold chosen."
+ ],
+ "not_for": [
+  "Not a map of unburnt patches, burn severity or fuel left behind.",
+  "Not a check that the burn met its plan."
+ ],
+ "limits": [
+  "The radar is compared with the official final boundary, not the original plan.",
+  "Radar intervals are 12 and 24 days; optical and radar dates differ by about two days at each end. Optical comparison covers two 2 km windows only.",
+  "Rain, terrain and vegetation can also change the radar. The ring outside the boundary brightened by about 1.2 dB too.",
+  "Thresholds are a demonstration, not a validated burn classification. Neighbouring pixels are not independent.",
+  "Rainfall is one 0.05\u00b0 SILO cell: 15.3 mm over 23 fully enclosed daily intervals from 25 Jul 09:00 to 17 Aug 09:00 AEST, not an exact overpass-to-overpass total. Land cover, terrain and incidence geometry are not matched across the rings; no burn-attributable effect is estimated."
+ ],
+ "track": 66,
+ "frame": 163,
+ "direction": "ascending",
+ "local_time": {
+  "label": "AEST",
+  "utc_offset_hours": 10
+ },
+ "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV, 20 m",
+ "story": "baseline_event",
+ "default_pair": "event",
+ "radar_summary": "Across 24 July to 17 August, median HH brightened by +2.63 dB inside the recorded burn boundary, +1.24 dB in the outside 0\u20131 km ring, and +1.19 dB in the outside 1\u20135 km ring. The shares above +3 dB were 37.2%, 1.8% and 4.7%, respectively. The outside rings show broad background change as well as stronger change inside the boundary. This comparison does not isolate the cause of either change.",
+ "tour": [
+  "A planned burn in northern New South Wales, burnt 29 Jul to 11 Aug. The map shows the radar change relative to the whole window: the burnt area stands out in red inside the official boundary (dashed line).",
+  "Left of the line: the pre-burn reference period (12 to 24 Jul). Right: across the burn. Switch to 'Raw change' to see that the whole area also brightened by about 1.2 dB; inside the boundary the change was about 1.4 dB stronger.",
+  "This is HV, on the same colour scale.",
+  "The panel compares the radar with the official record and the optical burn index in two 2 km windows.",
+  "Now highlight cells that pass a rule under the map, click any cell, or download the cells."
+ ],
+ "task": "A fire manager wants to know where the satellite record agrees with the official burn record, and which patches deserve a second look.",
+ "optical_text": "Sentinel-2 burn index change (dNBR) between 27 July and 16 August, computed per 1 ha cell from near-infrared and shortwave-infrared bands. Median dNBR is 0.16 inside the boundary and 0.04 in the western window. Sixteen cells chosen in advance were recomputed from the original bands and matched.",
+ "agreement": "In part: radar change is stronger inside the recorded burn than in either outside ring, while optical dNBR differs between the two existing 2 km windows. Both outside rings brightened by about 1.2 dB. A nearby coarse SILO rainfall cell totals 15.3 mm for daily labels 24 Jul\u201317 Aug; this provides possible wet-weather context, not a measured cause across all rings. The 10 cells differing under all nine rules remain exploratory, not independently verified damage or unburnt patches.",
+ "tables": [
+  {
+   "step": 3,
+   "title": "Whole burn and two outside rings (20 m posting, overlapping 100 m support)",
+   "columns": [
+    "Area",
+    "HH median, 12 days before",
+    "HH median, 24 days across burn",
+    "HV median, 24 days across burn",
+    "Pixels rising more than 3 dB (HH)"
+   ],
+   "rows": [
+    [
+     "Inside the boundary (about 3,005 ha)",
+     "-0.75 dB",
+     "+2.63 dB",
+     "+2.06 dB",
+     "37.2%"
+    ],
+    [
+     "0\u20131 km ring outside",
+     "-0.59 dB",
+     "+1.24 dB",
+     "+1.19 dB",
+     "1.8%"
+    ],
+    [
+     "1\u20135 km ring outside",
+     "-0.49 dB",
+     "+1.19 dB",
+     "+1.16 dB",
+     "4.7%"
+    ]
+   ],
+   "note": "Three P05023 dates, with 12- and 24-day intervals. Both outside rings brighten by about 1.2 dB; their medians differ by only 0.045 dB, but the far ring has more >3 dB pixels than the near ring. Neighbouring pixels share 5\u00d75 windows and are not independent. Analysis repairs a self-intersection in a copy of the official boundary, while retaining the original display boundary. All three zones are within the available footprint."
+  },
+  {
+   "step": 4,
+   "title": "How the result depends on the thresholds",
+   "columns": [
+    "Rule",
+    "Cells inside where both respond"
+   ],
+   "rows": [
+    [
+     "Lowest of nine threshold pairs",
+     4
+    ],
+    [
+     "Demonstration rule (3 dB, dNBR 0.10)",
+     80
+    ],
+    [
+     "Highest of nine threshold pairs",
+     271
+    ]
+   ],
+   "note": "Radar thresholds 2, 3 and 4 dB were crossed with dNBR thresholds 0.05, 0.10 and 0.20. No single pair is the true burnt area."
+  }
+ ],
+ "downloads": [
+  {
+   "file": "cells.geojson",
+   "label": "All 800 cells with radar and optical values (GeoJSON, WGS84)",
+   "note": "Includes cells without data. Categories are threshold views, not burn mapping."
+  },
+  {
+   "file": "windows.geojson",
+   "label": "Data windows (GeoJSON)",
+   "note": "Only the optical/cell comparison windows; radar now covers the wider burn and outside rings."
+  },
+  {
+   "file": "ring_statistics.csv",
+   "label": "Full ring response statistics (CSV)",
+   "note": "20 m posting with overlapping 100 m support; descriptive comparisons, not a causal effect."
+  },
+  {
+   "file": "ring_coverage.csv",
+   "label": "Ring coverage and valid support (CSV)",
+   "note": "Geometric coverage and common valid pixel centres for all three zones."
+  }
+ ],
+ "candidates": {
+  "layer": "cells",
+  "default_on": true,
+  "valid_property": "valid",
+  "cell_ha": 1,
+  "not_a": "burn map",
+  "measures": [
+   {
+    "key": "hh_event_db",
+    "short": "HH \u00b7 24 Jul \u2192 17 Aug (across the burn)",
+    "label": "HH change 24 Jul to 17 Aug",
+    "dir": "brighter",
+    "default": 3,
+    "reference": {
+     "property": "window",
+     "target": "inside",
+     "target_label": "Inside the official boundary (400 cells)",
+     "background": "west",
+     "background_label": "West window, outside (391 cells)",
+     "note": "The western window is outside the official boundary but is not confirmed unburnt. A descriptive comparison, not a burn classification. The rule uses each cell's raw change, not the relative map."
+    },
+    "sync": {
+     "pol": "hh",
+     "pair": "event"
+    }
+   },
+   {
+    "key": "hv_event_db",
+    "short": "HV \u00b7 24 Jul \u2192 17 Aug (across the burn)",
+    "label": "HV change 24 Jul to 17 Aug",
+    "dir": "brighter",
+    "default": 3,
+    "reference": {
+     "property": "window",
+     "target": "inside",
+     "target_label": "Inside the official boundary (400 cells)",
+     "background": "west",
+     "background_label": "West window, outside (391 cells)",
+     "note": "The western window is outside the official boundary but is not confirmed unburnt. A descriptive comparison, not a burn classification. The rule uses each cell's raw change, not the relative map."
+    },
+    "sync": {
+     "pol": "hv",
+     "pair": "event"
+    }
+   },
+   {
+    "key": "dnbr",
+    "short": "Optical burn index (dNBR) \u00b7 27 Jul \u2192 16 Aug",
+    "label": "dNBR 27 Jul to 16 Aug",
+    "dir": "brighter",
+    "default": 0.1,
+    "min": 0,
+    "max": 0.4,
+    "step": 0.02,
+    "unit": "",
+    "reference": {
+     "property": "window",
+     "target": "inside",
+     "target_label": "Inside the official boundary (400 cells)",
+     "background": "west",
+     "background_label": "West window, outside (391 cells)",
+     "note": "dNBR is from Sentinel-2, shown for comparison with the radar measures. The rule uses each cell's raw change, not the relative map."
+    }
+   }
+  ]
+ },
+ "default_view": "change",
+ "default_relative": true,
+ "headline": "Across the burn, the median HH return rose 2.6 dB inside the official boundary against 1.2 dB in the surroundings. Relative to the whole window, the burn stands out inside its boundary.",
+ "layers": [
+  {
+   "type": "geojson",
+   "id": "official",
+   "name": "Official final burn boundary (NSW NPWS)",
+   "kind": "official",
+   "file": "official_final_boundary.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "Official boundary",
+     "mode": "outline",
+     "color": "#b3541e",
+     "dash": "6 4"
+    }
+   ]
+  },
+  {
+   "type": "geojson",
+   "id": "windows",
+   "name": "Check windows (2 km): one inside the burn, one control outside to the west",
+   "kind": "support",
+   "file": "windows.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "Data windows",
+     "mode": "outline",
+     "color": "#12306b"
+    }
+   ]
+  },
+  {
+   "type": "geojson",
+   "id": "cells",
+   "name": "1 ha analysis cells",
+   "kind": "cells",
+   "file": "cells.geojson",
+   "default_on": false,
+   "styles": [
+    {
+     "name": "Which sensor responds",
+     "mode": "class",
+     "property": "category",
+     "classes": {
+      "both_responses": {
+       "color": "#6a3d9a",
+       "label": "Both respond"
+      },
+      "optical_only": {
+       "color": "#e6a817",
+       "label": "Optical only"
+      },
+      "SAR_only": {
+       "color": "#1f78b4",
+       "label": "Radar only"
+      },
+      "neither_threshold": {
+       "color": "#e8e8e8",
+       "label": "Neither"
+      },
+      "no_common_data": {
+       "color": "#9a9a9a",
+       "label": "No common data"
+      }
+     }
+    },
+    {
+     "name": "Disagree under how many of 9 rules",
+     "mode": "steps",
+     "property": "disagree_in_9_rules",
+     "min": 1,
+     "max": 9,
+     "null_label": "Agree under the demonstration rule"
+    },
+    {
+     "name": "HH change across burn",
+     "mode": "diverging",
+     "property": "hh_event_db",
+     "limit": 6,
+     "unit": "dB"
+    },
+    {
+     "name": "HV change across burn",
+     "mode": "diverging",
+     "property": "hv_event_db",
+     "limit": 6,
+     "unit": "dB"
+    },
+    {
+     "name": "Optical burn index (dNBR)",
+     "mode": "sequential",
+     "property": "dnbr",
+     "min": 0,
+     "max": 0.4,
+     "unit": ""
+    }
+   ],
+   "popup": [
+    {
+     "key": "window",
+     "label": "Window"
+    },
+    {
+     "key": "category",
+     "label": "Demonstration rule"
+    },
+    {
+     "key": "disagree_in_9_rules",
+     "label": "Disagree under how many of 9 rules"
+    },
+    {
+     "key": "hh_normal_db",
+     "label": "HH, pre-burn reference period (12 to 24 Jul)",
+     "unit": "dB"
+    },
+    {
+     "key": "hh_event_db",
+     "label": "HH, 24 days across the burn (24 Jul to 17 Aug)",
+     "unit": "dB"
+    },
+    {
+     "key": "hv_normal_db",
+     "label": "HV, pre-burn reference period",
+     "unit": "dB"
+    },
+    {
+     "key": "hv_event_db",
+     "label": "HV, 24 days across the burn",
+     "unit": "dB"
+    },
+    {
+     "key": "dnbr",
+     "label": "dNBR, 27 Jul to 16 Aug"
+    },
+    {
+     "key": "optical_spot_check",
+     "label": "In the 16-cell optical spot check"
+    }
+   ]
+  }
+ ],
+ "object_series": null,
+ "dates": {
+  "baseline_1": {
+   "date": "2026-07-12",
+   "time_utc": "19:46:43",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_025_066_A_163_2005_DHDH_M_20260712T194643_20260712T194718_P05023_N_F_J_001"
+  },
+  "baseline_2": {
+   "date": "2026-07-24",
+   "time_utc": "19:46:42",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_026_066_A_163_2005_DHDH_M_20260724T194642_20260724T194717_P05023_N_F_J_001"
+  },
+  "after": {
+   "date": "2026-08-17",
+   "time_utc": "19:46:41",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_028_066_A_163_2005_DHDH_M_20260817T194641_20260817T194716_P05023_N_F_J_001"
+  }
+ },
+ "bounds": [
+  [
+   -29.490974,
+   152.059001
+  ],
+  [
+   -29.339078,
+   152.260855
+  ]
+ ],
+ "images": {
+  "backscatter": {
+   "hh": {
+    "baseline_1": "hh_baseline_1.png",
+    "baseline_2": "hh_baseline_2.png",
+    "after": "hh_after.png"
+   },
+   "hv": {
+    "baseline_1": "hv_baseline_1.png",
+    "baseline_2": "hv_baseline_2.png",
+    "after": "hv_after.png"
+   }
+  },
+  "change": {
+   "hh": {
+    "normal": "change_normal_hh.png",
+    "event": "change_event_hh.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv.png",
+    "event": "change_event_hv.png"
+   }
+  },
+  "change_rel": {
+   "hh": {
+    "normal": "change_normal_hh_rel.png",
+    "event": "change_event_hh_rel.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv_rel.png",
+    "event": "change_event_hv_rel.png"
+   }
+  }
+ },
+ "stats": {
+  "hh": {
+   "normal": {
+    "median_db": -0.5,
+    "q25_db": -0.86,
+    "q75_db": -0.16,
+    "share_above_3db": 0.0,
+    "share_below_minus_3db": 0.0003
+   },
+   "event": {
+    "median_db": 1.25,
+    "q25_db": 0.71,
+    "q75_db": 1.92,
+    "share_above_3db": 0.0705,
+    "share_below_minus_3db": 0.0001
+   }
+  },
+  "hv": {
+   "normal": {
+    "median_db": -0.49,
+    "q25_db": -0.88,
+    "q75_db": -0.12,
+    "share_above_3db": 0.0,
+    "share_below_minus_3db": 0.0001
+   },
+   "event": {
+    "median_db": 1.21,
+    "q25_db": 0.73,
+    "q75_db": 1.77,
+    "share_above_3db": 0.0307,
+    "share_below_minus_3db": 0.0
+   }
+  }
+ },
+ "series": {
+  "valid_fraction": 0.9998,
+  "dates": [
+   {
+    "date": "2026-07-12",
+    "time_utc": "19:46:43",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "hh_baseline_1.png",
+     "hv": "hv_baseline_1.png"
+    }
+   },
+   {
+    "date": "2026-07-24",
+    "time_utc": "19:46:42",
+    "crid": "P05023",
+    "phase": "before",
+    "images": {
+     "hh": "hh_baseline_2.png",
+     "hv": "hv_baseline_2.png"
+    }
+   },
+   {
+    "date": "2026-08-17",
+    "time_utc": "19:46:41",
+    "crid": "P05023",
+    "phase": "after",
+    "images": {
+     "hh": "hh_after.png",
+     "hv": "hv_after.png"
+    }
+   }
+  ],
+  "areas": [
+   {
+    "name": "Whole area shown",
+    "kind": "all",
+    "hh_db": [
+     -6.73,
+     -7.19,
+     -6.05
+    ],
+    "hv_db": [
+     -12.21,
+     -12.69,
+     -11.48
+    ]
+   }
+  ]
+ },
+ "zones": [],
+ "checks": {
+  "same_processing_version": {
+   "question": "Same processing version on all dates?",
+   "value": true,
+   "text": "All three radar dates use P05023."
+  },
+  "baseline_quiet": {
+   "question": "Was the normal period quiet?",
+   "value": false,
+   "text": "Median HH change between the two baseline dates is -0.50 dB."
+  },
+  "independent_evidence": {
+   "question": "Is there independent evidence of the event?",
+   "value": true,
+   "text": "The official burn record and final boundary. Optical images may share sources with that boundary, so they are not fully independent of it."
+  },
+  "reference_extent": {
+   "question": "Can we check the planned area?",
+   "value": false,
+   "text": "The original burn plan and exclusion zones were not available, so the radar is compared with the final boundary only."
+  }
+ },
+ "evidence": [],
+ "display": {
+  "stretch_db": {
+   "hh": [
+    -25.0,
+    5.0
+   ],
+   "hv": [
+    -32.0,
+    -5.0
+   ]
+  },
+  "change_limit_db": 6.0,
+  "posting_m": 20.0,
+  "footprint_m": 100.0,
+  "mode": "sliding",
+  "valid_fraction": 0.9998,
+  "relative": {
+   "label": "Relative to the whole window",
+   "offsets": {
+    "hh": {
+     "normal": -0.49792909622192383,
+     "event": 1.2500829696655273
+    },
+    "hv": {
+     "normal": -0.4903230667114258,
+     "event": 1.211604118347168
+    }
+   },
+   "note": "Each change minus the median change of the whole window. This takes out the typical change of the whole area, which may include widespread wetting and part of any processing-version offset. What remains is where a place changed more or less than its surroundings. This is display centering, not proof that spatial processing-version differences or environmental effects have been corrected.",
+   "validation": {
+    "hh": {
+     "normal": {
+      "valid_pixels": 812325,
+      "relative_median_db": 0.0
+     },
+     "event": {
+      "valid_pixels": 812325,
+      "relative_median_db": 0.0
+     }
+    },
+    "hv": {
+     "normal": {
+      "valid_pixels": 812325,
+      "relative_median_db": 0.0
+     },
+     "event": {
+      "valid_pixels": 812325,
+      "relative_median_db": 0.0
+     }
+    }
+   }
+  }
+ },
+ "generated_utc": "2026-11-15T13:37:40Z"
+}

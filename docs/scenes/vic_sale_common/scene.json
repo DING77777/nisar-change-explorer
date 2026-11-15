@@ -1,0 +1,531 @@
+{
+ "id": "vic_sale_common",
+ "title": "Sale Common wetland, Victoria: water rising, then receding",
+ "short_title": "Sale Common wetland",
+ "kind": "Wetland water change",
+ "theme": "Water \u00b7 Victoria: radar checked against clear optical images",
+ "place": "6 km window around Sale Common Nature Conservation Reserve, Gippsland, Victoria, Australia. The window is not the park boundary",
+ "mechanism": "Candidate explanation: where land turns into smooth open water, the radar energy reflects away from the satellite and the return drops. When the water goes, wet ground and plants are exposed and the return rises again. Both polarisations show it here, HV a little more strongly.",
+ "what_happened": "Parks Victoria reports Sale Common partly closed from 16 October 2026 because of flooding. Sentinel-2 optical images show water spreading across the wetland between 28 September and 8 October and shrinking again by 18 October. The closure date is not the day the flooding began.",
+ "sources": [
+  {
+   "label": "Parks Victoria: Sale Common Nature Conservation Reserve",
+   "url": "https://www.parks.vic.gov.au/places-to-see/parks/sale-common-nature-conservation-reserve"
+  },
+  {
+   "label": "Geoscience Australia, Digital Earth Australia Sentinel-2 analysis-ready data",
+   "url": "https://www.dea.ga.gov.au/"
+  }
+ ],
+ "use_for": [
+  "Screening where a wetland is filling or draining between 12-day passes, so managers can decide where to check on the ground.",
+  "A starting point for following wetland water on cloudy days. That use still needs testing against clear days like these."
+ ],
+ "not_for": [
+  "It is not a flood extent or water depth product.",
+  "It is not evidence that radar detects water under forest.",
+  "It is not a forecast."
+ ],
+ "limits": [
+  "The optical images and radar passes are 8 to 56 hours apart, so the water can have moved in between.",
+  "Water that stayed water also changed (HH about -2.9 dB in the second interval), so wind and surface roughness affect the radar return as well.",
+  "There is no accuracy assessment and no comparison of matched land-cover types.",
+  "The window includes town, farmland and river as well as wetland.",
+  "This tests how the radar responds on existing optical labels. It does not validate an automatic radar flood map, and it does not show water under trees."
+ ],
+ "track": 117,
+ "frame": 108,
+ "direction": "descending",
+ "product": "NISAR L2 GCOV, L-band, Frequency A, HHHH and HVHV, 20 m",
+ "story": "three_dates",
+ "interval_short": [
+  "Water rising",
+  "Water receding"
+ ],
+ "interval_labels": [
+  "26 Sep to 8 Oct, water rising",
+  "8 Oct to 20 Oct, water receding"
+ ],
+ "date_notes": {
+  "baseline_1": "before the rise",
+  "baseline_2": "high water",
+  "after": "receding"
+ },
+ "default_pair": "normal",
+ "class_table": [
+  {
+   "interval": 0,
+   "label": "Optical: new water",
+   "cells": 276,
+   "hh_db": -3.65,
+   "hv_db": -4.2
+  },
+  {
+   "interval": 0,
+   "label": "Optical: stable land",
+   "cells": 1550,
+   "hh_db": -0.18,
+   "hv_db": -0.39
+  },
+  {
+   "interval": 1,
+   "label": "Optical: water lost",
+   "cells": 104,
+   "hh_db": 2.26,
+   "hv_db": 3.46
+  },
+  {
+   "interval": 1,
+   "label": "Optical: stable land",
+   "cells": 1552,
+   "hh_db": -1.02,
+   "hv_db": -0.04
+  }
+ ],
+ "class_table_note": "Groups are 100 m cells labelled from Sentinel-2 alone (water fraction of at least 0.8, with cloud, shadow and edge screening), chosen without looking at the radar. Values are the median radar change in each group. Cell counts are the cells that passed screening, not a flooded area.",
+ "radar_summary": "Cells that the optical images show turning into water darkened by about 3.7 dB in HH and 4.2 dB in HV, while stable land moved by less than 0.4 dB. Cells that lost their water brightened again by 2.3 dB in HH and 3.5 dB in HV. There are three radar dates. 8 October is the middle pass and the date of the largest water area in the optical images; three passes cannot show the exact day of the peak or when the water began to fall.",
+ "tour": [
+  "Sale Common wetland, Victoria, on the 8 Oct optical image. Purple cells: where the radar return dropped by at least 3 dB in HV between 26 Sep and 8 Oct. They sit on the water that spread across the wetland.",
+  "Now the radar change map itself. Left of the line: change from 26 Sep to 8 Oct, while the water spread. Right: 8 to 20 Oct, while it receded. Blue is darker, red is brighter.",
+  "This is HV. On cells that optical images show turning into water, HH fell 3.7 dB and HV 4.2 dB. Stable land moved less than 0.4 dB.",
+  "Under the map, drag the threshold: the panel shows how many optical new-water cells and how many stable-land cells pass the rule. Then download the cells that pass.",
+  "Your turn: change the rule, click a cell, download the cells that pass, or open another case."
+ ],
+ "task": "A wetland manager wants to know where water spread and where it drained between two satellite passes, to plan checks on the ground.",
+ "optical_text": "Sentinel-2 optical images on 28 September, 8 October and 18 October, screened for cloud, shadow and image edges. From these alone, 100 m cells were labelled as new water, water lost, or stable land before any radar value was read. Switch on the 8 October optical image in the map layers to compare.",
+ "agreement": "Yes, on these labelled cells. With the rule 'HV drops by at least 3 dB', 64% of the 276 cells the optical images call new water pass, and 4% of the 1550 stable-land cells. If the threshold is set so that about 5% of stable land passes (2.4 dB), 72% of new water passes. Cells that lost water brightened again. These are group results over many cells, not the value at a point you click, and new water and water lost are different cells. The optical and radar dates differ by 8 to 56 hours.",
+ "downloads": [
+  {
+   "file": "sale_cells.geojson",
+   "label": "All 3600 cells with HH and HV change and optical labels (GeoJSON, WGS84)",
+   "note": "Optical labels only on the 2709 cells that passed the strict quality check. Missing radar values are null."
+  },
+  {
+   "file": "optical_groups_radar_change.csv",
+   "label": "Radar change in each optical group (CSV)",
+   "note": "Group medians from the table in step 4. Optical labels, not a radar flood boundary."
+  }
+ ],
+ "candidates": {
+  "layer": "cells",
+  "default_on": true,
+  "valid_property": "valid_common",
+  "cell_ha": 1,
+  "not_a": "flood map",
+  "measures": [
+   {
+    "key": "hv_1",
+    "short": "HV \u00b7 26 Sep \u2192 8 Oct",
+    "label": "HV change 26 Sep to 8 Oct",
+    "dir": "darker",
+    "default": 3,
+    "reference": {
+     "property": "label_1",
+     "target": "new_water",
+     "target_label": "Optical new water (276 cells)",
+     "background": "stable_land",
+     "background_label": "Optical stable land (1550 cells)",
+     "note": "Optical labels come from Sentinel-2 alone and were fixed before reading the radar. This is a descriptive comparison on those labels, not an accuracy test. Only the 2709 cells that passed the strict quality check are counted."
+    },
+    "meaning": {
+     "darker": "In this period (26 Sep to 8 Oct), darker radar cells are consistent with land turning into open water."
+    },
+    "sync": {
+     "pol": "hv",
+     "pair": "normal"
+    },
+    "meaning_short": {
+     "darker": "land to water"
+    }
+   },
+   {
+    "key": "hh_1",
+    "short": "HH \u00b7 26 Sep \u2192 8 Oct",
+    "label": "HH change 26 Sep to 8 Oct",
+    "dir": "darker",
+    "default": 3,
+    "reference": {
+     "property": "label_1",
+     "target": "new_water",
+     "target_label": "Optical new water (276 cells)",
+     "background": "stable_land",
+     "background_label": "Optical stable land (1550 cells)",
+     "note": "Optical labels come from Sentinel-2 alone and were fixed before reading the radar. This is a descriptive comparison on those labels, not an accuracy test. Only the 2709 cells that passed the strict quality check are counted."
+    },
+    "meaning": {
+     "darker": "In this period (26 Sep to 8 Oct), darker radar cells are consistent with land turning into open water."
+    },
+    "sync": {
+     "pol": "hh",
+     "pair": "normal"
+    },
+    "meaning_short": {
+     "darker": "land to water"
+    }
+   },
+   {
+    "key": "hv_2",
+    "short": "HV \u00b7 8 Oct \u2192 20 Oct",
+    "label": "HV change 8 Oct to 20 Oct",
+    "dir": "brighter",
+    "default": 3,
+    "reference": {
+     "property": "label_2",
+     "target": "water_lost",
+     "target_label": "Optical water lost (104 cells)",
+     "background": "stable_land",
+     "background_label": "Optical stable land (1552 cells)",
+     "note": "Water lost is a different group of cells from new water. Descriptive comparison on optical labels, not an accuracy test."
+    },
+    "meaning": {
+     "brighter": "In this period (8 to 20 Oct), brighter radar cells are consistent with water receding from the land."
+    },
+    "sync": {
+     "pol": "hv",
+     "pair": "event"
+    },
+    "meaning_short": {
+     "brighter": "water receding"
+    }
+   },
+   {
+    "key": "hh_2",
+    "short": "HH \u00b7 8 Oct \u2192 20 Oct",
+    "label": "HH change 8 Oct to 20 Oct",
+    "dir": "brighter",
+    "default": 3,
+    "reference": {
+     "property": "label_2",
+     "target": "water_lost",
+     "target_label": "Optical water lost (104 cells)",
+     "background": "stable_land",
+     "background_label": "Optical stable land (1552 cells)",
+     "note": "Water lost is a different group of cells from new water. Descriptive comparison on optical labels, not an accuracy test."
+    },
+    "meaning": {
+     "brighter": "In this period (8 to 20 Oct), brighter radar cells are consistent with water receding from the land."
+    },
+    "sync": {
+     "pol": "hh",
+     "pair": "event"
+    },
+    "meaning_short": {
+     "brighter": "water receding"
+    }
+   }
+  ]
+ },
+ "headline": "Cells that optical images show turning into water darkened by a median 4.2 dB in HV, while stable land moved less than 0.4 dB. A rule that flags 5% of stable land selects 72% of the new-water cells.",
+ "default_opacity": 0.7,
+ "zoom_out": 0.75,
+ "layers": [
+  {
+   "type": "image",
+   "id": "optical",
+   "name": "Optical image, 8 Oct 2026 (Sentinel-2C)",
+   "kind": "optical_context",
+   "file": "optical_20261008.png",
+   "bounds": [
+    [
+     -38.15256201999581,
+     147.03626832482635
+    ],
+    [
+     -38.098418284683284,
+     147.10475266477928
+    ]
+   ],
+   "credit": "Geoscience Australia, DEA Sentinel-2C Surface Reflectance, 8 Oct 2026, CC BY 4.0. Contains modified Copernicus Sentinel data 2026. Cropped, cloud-masked, colour-stretched and reprojected by Space NUTS. Taken 8 hours before the 8 Oct radar pass.",
+   "default_on": true
+  },
+  {
+   "type": "geojson",
+   "id": "cells",
+   "name": "100 m analysis cells",
+   "kind": "cells",
+   "file": "sale_cells.geojson",
+   "default_on": true,
+   "styles": [
+    {
+     "name": "HV change, water rising",
+     "mode": "diverging",
+     "property": "hv_1",
+     "limit": 6,
+     "unit": "dB"
+    },
+    {
+     "name": "HV change, water receding",
+     "mode": "diverging",
+     "property": "hv_2",
+     "limit": 6,
+     "unit": "dB"
+    },
+    {
+     "name": "Optical label, water rising",
+     "mode": "class",
+     "property": "label_1",
+     "classes": {
+      "new_water": {
+       "color": "#1f78b4",
+       "label": "New water"
+      },
+      "stable_land": {
+       "color": "#d9c79a",
+       "label": "Stable land"
+      },
+      "other": {
+       "color": "#eeeeee",
+       "label": "Other or mixed"
+      },
+      "not_assessed": {
+       "color": "#9a9a9a",
+       "label": "Not assessed (failed optical QA)"
+      }
+     }
+    },
+    {
+     "name": "Optical label, water receding",
+     "mode": "class",
+     "property": "label_2",
+     "classes": {
+      "water_lost": {
+       "color": "#e31a1c",
+       "label": "Water lost"
+      },
+      "stable_land": {
+       "color": "#d9c79a",
+       "label": "Stable land"
+      },
+      "other": {
+       "color": "#eeeeee",
+       "label": "Other or mixed"
+      },
+      "not_assessed": {
+       "color": "#9a9a9a",
+       "label": "Not assessed (failed optical QA)"
+      }
+     }
+    }
+   ],
+   "popup": [
+    {
+     "key": "valid_common",
+     "label": "Passed the strict optical and radar quality check"
+    },
+    {
+     "key": "hh_1",
+     "label": "HH, 26 Sep to 8 Oct (water rising)",
+     "unit": "dB"
+    },
+    {
+     "key": "hv_1",
+     "label": "HV, 26 Sep to 8 Oct (water rising)",
+     "unit": "dB"
+    },
+    {
+     "key": "label_1",
+     "label": "Optical label, water rising"
+    },
+    {
+     "key": "hh_2",
+     "label": "HH, 8 Oct to 20 Oct (water receding)",
+     "unit": "dB"
+    },
+    {
+     "key": "hv_2",
+     "label": "HV, 8 Oct to 20 Oct (water receding)",
+     "unit": "dB"
+    },
+    {
+     "key": "label_2",
+     "label": "Optical label, water receding"
+    }
+   ]
+  }
+ ],
+ "object_series": null,
+ "dates": {
+  "baseline_1": {
+   "date": "2026-09-26",
+   "time_utc": "08:09:13",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_031_117_D_108_2005_DHDH_A_20260926T080913_20260926T080948_P05023_N_F_J_001"
+  },
+  "baseline_2": {
+   "date": "2026-10-08",
+   "time_utc": "08:09:14",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_032_117_D_108_2005_DHDH_A_20261008T080914_20261008T080948_P05023_N_F_J_001"
+  },
+  "after": {
+   "date": "2026-10-20",
+   "time_utc": "08:09:14",
+   "crid": "P05023",
+   "granule": "NISAR_L2_PR_GCOV_033_117_D_108_2005_DHDH_A_20261020T080914_20261020T080948_P05023_N_F_J_001"
+  }
+ },
+ "bounds": [
+  [
+   -38.152203,
+   147.036725
+  ],
+  [
+   -38.098779,
+   147.104409
+  ]
+ ],
+ "images": {
+  "backscatter": {
+   "hh": {
+    "baseline_1": "hh_baseline_1.png",
+    "baseline_2": "hh_baseline_2.png",
+    "after": "hh_after.png"
+   },
+   "hv": {
+    "baseline_1": "hv_baseline_1.png",
+    "baseline_2": "hv_baseline_2.png",
+    "after": "hv_after.png"
+   }
+  },
+  "change": {
+   "hh": {
+    "normal": "change_normal_hh.png",
+    "event": "change_event_hh.png"
+   },
+   "hv": {
+    "normal": "change_normal_hv.png",
+    "event": "change_event_hv.png"
+   }
+  }
+ },
+ "stats": {
+  "hh": {
+   "normal": {
+    "median_db": -0.22,
+    "q25_db": -1.07,
+    "q75_db": 0.55,
+    "share_above_3db": 0.0353,
+    "share_below_minus_3db": 0.0938
+   },
+   "event": {
+    "median_db": -0.84,
+    "q25_db": -1.51,
+    "q75_db": -0.13,
+    "share_above_3db": 0.049,
+    "share_below_minus_3db": 0.0493
+   }
+  },
+  "hv": {
+   "normal": {
+    "median_db": -0.41,
+    "q25_db": -1.22,
+    "q75_db": 0.19,
+    "share_above_3db": 0.0004,
+    "share_below_minus_3db": 0.1106
+   },
+   "event": {
+    "median_db": 0.12,
+    "q25_db": -0.49,
+    "q75_db": 0.83,
+    "share_above_3db": 0.0797,
+    "share_below_minus_3db": 0.0009
+   }
+  }
+ },
+ "series": {
+  "valid_fraction": 1.0,
+  "dates": [
+   {
+    "date": "2026-09-26",
+    "time_utc": "08:09:13",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "hh_baseline_1.png",
+     "hv": "hv_baseline_1.png"
+    }
+   },
+   {
+    "date": "2026-10-08",
+    "time_utc": "08:09:14",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "hh_baseline_2.png",
+     "hv": "hv_baseline_2.png"
+    }
+   },
+   {
+    "date": "2026-10-20",
+    "time_utc": "08:09:14",
+    "crid": "P05023",
+    "phase": "date",
+    "images": {
+     "hh": "hh_after.png",
+     "hv": "hv_after.png"
+    }
+   }
+  ],
+  "areas": [
+   {
+    "name": "Whole area shown",
+    "kind": "all",
+    "hh_db": [
+     -8.82,
+     -9.16,
+     -9.56
+    ],
+    "hv_db": [
+     -16.39,
+     -17.68,
+     -16.95
+    ]
+   }
+  ]
+ },
+ "zones": [],
+ "checks": {
+  "same_processing_version": {
+   "question": "Same processing version on all dates?",
+   "value": true,
+   "text": "All dates use P05023."
+  },
+  "independent_evidence": {
+   "question": "Is there independent evidence of the change?",
+   "value": true,
+   "text": "Water and land labels come from Sentinel-2 optical images and were fixed before looking at the radar."
+  },
+  "reference_extent": {
+   "question": "Is there ground truth to test against?",
+   "value": false,
+   "text": "No ground survey, water levels or official flood extent. Optical labels are not ground truth."
+  }
+ },
+ "evidence": [
+  {
+   "type": "image",
+   "file": "optical_three_dates.png",
+   "alt": "Sentinel-2 true colour images of the Sale Common area on 28 September, 8 October and 18 October 2026",
+   "caption": "Sentinel-2 true colour on 28 September, 8 October and 18 October 2026. The optical images were taken 40 hours after, 8 hours before and 56 hours before the three radar passes.",
+   "credit": "Geoscience Australia, Digital Earth Australia Sentinel-2 analysis-ready data, CC BY 4.0. Contains modified Copernicus Sentinel data 2026"
+  }
+ ],
+ "display": {
+  "stretch_db": {
+   "hh": [
+    -25.0,
+    5.0
+   ],
+   "hv": [
+    -32.0,
+    -5.0
+   ]
+  },
+  "change_limit_db": 6.0,
+  "posting_m": 20.0,
+  "footprint_m": 100.0,
+  "mode": "sliding",
+  "valid_fraction": 1.0
+ },
+ "generated_utc": "2026-11-15T13:47:58Z"
+}

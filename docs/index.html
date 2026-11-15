@@ -1,0 +1,171 @@
+<!doctype html>
+<!-- AI-assisted code (Claude, Codex); see README, Use of AI. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NISAR Change Explorer | Space NUTS</title>
+  <meta name="description" content="See where the land surface changed after extreme weather, how much, and how sure we are, using NASA-ISRO NISAR L-band radar.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css?v=20261115-2235">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Space NUTS team logo (AI-generated)" class="logo">
+    <div class="titles">
+      <h1>NISAR Change Explorer</h1>
+      <p class="tagline">Turns NISAR radar changes into map cells you can see, check against other evidence, and export as GIS files.</p>
+      <p>NASA Space Apps Challenge 2026, Dancing with the SARs, team Space NUTS (Perth).</p>
+    </div>
+    <nav>
+      <button data-tab="explore" class="on">Explore</button>
+      <button data-tab="compare">Compare cases</button>
+      <button data-tab="method">Method and limits</button>
+      <a class="navlink" href="slides.html">7-slide demo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="explore" class="tab">
+      <div class="mapcol">
+        <div id="mapwrap">
+          <div id="map"></div>
+          <div id="divider"></div>
+          <input type="range" id="swipe" min="0" max="1" step="0.001" value="0.5" aria-label="Drag to compare left and right images">
+          <div id="leftlabel" class="sidelabel"></div>
+          <div id="rightlabel" class="sidelabel"></div>
+          <div id="legend"></div>
+          <div id="tour" hidden>
+            <p id="tourtext"></p>
+            <div class="tourbar">
+              <span id="tourcount"></span>
+              <button id="tourback">Back</button>
+              <button id="tournext" class="on">Next</button>
+              <button id="tourclose" aria-label="Close the tour">Close</button>
+            </div>
+          </div>
+        </div>
+        <p id="mapnote" hidden></p>
+        <div id="layerlegend" aria-live="polite"></div>
+        <div class="controls">
+          <div class="group" id="viewgroup">
+            <span>Show</span>
+            <button data-view="backscatter" class="on">Radar image</button>
+            <button data-view="change">Change map</button>
+            <button data-view="none">Off</button>
+          </div>
+          <div class="group" id="relgroup" hidden><span>Change reference</span><button data-rel="false" class="on">Raw change</button><button data-rel="true">Relative to the whole window</button></div>
+          <div class="group" id="polgroup">
+            <span>Polarisation</span>
+            <button data-pol="hh" class="on">HH</button>
+            <button data-pol="hv">HV</button>
+          </div>
+          <div class="group" id="pairgroup">
+            <span>Dates</span>
+            <button data-pair="normal">Two dates before the event</button>
+            <button data-pair="event" class="on">Before and after the event</button>
+            <button data-pair="series">One date at a time</button>
+          </div>
+          <button id="play">Play all dates</button>
+          <label class="group" id="dategroup">Date <input type="range" id="dateslider" min="0" max="2" step="1" value="0"> <b id="datelabel"></b></label>
+          <label class="group" id="opacitygroup">Overlay opacity <input type="range" id="opacity" min="0" max="1" step="0.05" value="1"></label>
+          <div class="group" id="colourgroup"></div>
+          <div class="group" id="layergroup"></div>
+        </div>
+        <div id="candpanel" hidden></div>
+        <p class="hint" id="hint"></p>
+        <p class="small" id="layercredit"></p>
+      </div>
+      <aside>
+        <button id="tourbtn" class="cta">New here? Take the 30-second tour</button>
+        <h2>Cases</h2>
+        <div id="scenelist"></div>
+        <div id="selection" hidden></div>
+        <div id="card"></div>
+      </aside>
+    </section>
+
+    <section id="compare" class="tab" hidden>
+      <h2>All cases side by side</h2>
+      <p>Every case goes through the same steps: three key dates, and the change between the first two and between the last two. Values are medians over the whole area shown, in decibels (dB). Positive means brighter. A whole-area median mixes land that changed with land that did not, so open a case to see where the change is and what the labelled groups show.</p>
+      <div class="tablewrap"><table id="comparetable"></table></div>
+
+      <h2 style="margin-top:22px">Case library: everything else we tested</h2>
+      <p>The same recipe was run on 16 more places across Australia and Nepal. They are listed here by theme, with what each one showed and how far it goes. Each can become a map case with one config file.</p>
+      <div class="tablewrap"><table class="library">
+        <tr><th>Place and theme</th><th>What we found</th><th>Scope</th></tr>
+        <tr><td>Darwin mangroves, NT<br><span class="small">Coast, tide</span></td><td>427 intertidal cells on two tracks. Harbour tide at the passes was about 2.2, 2.8 and 6.9 m (BoM gauge). On the high-tide pass HH rose 1.1 dB while HV fell 0.5 dB.</td><td>Not proof of water under the mangroves. The tide gauge is in the harbour, not at each cell.</td></tr>
+        <tr><td>Lake Eppalock, Vic<br><span class="small">Water</span></td><td>10 cells of new water in optical images darkened (HH -6.9, HV -2.4 dB).</td><td>Water that stayed water also darkened (HH -3.7 dB), so darkening alone does not identify new water. Intervals are 36 and 48 days.</td></tr>
+        <tr><td>Macquarie Marshes, NSW<br><span class="small">Wetland water</span></td><td>Radar brightened about 2.4 dB before the 17 Aug environmental-water announcement; optical greenness rose.</td><td>Not evidence that radar saw the water first: the arrival time at these cells is unknown.</td></tr>
+        <tr><td>Pantons, Vic; Kakadu, NT<br><span class="small">Fire</span></td><td>Official or NAFI burn records and clear optical change; radar change was weak.</td><td>Weak radar change does not mean no fire.</td></tr>
+        <tr><td>Bear Hill, Shannondale, Tabulam, Glebe Hill<br><span class="small">Fire</span></td><td>Official boundaries with local radar and optical checks. Shannondale's normal period changed almost as much as the event.</td><td>Small windows, 12 to 24 day intervals; not burn maps.</td></tr>
+        <tr><td>Budhi, Nepal (11 Oct)<br><span class="small">Mountain hazard</span></td><td>218 cells inside an after-event outline; the radar changed, but the background changed too.</td><td>Not a detection; the outline is not an official map.</td></tr>
+        <tr><td>Mackay, Wheatbelt (WA)<br><span class="small">Farmland</span></td><td>Nine-date and seasonal series show farm-season change.</td><td>No 2026 crop or harvest records.</td></tr>
+        <tr><td>Quilpie, Lake Amadeus, Green Triangle, Kilauea<br><span class="small">Flood, lake, forest, lava</span></td><td>Weak or mixed change.</td><td>The first image was already in the flood (Quilpie); no lake inflow, logging date or lava outline to test against.</td></tr>
+      </table></div>
+    </section>
+
+    <section id="method" class="tab" hidden>
+      <h2>How each case is made</h2>
+      <ol>
+        <li>Take three NISAR L2 GCOV images from the same track and frame. We use the HH and HV backscatter layers (L-band, Frequency A).</li>
+        <li>Keep only pixels that are valid on all dates in both polarisations, using the product's own quality layers.</li>
+        <li>Average the radar power over a small window to reduce speckle, then convert to decibels.</li>
+        <li>Subtract to get the change between the first two dates and between the last two. Where the first two dates are both before an event, the first change shows how much the place varies normally.</li>
+        <li>Report both changes next to each other, with independent evidence where we have it: river gauges, or groups of cells labelled from optical images without looking at the radar.</li>
+        <li>Where more dates exist, plot the median return on every date so the event can be compared with months of normal variation.</li>
+      </ol>
+      <p>Users can highlight and export cells that pass a stated rule; these are candidates for checking, not a validated hazard classification, and we do not draw a flood boundary. The page shows where the surface changed, how that compares with a normal 12 days, and what else supports or limits the reading.</p>
+
+      <h2>Why radar, and why NISAR</h2>
+      <p>Radar works at night and through cloud, which is when optical satellites fail during storms. NISAR is the NASA-ISRO radar mission. Its L-band radar has a longer wavelength than earlier open radar missions, it images land every 12 days, and its data are free and open.</p>
+
+      <h2>Which polarisation shows the change?</h2>
+      <p>It depends on what changed. After heavy rain in Queensland, HH brightened more than HV across the whole landscape. At Sale Common, where land turned into open water, both dropped and HV dropped a little more (4.2 dB against 3.7 dB). In Burdekin field C, HV fell by about 11 dB and HH by about 8 dB. A handful of cases is not enough to say one polarisation is better in general, so the page always shows both.</p>
+
+      <h2>Four kinds of change, one recipe</h2>
+      <p>Water (Sale Common, Queensland), farmland (Burdekin), fire (Rockadooie) and a mountain hazard (Timure) all go through the same steps and the same page. Each case is one config file. Where a team member delivered values already computed per cell (Rockadooie) or radar already averaged to 100 m (Burdekin) or 50 m (Timure) in dB, the recipe reads them as they are and never converts dB a second time.</p>
+
+      <h2>What NISAR could do next</h2>
+      <ul>
+        <li>NISAR images land every 12 days, so a place builds up a long record. A longer series would describe the normal rhythm of a place better than a few dates.</li>
+        <li>NISAR's interferometric products measure ground movement, which backscatter cannot. At Timure the products we could get failed quality checks at the source; better coverage may change that.</li>
+        <li>Testing the exported candidate cells against field checks, so a radar-only rule can be trusted where no optical labels exist.</li>
+      </ul>
+      <p class="small">These are directions for future work, not demonstrated on this page.</p>
+
+      <h2>What we checked for the Queensland case</h2>
+      <ul>
+        <li>The before and after images were made with different processing versions. We measured the difference using one acquisition that exists in both versions, and compared four ways of correcting for it. The code and reports are in the repository under <code>audit_qld_flood</code>.</li>
+        <li>We compared the change with river gauge records, two rainfall datasets, land cover and government event records.</li>
+        <li>We looked for an official flood extent to test against and did not find one.</li>
+      </ul>
+
+      <h2>Data and credits</h2>
+      <ul>
+        <li>NISAR L2 GCOV: NASA and ISRO, distributed by the Alaska Satellite Facility (<a href="https://search.asf.alaska.edu/">ASF Vertex</a>, <a href="https://search.earthdata.nasa.gov/search">Earthdata Search</a>, <a href="https://nisar-docs.asf.alaska.edu/">NISAR Data User Guide</a>).</li>
+        <li>Optical images and water labels for Sale Common: Geoscience Australia, <a href="https://www.dea.ga.gov.au/">Digital Earth Australia</a> Sentinel-2 analysis-ready data, CC BY 4.0. Contains modified Copernicus Sentinel data 2026.</li>
+        <li>Sale Common closure notice: <a href="https://www.parks.vic.gov.au/places-to-see/parks/sale-common-nature-conservation-reserve">Parks Victoria</a>.</li>
+        <li>River levels: Queensland Government <a href="https://water-monitoring.information.qld.gov.au/">Water Monitoring Information Portal</a>, CC BY 4.0.</li>
+        <li>Rainfall used in the audit: SILO, Queensland Government, CC BY 4.0.</li>
+        <li>Land cover used in the audit: ESA WorldCover 2021 v200, CC BY 4.0.</li>
+        <li>Waterways used in the audit and the base map: &copy; OpenStreetMap contributors, ODbL.</li>
+        <li>Optical images and burn index for Burdekin, Rockadooie and the 8 Oct Sale image: Geoscience Australia, Digital Earth Australia Sentinel-2 surface reflectance, including Sentinel-2B and Sentinel-2C (<a href="https://doi.org/10.26186/146551">DOI 10.26186/146551</a>, <a href="https://doi.org/10.26186/150143">DOI 10.26186/150143</a>), CC BY 4.0. Contains modified Copernicus Sentinel data 2026. Cropped, cloud-masked, colour-stretched and reprojected by Space NUTS.</li>
+        <li>Burn record and final boundary: NSW National Parks and Wildlife Service fire history.</li>
+        <li>Land use 2016 (background only): State of Queensland, Queensland land use mapping.</li>
+        <li>Burdekin season context: Wilmar Sugar season reports.</li>
+        <li>Timure landslide map: Copernicus Emergency Management Service (&copy; European Union), EMSR927, via UNESCO IHP-WINS. Seismic event time: USGS.</li>
+        <li>Cloud cover: Copernicus Sentinel-2 catalogue metadata.</li>
+        <li>Map library: Leaflet.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    NISAR data: NASA and ISRO via ASF. Base map &copy; OpenStreetMap contributors. Results are candidate changes for follow-up, not confirmed flood, burn, crop or damage maps.
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js?v=20261115-2235"></script>
+</body>
+</html>
